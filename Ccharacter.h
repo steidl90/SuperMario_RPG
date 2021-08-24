@@ -16,7 +16,7 @@ public:
 	virtual void update() = 0;
 	virtual void render() = 0;
 
-	void initAI(Cunit* unit, MONSTER_TYPE type);
+	void initAI(Ccharacter* character, CHARACTER_TYPE type);
 	void updateAI();
 	STATE_TYPE getstate();
 

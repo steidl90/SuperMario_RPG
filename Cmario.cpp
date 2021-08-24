@@ -1,12 +1,15 @@
 #include "framework.h"
 #include "Cmario.h"
+#include "Cstate.h"
+#include "CFSM.h"
+#include "CmarioState.h"
 
-Cmario::Cmario() :direction(MOVE_TYPE::DOWN)
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하"))
 {
 }
 
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
-    Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN)
+    Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하"))
 {
     m_x = x;
     m_y = y;
@@ -49,6 +52,7 @@ HRESULT Cmario::init()
     setX(m_x);
     setY(m_y);
 
+    initAI(this, CHARACTER_TYPE::PLAYER);
     return S_OK;
 }
 
@@ -61,15 +65,18 @@ void Cmario::update()
     if (getstate() == STATE_TYPE::STATE_TYPE_IDLE || getstate() == STATE_TYPE::STATE_TYPE_TRACE)
     {
         move();
+        animation();
     }
-    m_rc = RectMake(m_x, m_y, IMAGE->findImage("마리오이동")->getFrameWidth(), IMAGE->findImage("마리오이동")->getFrameHeight());
+    m_rc = RectMake(m_x, m_y, IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
+
+    updateAI();
 }
 
 void Cmario::render()
 {
-    Rectangle(getMemDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
-    animation();
-    IMAGE->findImage("마리오이동")->frameRender(getMemDC(), m_x, m_y);
+    //Rectangle(getMemDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
+    //IMAGE->findImage("마리오이동")->frameRender(getMemDC(), m_x, m_y);
+    IMAGE->findImage("마리오이동")->aniRender(getMemDC(), m_rc.left - 10, m_rc.top - 15, m_ani);
 }
 
 void Cmario::move()
@@ -118,31 +125,47 @@ void Cmario::animation()
     {
     case MOVE_TYPE::LEFT:
         setX(getX() - getSpeed());
+        m_ani = ANIMATION->findAnimation("마리오좌");
+        ANIMATION->resume("마리오좌");
         break;
     case MOVE_TYPE::RIGHT:
         setX(getX() + getSpeed());
+        m_ani = ANIMATION->findAnimation("마리오우");
+        ANIMATION->resume("마리오우");
         break;
     case MOVE_TYPE::UP:
         setY(getY() - getSpeed());
+        m_ani = ANIMATION->findAnimation("마리오상");
+        ANIMATION->resume("마리오상");
         break;
     case MOVE_TYPE::DOWN:
         setY(getY() + getSpeed());
+        m_ani = ANIMATION->findAnimation("마리오하");
+        ANIMATION->resume("마리오하");
         break;
     case MOVE_TYPE::LEFTUP:
-        setX(getX() - getSpeed() / 2);
-        setY(getY() - getSpeed() / 2);
+        setX(getX() - getSpeed() * 0.75);
+        setY(getY() - getSpeed() * 0.75);
+        m_ani = ANIMATION->findAnimation("마리오좌상");
+        ANIMATION->resume("마리오좌상");
         break;
     case MOVE_TYPE::LEFTDOWN:
-        setX(getX() - getSpeed() / 2);
-        setY(getY() + getSpeed() / 2);
+        setX(getX() - getSpeed() * 0.75);
+        setY(getY() + getSpeed() * 0.75);
+        m_ani = ANIMATION->findAnimation("마리오좌하");
+        ANIMATION->resume("마리오좌하");
         break;
     case MOVE_TYPE::RIGHTUP:
-        setX(getX() + getSpeed() / 2);
-        setY(getY() + getSpeed() / 2);
+        setX(getX() + getSpeed() * 0.75);
+        setY(getY() - getSpeed() * 0.75);
+        m_ani = ANIMATION->findAnimation("마리오우상");
+        ANIMATION->resume("마리오우상");
         break;
     case MOVE_TYPE::RIGHTDOWN:
-        setX(getX() - getSpeed() / 2);
-        setY(getY() - getSpeed() / 2);
+        setX(getX() + getSpeed() * 0.75);
+        setY(getY() + getSpeed() * 0.75);
+        m_ani = ANIMATION->findAnimation("마리오우하");
+        ANIMATION->resume("마리오우하");
         break;
     default:
         break;

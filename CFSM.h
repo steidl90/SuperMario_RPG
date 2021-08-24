@@ -1,15 +1,15 @@
 #pragma once
 
 class Cstate;
-class Cunit;
+class Ccharacter;
 class CFSM
 {
 private:
 	vector<Cstate*> m_vState;
 	Cstate* m_curState;
-	Cunit* m_unit;
+	Ccharacter* m_character;
 public:
-	CFSM(Cunit* unit);
+	CFSM(Ccharacter* character);
 	~CFSM();
 
 	void update();
@@ -19,5 +19,5 @@ public:
 	void setState(STATE_TYPE type);
 
 	Cstate* getState() { return m_curState; }
-	Cunit* getUnit() { return m_unit; }
+	Ccharacter* getCharacter() { return m_character; }
 };

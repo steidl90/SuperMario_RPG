@@ -26,6 +26,7 @@ void mainGame::release()
 	gameNode::release();
 	EFFECT->release();
 	SCENE->release();
+	ANIMATION->release();
 	SAFE_DELETE(m_facade);
 	SAFE_DELETE(m_player);
 }

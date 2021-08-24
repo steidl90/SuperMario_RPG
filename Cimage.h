@@ -1,9 +1,10 @@
 #pragma once
-#include "CaddImg.h"
+class CaddImg;
 class Cimage
 {
 private:
 	vector<CaddImg*> m_vTotalImg;
+	vector<CaddImg*>::iterator m_viTotalImg;
 	vector<string> m_vImageList;
 
 	IMAGE_TYPE m_Type;
@@ -21,9 +22,7 @@ public:
 	~Cimage();
 
 	virtual HRESULT init();
-	virtual void release();
-	virtual void update();
-	virtual void render();
+	virtual void addImage();
 
 	void initImg();
 };

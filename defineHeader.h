@@ -27,8 +27,10 @@ enum class STATE_TYPE
 	STATE_TYPE_DEAD
 };
 
-enum class MONSTER_TYPE
+enum class CHARACTER_TYPE
 {
-	NONE,
-	FLY
+	PLAYER,
+	GOOMBA,
+	SKYTROOPA,
+	SPIKEY
 };

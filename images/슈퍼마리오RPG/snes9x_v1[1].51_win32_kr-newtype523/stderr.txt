@@ -1,1 +1,1 @@
-ROM image "C:\Program Files (x86)\½´ÆÛ¸¶¸®¿ÀRPG\Super Mario RPG (Japan).sfc" was not found or could not be opened.
+ROM image "C:\Program Files (x86)\Super Mario RPG (Japan).sfc" was not found or could not be opened.

@@ -4,7 +4,7 @@ class Cmario :public Ccharacter
 {
 private:
 	MOVE_TYPE direction;
-
+	animation* m_ani;
 public:
 	Cmario();
 	Cmario(float x, float y, RECT rc, stats stats);

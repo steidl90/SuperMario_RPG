@@ -22,15 +22,3 @@ HRESULT Canimation::init()
 
 	return S_OK;
 }
-
-void Canimation::release()
-{
-}
-
-void Canimation::update()
-{
-}
-
-void Canimation::render()
-{
-}

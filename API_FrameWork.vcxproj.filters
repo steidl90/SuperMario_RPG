@@ -67,15 +67,6 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit">
       <UniqueIdentifier>{13cf3fdb-ab13-4517-baa9-3ee6c410c38a}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Cmario">
-      <UniqueIdentifier>{e36298a1-1452-422b-b2ae-2695173609b4}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Cpeach">
-      <UniqueIdentifier>{e4fff51b-fb32-4265-947b-080e0e805d8a}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Cbowser">
-      <UniqueIdentifier>{3cf16908-b059-4e5c-90a9-5298a1a16703}</UniqueIdentifier>
-    </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CplayerManager">
       <UniqueIdentifier>{34783a6f-ca22-43c5-8b39-404c34aaf1ed}</UniqueIdentifier>
     </Filter>
@@ -87,6 +78,15 @@
     </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter">
       <UniqueIdentifier>{a77c6308-2e63-47e7-a5b4-be1fc1c16930}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cbowser">
+      <UniqueIdentifier>{3cf16908-b059-4e5c-90a9-5298a1a16703}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario">
+      <UniqueIdentifier>{e36298a1-1452-422b-b2ae-2695173609b4}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cpeach">
+      <UniqueIdentifier>{e4fff51b-fb32-4265-947b-080e0e805d8a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -181,13 +181,13 @@
       <Filter>mainGame\슈퍼마리오RPG\Cunit</Filter>
     </ClInclude>
     <ClInclude Include="Cmario.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cmario</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
     </ClInclude>
     <ClInclude Include="Cbowser.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cbowser</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cbowser</Filter>
     </ClInclude>
     <ClInclude Include="Cpeach.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cpeach</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cpeach</Filter>
     </ClInclude>
     <ClInclude Include="CplayerManager.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager</Filter>
@@ -205,7 +205,10 @@
       <Filter>mainGame\슈퍼마리오RPG\CFSM</Filter>
     </ClInclude>
     <ClInclude Include="Ccharacter.h">
-      <Filter>헤더 파일</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter</Filter>
+    </ClInclude>
+    <ClInclude Include="CmarioState.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -282,13 +285,13 @@
       <Filter>mainGame\슈퍼마리오RPG\Cunit</Filter>
     </ClCompile>
     <ClCompile Include="Cmario.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cmario</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
     </ClCompile>
     <ClCompile Include="Cbowser.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cbowser</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cbowser</Filter>
     </ClCompile>
     <ClCompile Include="Cpeach.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Cpeach</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cpeach</Filter>
     </ClCompile>
     <ClCompile Include="CplayerManager.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager</Filter>
@@ -303,7 +306,10 @@
       <Filter>mainGame\슈퍼마리오RPG\CFSM</Filter>
     </ClCompile>
     <ClCompile Include="Ccharacter.cpp">
-      <Filter>소스 파일</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter</Filter>
+    </ClCompile>
+    <ClCompile Include="CmarioState.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

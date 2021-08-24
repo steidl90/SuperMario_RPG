@@ -9,7 +9,7 @@ protected:
 
 public:
 	Cstate();
-	~Cstate();
+	virtual ~Cstate();
 
 	STATE_TYPE getStateType() { return m_eState; }
 	void setFSM(CFSM* fsm) { m_FSM = fsm; }

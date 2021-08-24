@@ -158,6 +158,7 @@
     <ClInclude Include="CFSM.h" />
     <ClInclude Include="Cimage.h" />
     <ClInclude Include="Cmario.h" />
+    <ClInclude Include="CmarioState.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="Cpeach.h" />
     <ClInclude Include="CplayerManager.h" />
@@ -199,6 +200,7 @@
     <ClCompile Include="CFSM.cpp" />
     <ClCompile Include="Cimage.cpp" />
     <ClCompile Include="Cmario.cpp" />
+    <ClCompile Include="CmarioState.cpp" />
     <ClCompile Include="Cpeach.cpp" />
     <ClCompile Include="CplayerManager.cpp" />
     <ClCompile Include="CsceneMarioHouse.cpp" />
