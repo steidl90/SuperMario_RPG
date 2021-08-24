@@ -10,8 +10,8 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 	   
-	m_image = new Cimage;
-	m_image->init();
+	m_facade = new Cfacade;
+	m_facade->init();
 
 	//SCENE->addScene("던전", new CsceneDungeon);
 	//SCENE->changeScene("시작화면");
@@ -21,7 +21,7 @@ HRESULT mainGame::init()
 void mainGame::release()
 {
 	gameNode::release();
-	SAFE_DELETE(m_image);
+	SAFE_DELETE(m_facade);
 	EFFECT->release();
 	SCENE->release();
 }

@@ -1,13 +1,11 @@
 #pragma once
 #include"image.h"
-#include"Cimage.h"
 static image* backBuffer = IMAGE->addImage("backbuffer", WINSIZEX, WINSIZEY);
 static image* mapBuffer = IMAGE->addImage("mapBuffer", MAPSIZE, MAPSIZE);
 static image* tileBuffer = IMAGE->addImage("tileBuffer", MAPSIZE, MAPSIZE);
 
 class gameNode
 {
-
 	//image* _backBuffer;	//백버퍼
 	//void setBackBuffer();//백버퍼 셋팅
 

@@ -14,7 +14,7 @@ mainGame mg;
 
 
 
-LPTSTR m_lpszClass = TEXT("히어로시즈");
+LPTSTR m_lpszClass = TEXT("슈퍼마리오RPG");
 LRESULT CALLBACK WndProc(HWND, UINT, WPARAM, LPARAM);
 void setWindowSize(int x, int y, int width, int height);
 

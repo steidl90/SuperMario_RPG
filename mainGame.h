@@ -1,10 +1,11 @@
 #pragma once
-#include"gameNode.h"
+#include "gameNode.h"
+#include "Cfacade.h"
 
 class mainGame : public gameNode
 {
 private:
-	Cimage* m_image;
+	Cfacade* m_facade;
 
 public:
 	mainGame();

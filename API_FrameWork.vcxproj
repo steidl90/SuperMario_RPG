@@ -152,6 +152,7 @@
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="camel.h" />
     <ClInclude Include="camera.h" />
+    <ClInclude Include="Canimation.h" />
     <ClInclude Include="CaStar.h" />
     <ClInclude Include="CbossManager.h" />
     <ClInclude Include="CdropItem.h" />
@@ -160,6 +161,7 @@
     <ClInclude Include="Cenemy.h" />
     <ClInclude Include="CenemyAttack.h" />
     <ClInclude Include="CenemyManager.h" />
+    <ClInclude Include="Cfacade.h" />
     <ClInclude Include="Cimage.h" />
     <ClInclude Include="Cinventory.h" />
     <ClInclude Include="CinventoryUi.h" />
@@ -223,6 +225,7 @@
     <ClCompile Include="API_FrameWork.cpp" />
     <ClCompile Include="camel.cpp" />
     <ClCompile Include="camera.cpp" />
+    <ClCompile Include="Canimation.cpp" />
     <ClCompile Include="CaStar.cpp" />
     <ClCompile Include="CbossManager.cpp" />
     <ClCompile Include="CdropItem.cpp" />
@@ -231,6 +234,7 @@
     <ClCompile Include="Cenemy.cpp" />
     <ClCompile Include="CenemyAttack.cpp" />
     <ClCompile Include="CenemyManager.cpp" />
+    <ClCompile Include="Cfacade.cpp" />
     <ClCompile Include="Cimage.cpp" />
     <ClCompile Include="Cinventory.cpp" />
     <ClCompile Include="CinventoryUi.cpp" />
