@@ -1,58 +1,65 @@
 #pragma once
 #include "gameNode.h"
+class CFSM;
+
+struct stats
+{
+	int atk;
+	int def;
+	int hp;
+	int mp;
+	int lv;
+	int exp;
+	int gold;
+	float speed;
+}; 
 class Cunit :public gameNode
 {
-private:
-	/*
-	플레이어, 이너미들이 공통으로 필요한 부분은 여기에 만들어라
-	플레이어, 이너미들이 공통으로 필요한 부분은 여기에 만들어라
-	플레이어, 이너미들이 공통으로 필요한 부분은 여기에 만들어라
-	*/
-	int m_atk;
-	int m_def;
-	int m_hp;
-	int m_mp;
-	int m_critical;
-	int m_lv;
-	int m_exp;
-	int m_gold;
-	float m_criticalAtk;
-	float m_speed;
+protected:
+	stats m_stats;
+	RECT m_rc;
+	float m_x, m_y;
 
+	CFSM* m_AI;
+	vector<CFSM*> vAI;
 
 public:
 	Cunit();
+	Cunit(float x, float y, RECT rc, stats stats);
 	~Cunit();
 
-	HRESULT init();
-	void release();
-	void update();
-	void render();
+	virtual HRESULT init();
+	virtual void release() = 0;
+	virtual void update() = 0;
+	virtual void render() = 0;
+
+	void initAI(Cunit* unit, MONSTER_TYPE type);
+	void updateAI();
+	STATE_TYPE getstate();
 
 	//============== get ==============//
-	int getAtk() { return m_atk; }
-	int getDef() { return m_def; }
-	int getHp() { return m_hp; }
-	int getMp() { return m_mp; }
-	int getCritical() { return m_critical; }
-	int getLv() { return m_lv; }
-	int getExp() { return m_exp; }
-	int getGold() { return m_gold; }
-	float getCriticalAtk() { return m_criticalAtk; }
-	float getSpeed() { return m_speed; }
+	CFSM* getAI() { return m_AI; }
+	int getAtk() { return m_stats.atk; }
+	int getDef() { return m_stats.def; }
+	int getHp() { return m_stats.hp; }
+	int getMp() { return m_stats.mp; }
+	int getLv() { return m_stats.lv; }
+	int getExp() { return m_stats.exp; }
+	int getGold() { return m_stats.gold; }
+	float getSpeed() { return m_stats.speed; }
+	float getX() { return m_x; }
+	float getY() { return m_y; }
 
 	//============== set ==============//
-
-	void setAtk(int atk) { m_atk = atk; }
-	void setDef(int def) { m_def = def; }
-	void setHp(int hp) { m_hp = hp; }
-	void setMp(int mp) { m_mp = mp; }
-	void setCritical(int cri) { m_critical = cri; }
-	void setLv(int lv) { m_lv = lv; }
-	void setExp(int exp) { m_exp = exp; }
-	void setGold(int gold) { m_gold = gold; }
-	void setCriticalAtk(float criAtk) { m_criticalAtk = criAtk; }
-	void setSpeed(float speed) { m_speed = speed; }
-
+	void setAtk(int atk) { m_stats.atk = atk; }
+	void setDef(int def) { m_stats.def = def; }
+	void setHp(int hp) { m_stats.hp = hp; }
+	void setMp(int mp) { m_stats.mp = mp; }
+	void setLv(int lv) { m_stats.lv = lv; }
+	void setExp(int exp) { m_stats.exp = exp; }
+	void setGold(int gold) { m_stats.gold = gold; }
+	void setSpeed(float speed) { m_stats.speed = speed; }
+	void setX(float x) { m_x = x; }
+	void setY(float y) { m_y = y; }
 };
 

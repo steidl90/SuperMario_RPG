@@ -1,0 +1,4 @@
+0,images/Mario_idle.bmp,마리오대기,24,34,,,1,255,0,255
+0,images/Peach_adle.bmp,피치대기,24,34,,,1,255,0,255
+0,images/Bowser_idle.bmp,쿠파대기,34,44,,,1,255,0,255
+1,images/Mario_move.bmp,마리오이동,140,295,5,8,1,255,0,255

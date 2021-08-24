@@ -91,6 +91,7 @@ public:
 	void render(HDC hdc, const int  destX, const int destY, const int sourX, const int sourY, const int sourWidth, const int sourheight);
 
 	void mapRender(HDC hdc, const int  destX, const int destY);
+	void reverseRender(HDC hdc, const int  destX, const int destY);
 
 	//«¡∑π¿” ∑ª¥ı
 	void frameRender(HDC hdc, const int destX, const int destY);

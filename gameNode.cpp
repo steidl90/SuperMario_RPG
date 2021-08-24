@@ -44,7 +44,7 @@ HRESULT gameNode::init(bool managerInit)
 		TIME->init();
 		SOUND->init();
 		// 새로추가
-		ITEM->init();
+
 	}
 
 
@@ -59,8 +59,6 @@ HRESULT gameNode::init(bool managerInit)
 
 void gameNode::release()
 {	//타이머 해제
-
-
 	if (_managerInit)
 	{
 		//해제를 안하면 종료를 해도 메모리가 줄줄줄~
@@ -74,16 +72,15 @@ void gameNode::release()
 		SCENE->releaseSingleton();
 		SOUND->releaseSingleton();
 		EFFECT->releaseSingleton();
-		// 새로추가
-		ITEM->releaseSingleton();
-		DATA->releaseSingleton();
-
 
 		EFFECT->release();
 		SCENE->release();
 		IMAGE->release();
 		TIME->release();
 		SOUND->release();
+
+		// 새로추가
+
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

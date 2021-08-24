@@ -49,7 +49,7 @@ void effect::render()
 {
 	if (_isRunning)
 	{
-		_effectImage->aniRender(getMapDC(), _x, _y, _effectAni);
+		_effectImage->aniRender(getMemDC(), _x, _y, _effectAni);
 	}
 }
 

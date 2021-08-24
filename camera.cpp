@@ -3,8 +3,8 @@
 
 HRESULT camera::init()
 {
-	camera_width = CAMERAWIDTH;
-	camera_height = CAMERAHEIGHT;
+	camera_width = WINSIZEX;
+	camera_height = WINSIZEY;
 	return S_OK;
 }
 

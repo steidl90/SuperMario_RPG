@@ -437,6 +437,37 @@ void image::mapRender(HDC hdc, const int destX, const int destY)
 	}
 }
 
+void image::reverseRender(HDC hdc, const int destX, const int destY)
+{
+	if (_isTrans)
+	{
+		//비트맵을 불러올때 특정 색상을 제외하고 복사해주는 함수
+		GdiTransparentBlt(
+			hdc,						//복삳될 장소의 DC
+			destX,							//복사될 좌표의 시작점X
+			destY,							//복사될 좌표의 시작점Y
+			_imageInfo->width,			//복사될 이미지 가로크기
+			_imageInfo->height,			//복사될 이미지 세로크기
+			_imageInfo->hMemDC,			//복사될 대상DC
+			0,							//복사시작 지점 X
+			0,							//복사시작 지점 Y
+			_imageInfo->width,			//복사영역 가로크기
+			_imageInfo->height,			//복사영역 세로크기
+			_transColor);
+
+		StretchBlt(hdc, destX, destY, -_imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, SRCCOPY);
+
+	}
+	//TODO::미니맵 사이즈 수정할곳 _imageInfo->width/10, _imageInfo->height/10,
+	else {
+		//이미지의 크기를 조절하여 화면에 출력해주는 함수
+		SetStretchBltMode(hdc, COLORONCOLOR);
+		StretchBlt(hdc, destX, destY, -_imageInfo->width, _imageInfo->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, SRCCOPY);
+	}
+}
+
 void image::frameRender(HDC hdc, const int destX, const int destY)
 {
 	if (_isTrans)

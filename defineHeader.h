@@ -1,0 +1,22 @@
+#pragma once
+#define MAPSIZE WINSIZEX
+
+enum class IMAGE_TYPE
+{
+	IMAGE_TYPE_IMG,
+	IMAGE_TYPE_FRAMEIMG
+};
+
+enum class STATE_TYPE
+{
+	STATE_TYPE_IDLE,
+	STATE_TYPE_TRACE,
+	STATE_TYPE_ATTACK,
+	STATE_TYPE_DEAD
+};
+
+enum class MONSTER_TYPE
+{
+	NONE,
+	FLY
+};

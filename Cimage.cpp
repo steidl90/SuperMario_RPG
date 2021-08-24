@@ -11,6 +11,8 @@ Cimage::~Cimage()
 
 HRESULT Cimage::init()
 {
+	m_vImageList = TXT->txtLoad("이미지리스트.csv");
+
 	//=================Player=================//
 	IMAGE->addImage("마리오대기", "images/Mario_idle.bmp", 24, 34, true, RGB(255, 0, 255));
 	IMAGE->addImage("피치대기", "images/Peach_adle.bmp", 24, 34, true, RGB(255, 0, 255));
@@ -83,4 +85,13 @@ void Cimage::update()
 
 void Cimage::render()
 {
+}
+
+void Cimage::initImg()
+{
+	for (int i = 0; i < m_vImageList.size(); i += 12)
+	{
+		//if()m_Type
+		m_imageUrl = m_vImageList[i + 1];
+	}
 }
