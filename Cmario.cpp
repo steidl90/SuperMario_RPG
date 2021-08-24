@@ -1,13 +1,24 @@
 #include "framework.h"
 #include "Cmario.h"
 
-Cmario::Cmario()
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN)
 {
 }
 
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
-    Cunit(x, y, rc, stats)
+    Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN)
 {
+    m_x = x;
+    m_y = y;
+    m_rc = rc;
+    m_stats.atk = stats.atk;
+    m_stats.def = stats.def;
+    m_stats.exp = stats.exp;
+    m_stats.gold = stats.gold;
+    m_stats.hp = stats.hp;
+    m_stats.lv = stats.lv;
+    m_stats.mp = stats.mp;
+    m_stats.speed = stats.speed;
 }
 
 Cmario::~Cmario()
@@ -16,6 +27,28 @@ Cmario::~Cmario()
 
 HRESULT Cmario::init()
 {
+    m_x = WINSIZEX / 2;
+    m_y = WINSIZEY / 2;
+    m_stats.lv = 1;
+    m_stats.atk = 10;
+    m_stats.def = 10;
+    m_stats.hp = 30;
+    m_stats.mp = 10;
+    m_stats.exp = 10;
+    m_stats.gold = 0;
+    m_stats.speed = 3.0f;
+
+    setLv(m_stats.lv);
+    setAtk(m_stats.atk);
+    setDef(m_stats.def);
+    setHp(m_stats.hp);
+    setMp(m_stats.mp);
+    setExp(m_stats.exp);
+    setGold(m_stats.gold);
+    setSpeed(m_stats.speed);
+    setX(m_x);
+    setY(m_y);
+
     return S_OK;
 }
 
@@ -25,25 +58,93 @@ void Cmario::release()
 
 void Cmario::update()
 {
-    if (InputManager->isStayKeyDown(VK_LEFT))
+    if (getstate() == STATE_TYPE::STATE_TYPE_IDLE || getstate() == STATE_TYPE::STATE_TYPE_TRACE)
     {
+        move();
     }
-    else if (InputManager->isStayKeyDown(VK_RIGHT))
-    {
-
-    }
-    else if (InputManager->isStayKeyDown(VK_UP))
-    {
-
-    }
-    else if (InputManager->isStayKeyDown(VK_DOWN))
-    {
-
-    }
-
-    RectMake(m_x, m_y, IMAGE->findImage("마리오이동")->getFrameWidth(), IMAGE->findImage("마리오이동")->getFrameHeight());
+    m_rc = RectMake(m_x, m_y, IMAGE->findImage("마리오이동")->getFrameWidth(), IMAGE->findImage("마리오이동")->getFrameHeight());
 }
 
 void Cmario::render()
 {
+    Rectangle(getMemDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
+    animation();
+    IMAGE->findImage("마리오이동")->frameRender(getMemDC(), m_x, m_y);
+}
+
+void Cmario::move()
+{
+    if (InputManager->isStayKeyDown(VK_RIGHT) && InputManager->isStayKeyDown(VK_DOWN))
+    {
+        direction = MOVE_TYPE::RIGHTDOWN;
+    }
+    else if (InputManager->isStayKeyDown(VK_RIGHT) && InputManager->isStayKeyDown(VK_UP))
+    {
+        direction = MOVE_TYPE::RIGHTUP;
+    }
+    else if (InputManager->isStayKeyDown(VK_LEFT) && InputManager->isStayKeyDown(VK_DOWN))
+    {
+        direction = MOVE_TYPE::LEFTDOWN;
+    }
+    else if (InputManager->isStayKeyDown(VK_LEFT) && InputManager->isStayKeyDown(VK_UP))
+    {
+        direction = MOVE_TYPE::LEFTUP;
+    }
+    else if (InputManager->isStayKeyDown(VK_LEFT))
+    {
+        direction = MOVE_TYPE::LEFT;
+    }
+    else if (InputManager->isStayKeyDown(VK_RIGHT))
+    {
+        direction = MOVE_TYPE::RIGHT;
+    }
+    else if (InputManager->isStayKeyDown(VK_UP))
+    {
+        direction = MOVE_TYPE::UP;
+    }
+    else if (InputManager->isStayKeyDown(VK_DOWN))
+    {
+        direction = MOVE_TYPE::DOWN;
+    }
+    else
+    {
+
+    }
+}
+
+void Cmario::animation()
+{
+    switch (direction)
+    {
+    case MOVE_TYPE::LEFT:
+        setX(getX() - getSpeed());
+        break;
+    case MOVE_TYPE::RIGHT:
+        setX(getX() + getSpeed());
+        break;
+    case MOVE_TYPE::UP:
+        setY(getY() - getSpeed());
+        break;
+    case MOVE_TYPE::DOWN:
+        setY(getY() + getSpeed());
+        break;
+    case MOVE_TYPE::LEFTUP:
+        setX(getX() - getSpeed() / 2);
+        setY(getY() - getSpeed() / 2);
+        break;
+    case MOVE_TYPE::LEFTDOWN:
+        setX(getX() - getSpeed() / 2);
+        setY(getY() + getSpeed() / 2);
+        break;
+    case MOVE_TYPE::RIGHTUP:
+        setX(getX() + getSpeed() / 2);
+        setY(getY() + getSpeed() / 2);
+        break;
+    case MOVE_TYPE::RIGHTDOWN:
+        setX(getX() - getSpeed() / 2);
+        setY(getY() - getSpeed() / 2);
+        break;
+    default:
+        break;
+    }
 }

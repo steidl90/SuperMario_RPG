@@ -1,8 +1,9 @@
 #pragma once
-#include "Cunit.h"
-class Cmario :public Cunit
+#include "Ccharacter.h"
+class Cmario :public Ccharacter
 {
 private:
+	MOVE_TYPE direction;
 
 public:
 	Cmario();
@@ -13,4 +14,7 @@ public:
 	void release();
 	void update();
 	void render();
+
+	void move();
+	void animation();
 };

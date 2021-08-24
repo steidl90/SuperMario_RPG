@@ -85,6 +85,9 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cscene">
       <UniqueIdentifier>{bec9ba8c-ffff-4ef8-8ca1-1dd242a48d18}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter">
+      <UniqueIdentifier>{a77c6308-2e63-47e7-a5b4-be1fc1c16930}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -201,6 +204,9 @@
     <ClInclude Include="Cstate.h">
       <Filter>mainGame\슈퍼마리오RPG\CFSM</Filter>
     </ClInclude>
+    <ClInclude Include="Ccharacter.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -295,6 +301,9 @@
     </ClCompile>
     <ClCompile Include="Cstate.cpp">
       <Filter>mainGame\슈퍼마리오RPG\CFSM</Filter>
+    </ClCompile>
+    <ClCompile Include="Ccharacter.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

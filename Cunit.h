@@ -1,6 +1,5 @@
 #pragma once
 #include "gameNode.h"
-class CFSM;
 
 struct stats
 {
@@ -12,33 +11,26 @@ struct stats
 	int exp;
 	int gold;
 	float speed;
-}; 
+};
+
 class Cunit :public gameNode
 {
 protected:
 	stats m_stats;
 	RECT m_rc;
 	float m_x, m_y;
-
-	CFSM* m_AI;
-	vector<CFSM*> vAI;
-
+	
 public:
 	Cunit();
 	Cunit(float x, float y, RECT rc, stats stats);
 	~Cunit();
 
 	virtual HRESULT init();
-	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void release();
+	virtual void update();
+	virtual void render();
 
-	void initAI(Cunit* unit, MONSTER_TYPE type);
-	void updateAI();
-	STATE_TYPE getstate();
-
-	//============== get ==============//
-	CFSM* getAI() { return m_AI; }
+	//================ get ================//
 	int getAtk() { return m_stats.atk; }
 	int getDef() { return m_stats.def; }
 	int getHp() { return m_stats.hp; }
@@ -50,7 +42,7 @@ public:
 	float getX() { return m_x; }
 	float getY() { return m_y; }
 
-	//============== set ==============//
+	//================ set ================//
 	void setAtk(int atk) { m_stats.atk = atk; }
 	void setDef(int def) { m_stats.def = def; }
 	void setHp(int hp) { m_stats.hp = hp; }

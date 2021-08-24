@@ -7,6 +7,18 @@ enum class IMAGE_TYPE
 	IMAGE_TYPE_FRAMEIMG
 };
 
+enum class MOVE_TYPE
+{
+	LEFT,
+	RIGHT,
+	UP,
+	DOWN,
+	LEFTUP,
+	LEFTDOWN,
+	RIGHTUP,
+	RIGHTDOWN
+};
+
 enum class STATE_TYPE
 {
 	STATE_TYPE_IDLE,
