@@ -49,9 +49,6 @@
     <Filter Include="singleton">
       <UniqueIdentifier>{4195f04f-5855-464f-9ac2-ec62e85370d4}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\카메라">
-      <UniqueIdentifier>{a073fbc0-fcd1-4831-88ff-a22b5fb1361a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG">
       <UniqueIdentifier>{4b9b4328-96f4-414c-8a8f-f06ac08cafba}</UniqueIdentifier>
     </Filter>
@@ -93,6 +90,12 @@
     </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cobject\Ctown">
       <UniqueIdentifier>{fe419b84-d112-4e60-a184-6a63df59d912}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cobject\Chouse">
+      <UniqueIdentifier>{c6f4ca13-4bb0-4d33-b1b1-19a853829fe2}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\Ccamera">
+      <UniqueIdentifier>{a073fbc0-fcd1-4831-88ff-a22b5fb1361a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -171,8 +174,8 @@
     <ClInclude Include="effect.h">
       <Filter>이펙트</Filter>
     </ClInclude>
-    <ClInclude Include="camera.h">
-      <Filter>mainGame\카메라</Filter>
+    <ClInclude Include="Ccamera.h">
+      <Filter>mainGame\Ccamera</Filter>
     </ClInclude>
     <ClInclude Include="Cfacade.h">
       <Filter>mainGame\슈퍼마리오RPG\Cfacade</Filter>
@@ -224,6 +227,9 @@
     </ClInclude>
     <ClInclude Include="Ctown.h">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\Ctown</Filter>
+    </ClInclude>
+    <ClInclude Include="Chouse.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject\Chouse</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -284,8 +290,8 @@
     <ClCompile Include="effect.cpp">
       <Filter>이펙트</Filter>
     </ClCompile>
-    <ClCompile Include="camera.cpp">
-      <Filter>mainGame\카메라</Filter>
+    <ClCompile Include="Ccamera.cpp">
+      <Filter>mainGame\Ccamera</Filter>
     </ClCompile>
     <ClCompile Include="Cfacade.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cfacade</Filter>
@@ -334,6 +340,9 @@
     </ClCompile>
     <ClCompile Include="Ctown.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\Ctown</Filter>
+    </ClCompile>
+    <ClCompile Include="Chouse.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject\Chouse</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

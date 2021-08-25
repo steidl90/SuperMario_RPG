@@ -21,8 +21,6 @@ public:
 	void move();
 	void animation();
 
-	void pixel();
-
 	RECT* getRect() { return &m_rc; }
 
 };

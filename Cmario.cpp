@@ -30,8 +30,8 @@ Cmario::~Cmario()
 
 HRESULT Cmario::init()
 {
-    m_x = WINSIZEX / 2+200;
-    m_y = WINSIZEY / 2+100;
+    m_x = WINSIZEX / 2+50;
+    m_y = WINSIZEY / 2+400;
     m_stats.lv = 1;
     m_stats.atk = 10;
     m_stats.def = 10;
@@ -64,7 +64,6 @@ void Cmario::update()
 {
     if (getstate() == STATE_TYPE::STATE_TYPE_IDLE || getstate() == STATE_TYPE::STATE_TYPE_TRACE)
     {
-        pixel();
         move();
         animation();
     }
@@ -75,10 +74,9 @@ void Cmario::update()
 
 void Cmario::render()
 {
-    //Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
+    Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
     IMAGE->findImage("¸¶¸®¿ÀÀÌµ¿")->aniRender(getMapDC(), m_rc.left - 10, m_rc.top - 15, m_ani);
 
-    if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->render(getMapDC());
 }
 
 void Cmario::move()
@@ -194,65 +192,5 @@ void Cmario::animation()
         break;
     default:
         break;
-    }
-}
-
-void Cmario::pixel()
-{
-
-    for (int i = getY() - 1; i > getY() - 5; i--)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), getX(), i);
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            setY(getY() + getSpeed());
-        }
-    }
-
-    for (int i = getY() + 5; i < getY() + 50; i++)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), getX(), i);
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            setY(getY() - getSpeed());
-        }
-    }
-
-    for (int i = getX() - 1; i > getX() - 10; i--)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), i, getY());
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            setX(getX() + getSpeed());
-        }
-    }
-
-    for (int i = getX() + 1; i < getX() + 10; i++)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), i, getY());
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            setX(getX() - getSpeed());
-        }
     }
 }

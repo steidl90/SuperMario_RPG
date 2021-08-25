@@ -1,11 +1,11 @@
 #pragma once
 #include "Cobject.h"
 
-class camera;
+class Ccamera;
 class Ctown :public Cobject
 {
 private:
-	camera* m_camera;
+	Ccamera* m_camera;
 
 public:
 	Ctown();
@@ -16,6 +16,6 @@ public:
 	void update();
 	void render();
 
-	void setCameraMemory(camera* camera) { m_camera = camera; }
+	void setCameraMemory(Ccamera* camera) { m_camera = camera; }
 };
 

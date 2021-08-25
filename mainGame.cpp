@@ -14,6 +14,7 @@ HRESULT mainGame::init()
 	m_facade->init();
 
 	SCENE->addScene("마을", new CsceneTown);
+	SCENE->addScene("마리오의집", new CsceneMarioHouse);
 	SCENE->changeScene("마을");
 	return S_OK;
 }

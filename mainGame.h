@@ -3,6 +3,7 @@
 #include "Cfacade.h"
 #include "Cmario.h"
 #include "CsceneTown.h"
+#include "CsceneMarioHouse.h"
 class mainGame : public gameNode
 {
 private:

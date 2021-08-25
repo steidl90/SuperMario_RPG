@@ -1,14 +1,18 @@
 #pragma once
 #include "gameNode.h"
-#include "camera.h"
+#include "Ccamera.h"
 #include "Ctown.h"
 #include "CplayerManager.h"
 class CsceneTown : public gameNode
 {
 private:
-	camera* m_camera;
+	Ccamera* m_camera;
 	Ctown* m_town;
-	CplayerManager* m_player;
+	CplayerManager* m_playerM;
+
+private:
+	RECT m_door;
+
 public:
 	CsceneTown();
 	~CsceneTown();
@@ -18,5 +22,8 @@ public:
 	void update();
 	void render();
 
+	void scenechange();
+
+	void pixelCollision();
 	
 };
