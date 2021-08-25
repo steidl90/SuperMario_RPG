@@ -242,7 +242,7 @@ void animation::fullstart()
 void animation::stop()
 {
 	_play = false;
-	_nowPlayIndex = 0;
+	_nowPlayIndex = 1;
 }
 
 

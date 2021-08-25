@@ -11,9 +11,10 @@
 1,images/BigCoin_Effect.bmp,큰코인,544,34,16,1,1,255,0,255
 1,images/SmallCoin_Effect.bmp,작은코인,544,34,16,1,1,255,0,255
 1,images/SaveBox.bmp,세이브상자,141,35,4,1,1,255,0,255
-0,images/BanditsWay_Map.bmp,필드맵1,800,576,0,0,1,255,0,255
+0,images/BanditsWay_Map.bmp,필드맵1,1600,1152,0,0,1,255,0,255
 0,images/BanditsWay_Map1.bmp,필드맵2,800,388,0,0,1,255,0,255
-0,images/Town_Map.bmp,마을맵,809,717,0,0,1,255,0,255
+0,images/Town_Map.bmp,마을맵,1618,1434,0,0,1,255,0,255
+0,images/Town_Map_Pixel.bmp,마을맵픽셀,1618,1434,0,0,1,255,0,255
 0,images/Battle_Map.bmp,배틀맵1,256,222,0,0,1,255,0,255
 0,images/Battle_Map2.bmp,배틀맵2,256,222,0,0,1,255,0,255
 0,images/World_Map1.bmp,월드맵1,199,208,0,0,1,255,0,255

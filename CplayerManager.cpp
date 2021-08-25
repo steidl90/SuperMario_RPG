@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "CplayerManager.h"
-CplayerManager::CplayerManager():m_mario(nullptr), m_peach(nullptr), m_bowser(nullptr)
+CplayerManager::CplayerManager():m_mario(new Cmario), m_peach(new Cpeach), m_bowser(new Cbowser)
 {
 }
 
@@ -11,13 +11,8 @@ CplayerManager::~CplayerManager()
 
 HRESULT CplayerManager::init()
 {
-    m_mario = new Cmario;
     m_mario->init();
-    
-    m_peach = new Cpeach;
     m_peach->init();
-
-    m_bowser = new Cbowser;
     m_bowser->init();
 
     return S_OK;
@@ -32,10 +27,10 @@ void CplayerManager::release()
 
 void CplayerManager::update()
 {
-    
+    m_mario->update();
 }
 
 void CplayerManager::render()
 {
-   
+    m_mario->render();
 }

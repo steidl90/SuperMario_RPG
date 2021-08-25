@@ -11,6 +11,14 @@ class camera : public gameNode
 	int target_x, target_y;
 
 public:
+	camera();
+	~camera();
+
+	HRESULT init();
+	void release();
+	void update();
+	void render();
+
 	POINT getCameraPoint() { return PointMake(camera_x1, camera_y1); }
 	POINT getCameraPoint2() { return PointMake(camera_x2, camera_y2); }
 
@@ -19,8 +27,4 @@ public:
 
 	void setTargetPoint(POINT p) { target_x = p.x; target_y = p.y; }
 
-	HRESULT init();
-	void release();
-	void update();
-	void render();
 };

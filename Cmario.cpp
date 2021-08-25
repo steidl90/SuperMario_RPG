@@ -4,12 +4,12 @@
 #include "CFSM.h"
 #include "CmarioState.h"
 
-Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하"))
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하")
 {
 }
 
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
-    Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하"))
+    Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하")
 {
     m_x = x;
     m_y = y;
@@ -30,8 +30,8 @@ Cmario::~Cmario()
 
 HRESULT Cmario::init()
 {
-    m_x = WINSIZEX / 2;
-    m_y = WINSIZEY / 2;
+    m_x = WINSIZEX / 2+200;
+    m_y = WINSIZEY / 2+100;
     m_stats.lv = 1;
     m_stats.atk = 10;
     m_stats.def = 10;
@@ -64,58 +64,82 @@ void Cmario::update()
 {
     if (getstate() == STATE_TYPE::STATE_TYPE_IDLE || getstate() == STATE_TYPE::STATE_TYPE_TRACE)
     {
+        pixel();
         move();
         animation();
     }
-    m_rc = RectMake(m_x, m_y, IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
+    m_rc = RectMakeCenter(getX(), getY(), IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
 
     updateAI();
 }
 
 void Cmario::render()
 {
-    //Rectangle(getMemDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
-    //IMAGE->findImage("마리오이동")->frameRender(getMemDC(), m_x, m_y);
-    IMAGE->findImage("마리오이동")->aniRender(getMemDC(), m_rc.left - 10, m_rc.top - 15, m_ani);
+    //Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
+    IMAGE->findImage("마리오이동")->aniRender(getMapDC(), m_rc.left - 10, m_rc.top - 15, m_ani);
+
+    if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("마을맵픽셀")->render(getMapDC());
 }
 
 void Cmario::move()
 {
     if (InputManager->isStayKeyDown(VK_RIGHT) && InputManager->isStayKeyDown(VK_DOWN))
     {
+        setX(getX() + getSpeed() * 0.75);
+        setY(getY() + getSpeed() * 0.37);
         direction = MOVE_TYPE::RIGHTDOWN;
     }
     else if (InputManager->isStayKeyDown(VK_RIGHT) && InputManager->isStayKeyDown(VK_UP))
     {
+        setX(getX() + getSpeed() * 0.75);
+        setY(getY() - getSpeed() * 0.37);
         direction = MOVE_TYPE::RIGHTUP;
     }
     else if (InputManager->isStayKeyDown(VK_LEFT) && InputManager->isStayKeyDown(VK_DOWN))
     {
+        setX(getX() - getSpeed() * 0.75);
+        setY(getY() + getSpeed() * 0.37);
         direction = MOVE_TYPE::LEFTDOWN;
     }
     else if (InputManager->isStayKeyDown(VK_LEFT) && InputManager->isStayKeyDown(VK_UP))
     {
+        setX(getX() - getSpeed() * 0.75);
+        setY(getY() - getSpeed() * 0.37);
         direction = MOVE_TYPE::LEFTUP;
     }
     else if (InputManager->isStayKeyDown(VK_LEFT))
     {
+        setX(getX() - getSpeed());
         direction = MOVE_TYPE::LEFT;
     }
     else if (InputManager->isStayKeyDown(VK_RIGHT))
     {
+        setX(getX() + getSpeed());
         direction = MOVE_TYPE::RIGHT;
     }
     else if (InputManager->isStayKeyDown(VK_UP))
     {
+        setY(getY() - getSpeed());
         direction = MOVE_TYPE::UP;
     }
     else if (InputManager->isStayKeyDown(VK_DOWN))
     {
+        setY(getY() + getSpeed());
         direction = MOVE_TYPE::DOWN;
+    }
+    else direction = MOVE_TYPE::IDEL;
+
+
+    // 달리기
+    if (InputManager->isStayKeyDown('A'))
+    {
+        setSpeed(runSpeed);
+        ANIMATION->findAnimation(str)->setFPS(runAniFrame);
     }
     else
     {
-
+        setSpeed(speed);
+        ANIMATION->findAnimation(str)->setFPS(aniFrame);
     }
 }
 
@@ -124,50 +148,111 @@ void Cmario::animation()
     switch (direction)
     {
     case MOVE_TYPE::LEFT:
-        setX(getX() - getSpeed());
-        m_ani = ANIMATION->findAnimation("마리오좌");
-        ANIMATION->resume("마리오좌");
+        strcpy(str, "마리오좌");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::RIGHT:
-        setX(getX() + getSpeed());
-        m_ani = ANIMATION->findAnimation("마리오우");
-        ANIMATION->resume("마리오우");
+        strcpy(str, "마리오우");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::UP:
-        setY(getY() - getSpeed());
-        m_ani = ANIMATION->findAnimation("마리오상");
-        ANIMATION->resume("마리오상");
+        strcpy(str, "마리오상");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::DOWN:
-        setY(getY() + getSpeed());
-        m_ani = ANIMATION->findAnimation("마리오하");
-        ANIMATION->resume("마리오하");
+        strcpy(str, "마리오하");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::LEFTUP:
-        setX(getX() - getSpeed() * 0.75);
-        setY(getY() - getSpeed() * 0.75);
-        m_ani = ANIMATION->findAnimation("마리오좌상");
-        ANIMATION->resume("마리오좌상");
+        strcpy(str, "마리오좌상");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::LEFTDOWN:
-        setX(getX() - getSpeed() * 0.75);
-        setY(getY() + getSpeed() * 0.75);
-        m_ani = ANIMATION->findAnimation("마리오좌하");
-        ANIMATION->resume("마리오좌하");
+        strcpy(str, "마리오좌하");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::RIGHTUP:
-        setX(getX() + getSpeed() * 0.75);
-        setY(getY() - getSpeed() * 0.75);
-        m_ani = ANIMATION->findAnimation("마리오우상");
-        ANIMATION->resume("마리오우상");
+        strcpy(str, "마리오우상");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
         break;
     case MOVE_TYPE::RIGHTDOWN:
-        setX(getX() + getSpeed() * 0.75);
-        setY(getY() + getSpeed() * 0.75);
-        m_ani = ANIMATION->findAnimation("마리오우하");
-        ANIMATION->resume("마리오우하");
+        strcpy(str, "마리오우하");
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->resume(str);
+        break;
+    case MOVE_TYPE::IDEL:
+        //idleAni(); //이거로 쓰거나 str로 하거나
+        m_ani = ANIMATION->findAnimation(str);
+        ANIMATION->stop(str);
         break;
     default:
         break;
+    }
+}
+
+void Cmario::pixel()
+{
+
+    for (int i = getY() - 1; i > getY() - 5; i--)
+    {
+        COLORREF  color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), getX(), i);
+
+        int r = GetRValue(color);
+        int g = GetGValue(color);
+        int b = GetBValue(color);
+
+        if (!(r == 255 && g == 0 && b == 255))
+        {
+            setY(getY() + getSpeed());
+        }
+    }
+
+    for (int i = getY() + 5; i < getY() + 50; i++)
+    {
+        COLORREF  color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), getX(), i);
+
+        int r = GetRValue(color);
+        int g = GetGValue(color);
+        int b = GetBValue(color);
+
+        if (!(r == 255 && g == 0 && b == 255))
+        {
+            setY(getY() - getSpeed());
+        }
+    }
+
+    for (int i = getX() - 1; i > getX() - 10; i--)
+    {
+        COLORREF  color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), i, getY());
+
+        int r = GetRValue(color);
+        int g = GetGValue(color);
+        int b = GetBValue(color);
+
+        if (!(r == 255 && g == 0 && b == 255))
+        {
+            setX(getX() + getSpeed());
+        }
+    }
+
+    for (int i = getX() + 1; i < getX() + 10; i++)
+    {
+        COLORREF  color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), i, getY());
+
+        int r = GetRValue(color);
+        int g = GetGValue(color);
+        int b = GetBValue(color);
+
+        if (!(r == 255 && g == 0 && b == 255))
+        {
+            setX(getX() - getSpeed());
+        }
     }
 }

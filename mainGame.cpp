@@ -13,11 +13,8 @@ HRESULT mainGame::init()
 	m_facade = new Cfacade;
 	m_facade->init();
 
-	m_player = new Cmario;
-	m_player->init();
-
-	//SCENE->addScene("던전", new CsceneDungeon);
-	//SCENE->changeScene("시작화면");
+	SCENE->addScene("마을", new CsceneTown);
+	SCENE->changeScene("마을");
 	return S_OK;
 }
 
@@ -28,14 +25,12 @@ void mainGame::release()
 	SCENE->release();
 	ANIMATION->release();
 	SAFE_DELETE(m_facade);
-	SAFE_DELETE(m_player);
 }
 
 void mainGame::update()
 {
 	gameNode::update();
 	SCENE->update();
-	m_player->update();
 	EFFECT->update();
 	ANIMATION->update();
 }
@@ -49,7 +44,7 @@ void mainGame::render()
 	// 카메라의 시작 x,y 좌표부터 가로 세로 길이만큼 크기의 이미지를 잘라서 (sour 인수가 그런기능)
 	// 우리가 볼 화면인 backBuffer쪽 getMemDC에다가 그려준다
 
-	m_player->render();
+	//IMAGE->findImage("마을맵")->render(getMemDC());
 	SCENE->render();
 	TIME->render(getMemDC());
 

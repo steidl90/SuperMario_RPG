@@ -11,9 +11,6 @@ Cobject::~Cobject()
 
 HRESULT Cobject::init()
 {
-
-
-
     return S_OK;
 }
 

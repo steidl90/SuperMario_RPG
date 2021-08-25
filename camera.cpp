@@ -1,5 +1,13 @@
-#include"framework.h"
+#include "framework.h"
 #include "camera.h"
+
+camera::camera():camera_width(WINSIZEX), camera_height(WINSIZEY)
+{
+}
+
+camera::~camera()
+{
+}
 
 HRESULT camera::init()
 {
@@ -29,15 +37,15 @@ void camera::update()
 		camera_y1 = 0;
 		camera_y2 = camera_height;
 	}
-	if (camera_x2 > MAPSIZE)
+	if (camera_x2 > MAPSIZEX)
 	{
-		camera_x2 = MAPSIZE;
+		camera_x2 = MAPSIZEX;
 		camera_x1 = camera_x2 - camera_width;
 
 	}
-	if (camera_y2 > MAPSIZE)
+	if (camera_y2 > MAPSIZEY)
 	{
-		camera_y2 = MAPSIZE;
+		camera_y2 = MAPSIZEY;
 		camera_y1 = camera_y2 - camera_height;
 	}
 }

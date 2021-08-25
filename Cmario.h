@@ -5,6 +5,9 @@ class Cmario :public Ccharacter
 private:
 	MOVE_TYPE direction;
 	animation* m_ani;
+
+	char str[20];
+
 public:
 	Cmario();
 	Cmario(float x, float y, RECT rc, stats stats);
@@ -17,4 +20,9 @@ public:
 
 	void move();
 	void animation();
+
+	void pixel();
+
+	RECT* getRect() { return &m_rc; }
+
 };

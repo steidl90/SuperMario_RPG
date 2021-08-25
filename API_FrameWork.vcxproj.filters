@@ -88,6 +88,12 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cpeach">
       <UniqueIdentifier>{e4fff51b-fb32-4265-947b-080e0e805d8a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cobject">
+      <UniqueIdentifier>{6d858a02-f04d-4655-9017-681968048cbf}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cobject\Ctown">
+      <UniqueIdentifier>{fe419b84-d112-4e60-a184-6a63df59d912}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -210,6 +216,15 @@
     <ClInclude Include="CmarioState.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
     </ClInclude>
+    <ClInclude Include="CsceneTown.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
+    </ClInclude>
+    <ClInclude Include="Cobject.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject</Filter>
+    </ClInclude>
+    <ClInclude Include="Ctown.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject\Ctown</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -310,6 +325,15 @@
     </ClCompile>
     <ClCompile Include="CmarioState.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmario</Filter>
+    </ClCompile>
+    <ClCompile Include="CsceneTown.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
+    </ClCompile>
+    <ClCompile Include="Cobject.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject</Filter>
+    </ClCompile>
+    <ClCompile Include="Ctown.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cobject\Ctown</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

@@ -2,11 +2,11 @@
 #include "gameNode.h"
 #include "Cfacade.h"
 #include "Cmario.h"
+#include "CsceneTown.h"
 class mainGame : public gameNode
 {
 private:
 	Cfacade* m_facade;
-	Cmario* m_player;
 
 public:
 	mainGame();

@@ -18,4 +18,6 @@ public:
 	void release();
 	void update();
 	void render();
+
+	RECT* getMarioRect() { return m_mario->getRect(); }
 };

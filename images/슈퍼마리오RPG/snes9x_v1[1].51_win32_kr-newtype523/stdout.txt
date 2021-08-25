@@ -3,5 +3,3 @@ Saving	config file	C:\Users\Administrator\source\repos\b)개인프로젝트(3주)\Super
 No ROM file header found.
 Map_SA1LoROMMap
 "SUPER MARIO RPG (K)" [checksum ok] LoROM, 32Mbits, Type: ROM+RAM+BAT+SA-1, Mode: 23, TV: NTSC, S-RAM: 32KB, ROMId: ARWJ Company: 01 CRC32: F4305A06
-Saving	config file	C:\Users\Administrator\source\repos\b)개인프로젝트(3주)\SuperMario_RPG\images\슈퍼마리오RPG\snes9x_v1[1].51_win32_kr-newtype523/snes9x.cfg
-Saving	config file	C:\Users\Administrator\source\repos\b)개인프로젝트(3주)\SuperMario_RPG\images\슈퍼마리오RPG\snes9x_v1[1].51_win32_kr-newtype523/snes9x.cfg

@@ -1,5 +1,12 @@
 #pragma once
-#define MAPSIZE WINSIZEX
+#define MAPSIZEX 1618
+#define MAPSIZEY 1434
+
+// 플레이어 속도를 위한 전역상수
+const float runSpeed = 6.0f;
+const float speed = 3.0f;
+const int runAniFrame = 14;
+const int aniFrame = 8;
 
 enum class IMAGE_TYPE
 {
@@ -16,7 +23,8 @@ enum class MOVE_TYPE
 	LEFTUP,
 	LEFTDOWN,
 	RIGHTUP,
-	RIGHTDOWN
+	RIGHTDOWN,
+	IDEL
 };
 
 enum class STATE_TYPE
@@ -34,3 +42,4 @@ enum class CHARACTER_TYPE
 	SKYTROOPA,
 	SPIKEY
 };
+
