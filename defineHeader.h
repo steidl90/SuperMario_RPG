@@ -10,8 +10,8 @@ const int aniFrame = 8;
 
 enum class IMAGE_TYPE
 {
-	IMAGE_TYPE_IMG,
-	IMAGE_TYPE_FRAMEIMG
+	IMG,
+	FRAMEIMG
 };
 
 enum class MOVE_TYPE
@@ -29,10 +29,10 @@ enum class MOVE_TYPE
 
 enum class STATE_TYPE
 {
-	STATE_TYPE_IDLE,
-	STATE_TYPE_TRACE,
-	STATE_TYPE_ATTACK,
-	STATE_TYPE_DEAD
+	IDLE,
+	MOVE,
+	ATTACK,
+	DEAD
 };
 
 enum class CHARACTER_TYPE

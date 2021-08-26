@@ -28,10 +28,8 @@ void Ccharacter::initAI(Ccharacter* character, CHARACTER_TYPE type)
 	{
 	case CHARACTER_TYPE::PLAYER:
 		m_AI->addState(new player_Idle);
-		m_AI->addState(new player_Trace);
-		m_AI->addState(new player_Atk);
-		m_AI->addState(new player_Die);
-		m_AI->setState(STATE_TYPE::STATE_TYPE_IDLE);
+		m_AI->addState(new player_Move);
+		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	case CHARACTER_TYPE::GOOMBA:
 		break;

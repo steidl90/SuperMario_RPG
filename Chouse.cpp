@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "Chouse.h"
-#include "camera.h"
+#include "Ccamera.h"
 Chouse::Chouse()
 {
 }

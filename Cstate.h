@@ -1,4 +1,6 @@
 #pragma once
+#include "CFSM.h"
+//#include "Ccharacter.h"
 
 class CFSM;
 class Cstate

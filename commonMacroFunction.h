@@ -30,6 +30,26 @@ inline RECT RectMakeCenter(int x, int y, int width, int height)
 	return rc;
 }
 
+//RECT 중점
+inline int RectCenterX(RECT& rc)
+{
+	return (rc.left + rc.right) / 2;
+}
+inline int RectCenterY(RECT& rc)
+{
+	return (rc.top + rc.bottom) / 2;
+}
+
+//RECT 높이/너비
+inline int RectWidth(RECT& rc)
+{
+	return rc.right - rc.left;
+}
+inline int RectHeight(RECT& rc)
+{
+	return rc.bottom - rc.top;
+}
+
 //사각형 그리기
 inline void RectangleMake(HDC hdc, int x, int y, int width, int height)
 {
@@ -45,6 +65,8 @@ inline void RectangleMakeCenter(HDC hdc, int x, int y, int width, int height)
 {
 	Rectangle(hdc, x - (width / 2), y - (height / 2), x + (width / 2), y + (height / 2));
 }
+
+
 
 //원 그리기
 inline void EllipseMake(HDC hdc, int x, int y, int width, int height)

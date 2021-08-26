@@ -1,78 +1,95 @@
 #include "framework.h"
 #include "CmarioState.h"
 
-player_Idle::player_Idle()
+player_Idle::player_Idle() //처음 상태
 {
-	m_eState = STATE_TYPE::STATE_TYPE_IDLE;
+	m_eState = STATE_TYPE::IDLE;
 }
 
 player_Idle::~player_Idle(){}
 
-void player_Idle::update(){}
-
-void player_Idle::Enter(){}
-
-void player_Idle::Exit(){}
-
-player_Trace::player_Trace()
+void player_Idle::update()
 {
-	m_eState = STATE_TYPE::STATE_TYPE_TRACE;
+	if (InputManager->isStayKeyDown(VK_LEFT) ||
+		InputManager->isStayKeyDown(VK_RIGHT) ||
+		InputManager->isStayKeyDown(VK_UP) ||
+		InputManager->isStayKeyDown(VK_DOWN))
+	{
+		m_FSM->changeState(STATE_TYPE::MOVE);
+	}
 }
 
-player_Trace::~player_Trace()
+void player_Idle::Enter() //초기화
+{}
+void player_Idle::Exit() //릴리즈
+{}
+
+player_Move::player_Move()
 {
+	m_eState = STATE_TYPE::MOVE;
 }
 
-void player_Trace::update()
-{
-}
-
-void player_Trace::Enter()
-{
-}
-
-void player_Trace::Exit()
+player_Move::~player_Move()
 {
 }
 
-player_Atk::player_Atk()
+void player_Move::update()
 {
-	m_eState = STATE_TYPE::STATE_TYPE_ATTACK;
+	if ((InputManager->isStayKeyDown(VK_LEFT) ||
+		InputManager->isStayKeyDown(VK_RIGHT) ||
+		InputManager->isStayKeyDown(VK_UP) ||
+		InputManager->isStayKeyDown(VK_DOWN)))
+	{
+		m_FSM->changeState(STATE_TYPE::IDLE);
+	}
 }
 
-player_Atk::~player_Atk()
-{
-}
-
-void player_Atk::update()
-{
-}
-
-void player_Atk::Enter()
+void player_Move::Enter()
 {
 }
 
-void player_Atk::Exit()
+void player_Move::Exit()
 {
 }
-
-player_Die::player_Die()
-{
-	m_eState = STATE_TYPE::STATE_TYPE_DEAD;
-}
-
-player_Die::~player_Die()
-{
-}
-
-void player_Die::update()
-{
-}
-
-void player_Die::Enter()
-{
-}
-
-void player_Die::Exit()
-{
-}
+//
+//player_Atk::player_Atk()
+//{
+//	m_eState = STATE_TYPE::ATTACK;
+//}
+//
+//player_Atk::~player_Atk()
+//{
+//}
+//
+//void player_Atk::update()
+//{
+//}
+//
+//void player_Atk::Enter()
+//{
+//}
+//
+//void player_Atk::Exit()
+//{
+//}
+//
+//player_Die::player_Die()
+//{
+//	m_eState = STATE_TYPE::DEAD;
+//}
+//
+//player_Die::~player_Die()
+//{
+//}
+//
+//void player_Die::update()
+//{
+//}
+//
+//void player_Die::Enter()
+//{
+//}
+//
+//void player_Die::Exit()
+//{
+//}

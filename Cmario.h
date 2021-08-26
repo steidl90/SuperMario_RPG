@@ -5,8 +5,12 @@ class Cmario :public Ccharacter
 private:
 	MOVE_TYPE direction;
 	animation* m_ani;
-
 	char str[20];
+
+	int sceneNum;
+
+	float prevX;
+	float prevY;
 
 public:
 	Cmario();
@@ -20,7 +24,10 @@ public:
 
 	void move();
 	void animation();
+	void pixelCollision();
 
 	RECT* getRect() { return &m_rc; }
 
+	int getSceneNum() { return sceneNum; }
+	void setSceneNum(int num) { sceneNum = num; }
 };

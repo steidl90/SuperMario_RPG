@@ -310,6 +310,22 @@ HRESULT image::initForRotate()
 	return S_OK;
 }
 
+HRESULT image::initForStretch()
+{
+	HDC hdc = GetDC(m_hWnd);
+
+	_stretchImage = new IMAGE_INFO;
+	_stretchImage->loadType = static_cast<BYTE>(IMAGE_LOAD_KIND::LOAD_EMPTY);
+	_stretchImage->hMemDC = CreateCompatibleDC(hdc);
+	_stretchImage->hBit = (HBITMAP)CreateCompatibleBitmap(hdc, WINSIZEX * 5, WINSIZEY * 5);
+	_stretchImage->hOBit = (HBITMAP)SelectObject(_stretchImage->hMemDC, _stretchImage->hBit);
+
+	ReleaseDC(m_hWnd, hdc);
+
+	return S_OK;
+}
+
+
 void image::setTransColor(bool isTrans, COLORREF transColor)
 {
 	_isTrans = isTrans;
@@ -905,5 +921,37 @@ void image::alphaFrameRender(HDC hdc, int destX, int destY, int currentFrameX, i
 			_imageInfo->frameHeight,
 			_blendImage->hMemDC, 0, 0, _imageInfo->frameWidth,
 			_imageInfo->frameHeight, _blendFunc);
+	}
+}
+
+void image::stretchRender(HDC hdc, int centerX, int centerY, int newWidth, int newHeight)
+{
+	if (!_stretchImage) this->initForStretch();
+	_stretchImage->width = newWidth;
+	_stretchImage->height = newHeight;
+
+	if (_isTrans)
+	{
+		//원본이미지를 Scale값 만큼 확대/축소시켜서 그려준다
+		SetStretchBltMode(_stretchImage->hMemDC, COLORONCOLOR);
+		StretchBlt(_stretchImage->hMemDC, 0, 0, _stretchImage->width, _stretchImage->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, SRCCOPY);
+		GdiTransparentBlt(
+			hdc,					//복사할 장소의 DC
+			centerX - _stretchImage->width / 2,					//복사될 좌표 시작점 X
+			centerY - _stretchImage->height / 2,					//복사될 좌표 시작점 Y
+			_stretchImage->width,	//복사될 이미지 가로크기
+			_stretchImage->height,	//복사될 이미지 세로크기
+			_stretchImage->hMemDC,	//복사될 대상 DC
+			0, 0,					//복사 시작지점
+			_stretchImage->width,	//복사 영역 가로크기
+			_stretchImage->height,	//복사 영역 세로크기
+			_transColor);			//복사할때 제외할 색상 (마젠타)
+	}
+	else {
+		//원본 이미지의 크기를 확대/축소 해서 렌더 시킨다
+		SetStretchBltMode(hdc, COLORONCOLOR);
+		StretchBlt(hdc, centerX - _stretchImage->width / 2, centerY - _stretchImage->height / 2, _stretchImage->width, _stretchImage->height,
+			_imageInfo->hMemDC, 0, 0, _imageInfo->width, _imageInfo->height, SRCCOPY);
 	}
 }

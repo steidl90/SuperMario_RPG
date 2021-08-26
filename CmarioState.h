@@ -11,36 +11,37 @@ public:
 	virtual void Exit();
 };
 
-class player_Trace : public Cstate
+class player_Move : public Cstate
 {
 private:
 public:
-	player_Trace();
-	~player_Trace();
+	player_Move();
+	~player_Move();
 	virtual void update();
 	virtual void Enter();
 	virtual void Exit();
 };
 
-class player_Atk : public Cstate
-{
-private:
-public:
-	player_Atk();
-	~player_Atk();
-	virtual void update();
-	virtual void Enter();
-	virtual void Exit();
-};
-
-class player_Die : public Cstate
-{
-private:
-public:
-	player_Die();
-	~player_Die();
-	virtual void update();
-	virtual void Enter();
-	virtual void Exit();
-};
+//
+//class player_Atk : public Cstate
+//{
+//private:
+//public:
+//	player_Atk();
+//	~player_Atk();
+//	virtual void update();
+//	virtual void Enter();
+//	virtual void Exit();
+//};
+//
+//class player_Die : public Cstate
+//{
+//private:
+//public:
+//	player_Die();
+//	~player_Die();
+//	virtual void update();
+//	virtual void Enter();
+//	virtual void Exit();
+//};
 

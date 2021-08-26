@@ -62,7 +62,12 @@ private:
 	//알파용
 	BLENDFUNCTION	_blendFunc;			//알파블렌드를 위한 정보
 	LPIMAGE_INFO	_blendImage;		//알파블렌드를 사용하기 위한 이미지 정보
+
+	//회전용
 	LPIMAGE_INFO	_rotateImage;		//회전이미지
+
+	//스트레치용
+	LPIMAGE_INFO	_stretchImage;		//스트레치 이미지
 
 public:
 
@@ -79,6 +84,8 @@ public:
 	//로테이트 이미지 초기화
 	HRESULT initForRotate();
 
+	//스트레치 초기화
+	HRESULT initForStretch();
 
 	//투명값 셋팅
 	void setTransColor(bool isTrans, COLORREF transColor);
@@ -114,6 +121,10 @@ public:
 	void alphaFrameRender(HDC hdc, const int destX, const int destY, int currentFrameX, int currentFrameY, BYTE alpha);
 
 	void aniRender(HDC hdc, const int destX, const int destY, animation* ani);
+
+	//스트레치 렌더
+	void stretchRender(HDC hdc, int centerX, int centerY, int newWidth, int newHeight);
+
 
 	//DC를 가져와라
 	inline HDC getMemDC()const { return _imageInfo->hMemDC; }

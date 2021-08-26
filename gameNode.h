@@ -5,9 +5,9 @@ static image* mapBuffer = IMAGE->addImage("mapBuffer", MAPSIZEX, MAPSIZEY);
 
 class gameNode
 {
-
 	HDC _hdc;
 	bool  _managerInit;
+	RECT _rect;
 
 public:
 	gameNode();
@@ -27,4 +27,6 @@ public:
 	HDC getMapDC()const { return mapBuffer->getMemDC(); }
 
 	LRESULT MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lParam);
+
+	RECT getClientRect() { return _rect; }
 };

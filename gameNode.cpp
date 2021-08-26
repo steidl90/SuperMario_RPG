@@ -136,6 +136,10 @@ LRESULT gameNode::MainProc(HWND hWnd, UINT iMessage, WPARAM wParam, LPARAM lPara
 			break;
 		}
 		break;
+	case WM_SIZE:
+		GetClientRect(hWnd, &_rect);		//20210816추가 - 윈도우창 사이즈 담기
+		break;
+
 	case WM_DESTROY:
 		KillTimer(hWnd, 1);
 		PostQuitMessage(0);

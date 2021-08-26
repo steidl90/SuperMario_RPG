@@ -79,11 +79,11 @@ void Cimage::addImage()
 {
 	for (int i = 0; i < m_vTotalImg.size(); ++i)
 	{
-		if (m_vTotalImg[i]->getType() == IMAGE_TYPE::IMAGE_TYPE_IMG)
+		if (m_vTotalImg[i]->getType() == IMAGE_TYPE::IMG)
 		{
 			IMAGE->addImage(m_vTotalImg[i]->getName(), m_vTotalImg[i]->getUrl().c_str(), m_vTotalImg[i]->getWidth(), m_vTotalImg[i]->getHeight(), m_vTotalImg[i]->getTrans(), m_vTotalImg[i]->getColor());
 		}
-		else if(m_vTotalImg[i]->getType() == IMAGE_TYPE::IMAGE_TYPE_FRAMEIMG)
+		else if(m_vTotalImg[i]->getType() == IMAGE_TYPE::FRAMEIMG)
 		{
 			IMAGE->addFrameImage(m_vTotalImg[i]->getName(), m_vTotalImg[i]->getUrl().c_str(), m_vTotalImg[i]->getWidth(), m_vTotalImg[i]->getHeight(), m_vTotalImg[i]->getFrameX(), m_vTotalImg[i]->getFrameY(), m_vTotalImg[i]->getTrans(), m_vTotalImg[i]->getColor());
 		}
@@ -94,8 +94,8 @@ void Cimage::initImg()
 {
 	for (int i = 0; i < m_vImageList.size(); i += 11)
 	{
-		if (stoi(m_vImageList[i]) == 0) m_Type = IMAGE_TYPE::IMAGE_TYPE_IMG;
-		else if (stoi(m_vImageList[i]) == 1) m_Type = IMAGE_TYPE::IMAGE_TYPE_FRAMEIMG;
+		if (stoi(m_vImageList[i]) == 0) m_Type = IMAGE_TYPE::IMG;
+		else if (stoi(m_vImageList[i]) == 1) m_Type = IMAGE_TYPE::FRAMEIMG;
 
 		m_imageUrl = m_vImageList[i + 1];
 		m_name = m_vImageList[i + 2];

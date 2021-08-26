@@ -32,7 +32,6 @@ void CsceneTown::update()
 	m_town->update();
 	m_playerM->update();
 
-    pixelCollision();
 	scenechange();
 }
 
@@ -42,10 +41,17 @@ void CsceneTown::render()
 
 	m_camera->render();
 	m_town->render();
+
 	m_playerM->render();
 
 	Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
 	if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->render(getMapDC());
+
+    TCHAR str[10000];
+    sprintf_s(str, "%.1f /////// %.1f", m_playerM->getMario()->getX(), m_playerM->getMario()->getY());
+    TextOut(getMemDC(), 100, 100, str, strlen(str));
+
+
 }
 
 void CsceneTown::scenechange()
@@ -53,65 +59,8 @@ void CsceneTown::scenechange()
 	RECT temp;
 	if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_door))
 	{
+		m_playerM->getMario()->setSceneNum(0b0001);
 		SCENE->changeScene("¸¶¸®¿ÀÀÇÁý");
 	}
 }
 
-void CsceneTown::pixelCollision()
-{
-    for (int i = m_playerM->getMario()->getY() - 1; i > m_playerM->getMario()->getY() - 5; i--)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), m_playerM->getMario()->getX(), i);
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            m_playerM->getMario()->setY(m_playerM->getMario()->getY() + m_playerM->getMario()->getSpeed());
-        }
-    }
-
-    for (int i = m_playerM->getMario()->getY() + 5; i < m_playerM->getMario()->getY() + 50; i++)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), m_playerM->getMario()->getX(), i);
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            m_playerM->getMario()->setY(m_playerM->getMario()->getY() - m_playerM->getMario()->getSpeed());
-        }
-    }
-
-    for (int i = m_playerM->getMario()->getX() - 1; i > m_playerM->getMario()->getX() - 10; i--)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), i, m_playerM->getMario()->getY());
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            m_playerM->getMario()->setX(m_playerM->getMario()->getX() + m_playerM->getMario()->getSpeed());
-        }
-    }
-
-    for (int i = m_playerM->getMario()->getX() + 1; i < m_playerM->getMario()->getX() + 10; i++)
-    {
-        COLORREF  color = GetPixel(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->getMemDC(), i, m_playerM->getMario()->getY());
-
-        int r = GetRValue(color);
-        int g = GetGValue(color);
-        int b = GetBValue(color);
-
-        if (!(r == 255 && g == 0 && b == 255))
-        {
-            m_playerM->getMario()->setX(m_playerM->getMario()->getX() - m_playerM->getMario()->getSpeed());
-        }
-    }
-}
