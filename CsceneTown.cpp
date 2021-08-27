@@ -41,16 +41,17 @@ void CsceneTown::render()
 
 	m_camera->render();
 	m_town->render();
-
 	m_playerM->render();
 
-	Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
-	if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->render(getMapDC());
+	if (InputManager->isToggleKey(VK_TAB))
+	{
+		IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->render(getMapDC());
+		Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
+	}
 
-    TCHAR str[10000];
+    /*TCHAR str[10000];
     sprintf_s(str, "%.1f /////// %.1f", m_playerM->getMario()->getX(), m_playerM->getMario()->getY());
-    TextOut(getMemDC(), 100, 100, str, strlen(str));
-
+    TextOut(getMemDC(), 100, 100, str, strlen(str));*/
 
 }
 

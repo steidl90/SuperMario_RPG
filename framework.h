@@ -37,6 +37,7 @@
 #include"effectManager.h"
 //새로등록
 #include"defineHeader.h"
+#include"CplayerData.h"
 
 //======================================
 //##			매니저들			  ##
@@ -51,6 +52,7 @@
 #define ANIMATION		animationManager::getSingleton()
 #define EFFECT			effectManager::getSingleton()
 // 새로등록
+#define PLAYERDATA		CplayerData::getSingleton()
 
 //==========================================
 //				 매크로 설정

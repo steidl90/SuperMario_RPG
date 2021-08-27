@@ -45,6 +45,7 @@ void CsceneMarioHouse::render()
 
     Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
     if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("마리오집픽셀")->render(getMapDC());
+
 }
 
 void CsceneMarioHouse::scenechange()

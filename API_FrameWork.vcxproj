@@ -163,6 +163,7 @@
     <ClInclude Include="Cobject.h" />
     <ClInclude Include="commonMacroFunction.h" />
     <ClInclude Include="Cpeach.h" />
+    <ClInclude Include="CplayerData.h" />
     <ClInclude Include="CplayerManager.h" />
     <ClInclude Include="CsceneMarioHouse.h" />
     <ClInclude Include="CsceneTown.h" />
@@ -208,6 +209,7 @@
     <ClCompile Include="CmarioState.cpp" />
     <ClCompile Include="Cobject.cpp" />
     <ClCompile Include="Cpeach.cpp" />
+    <ClCompile Include="CplayerData.cpp" />
     <ClCompile Include="CplayerManager.cpp" />
     <ClCompile Include="CsceneMarioHouse.cpp" />
     <ClCompile Include="CsceneTown.cpp" />

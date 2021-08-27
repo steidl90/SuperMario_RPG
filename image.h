@@ -30,6 +30,9 @@ public:
 		int frameWidth;			//1프레임  가로길이
 		int frameHeight;		//1프레임  세로길이
 
+		float z;				//z-order용
+
+
 		tagImage()
 		{
 			resID = 0;
@@ -92,6 +95,8 @@ public:
 
 	void release();
 
+	void zorderRender(HDC hdc, const float z);
+
 	//렌더
 	void render(HDC hdc);
 	void render(HDC hdc, const int  destX, const int destY);
@@ -124,7 +129,6 @@ public:
 
 	//스트레치 렌더
 	void stretchRender(HDC hdc, int centerX, int centerY, int newWidth, int newHeight);
-
 
 	//DC를 가져와라
 	inline HDC getMemDC()const { return _imageInfo->hMemDC; }

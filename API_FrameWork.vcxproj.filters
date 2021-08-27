@@ -97,6 +97,9 @@
     <Filter Include="mainGame\Ccamera">
       <UniqueIdentifier>{a073fbc0-fcd1-4831-88ff-a22b5fb1361a}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData">
+      <UniqueIdentifier>{9005265e-3640-4188-bfa1-dd4830dedbad}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -231,6 +234,9 @@
     <ClInclude Include="Chouse.h">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\Chouse</Filter>
     </ClInclude>
+    <ClInclude Include="CplayerData.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -343,6 +349,9 @@
     </ClCompile>
     <ClCompile Include="Chouse.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\Chouse</Filter>
+    </ClCompile>
+    <ClCompile Include="CplayerData.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

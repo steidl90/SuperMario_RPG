@@ -44,7 +44,7 @@ HRESULT gameNode::init(bool managerInit)
 		TIME->init();
 		SOUND->init();
 		// 새로추가
-
+		PLAYERDATA->init();
 	}
 
 
@@ -78,9 +78,9 @@ void gameNode::release()
 		IMAGE->release();
 		TIME->release();
 		SOUND->release();
-
 		// 새로추가
-
+		PLAYERDATA->releaseSingleton();
+		PLAYERDATA->release();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);
