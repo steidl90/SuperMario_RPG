@@ -7,7 +7,7 @@ private:
 	animation* m_ani;
 	char str[20];
 
-	int sceneNum;
+	int m_sceneNum;
 
 	float prevX;
 	float prevY;
@@ -28,6 +28,6 @@ public:
 
 	RECT* getRect() { return &m_rc; }
 
-	int getSceneNum() { return sceneNum; }
-	void setSceneNum(int num) { sceneNum = num; }
+	int getSceneNum() { return m_sceneNum; }
+	void setSceneNum(int num) { m_sceneNum = num; }
 };

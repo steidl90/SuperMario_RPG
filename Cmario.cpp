@@ -4,7 +4,7 @@
 #include "CFSM.h"
 #include "CmarioState.h"
 
-Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하"), prevX(0.0f), prevY(0.0f), sceneNum(0)
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하"), prevX(0.0f), prevY(0.0f), m_sceneNum(0)
 {
 }
 
@@ -19,8 +19,10 @@ Cmario::Cmario(float x, float y, RECT rc, stats stats) :
 	m_stats.exp = stats.exp;
 	m_stats.gold = stats.gold;
 	m_stats.hp = stats.hp;
+	m_stats.maxHp = stats.maxHp;
 	m_stats.lv = stats.lv;
 	m_stats.mp = stats.mp;
+	m_stats.maxMp = stats.maxMp;
 	m_stats.speed = stats.speed;
 }
 
@@ -35,8 +37,8 @@ HRESULT Cmario::init()
 	m_stats.lv = 1;
 	m_stats.atk = 10;
 	m_stats.def = 10;
-	m_stats.hp = 30;
-	m_stats.mp = 10;
+	m_stats.maxHp = m_stats.hp = 30;
+	m_stats.maxMp = m_stats.mp = 10;
 	m_stats.exp = 10;
 	m_stats.gold = 0;
 	m_stats.speed = 3.0f;
@@ -44,13 +46,15 @@ HRESULT Cmario::init()
 	prevX = m_x;
 	prevY = m_y;
 
-	sceneNum = 0b0000;
+	m_sceneNum = 0b0000;
 
 	setLv(m_stats.lv);
 	setAtk(m_stats.atk);
 	setDef(m_stats.def);
 	setHp(m_stats.hp);
+	setMaxHp(m_stats.maxHp);
 	setMp(m_stats.mp);
+	setMaxMp(m_stats.maxMp);
 	setExp(m_stats.exp);
 	setGold(m_stats.gold);
 	setSpeed(m_stats.speed);
@@ -203,7 +207,7 @@ void Cmario::pixelCollision()
 {
 	if (prevX != getX() || prevY != getY() + 20.0f)
 	{
-		if (sceneNum == 0b0000) 
+		if (m_sceneNum == 0b0000) 
 		{
 			COLORREF color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), getX(), getY() + 20.0f);
 			int r = GetRValue(color);
@@ -216,7 +220,7 @@ void Cmario::pixelCollision()
 				setY(prevY);
 			}
 		}
-		/*else if (sceneNum == 0b0001)
+		else if (m_sceneNum == 0b0001)
 		{
 			COLORREF color = GetPixel(IMAGE->findImage("마리오집픽셀")->getMemDC(), getX(), getY());
 			int r = GetRValue(color);
@@ -228,7 +232,7 @@ void Cmario::pixelCollision()
 				setX(prevX);
 				setY(prevY);
 			}
-		}*/
+		}
 	}
 
 	prevX = getX();

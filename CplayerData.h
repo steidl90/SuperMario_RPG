@@ -1,6 +1,5 @@
 #pragma once
 #include"singleton.h"
-
 class Citem;
 class CplayerData : public Singleton<CplayerData>
 {
@@ -11,15 +10,13 @@ private:
 	int m_maxHp;
 	int m_mp;
 	int m_maxMp;
-	int m_critical;
 	int m_lv;
 	int m_exp;
 	int m_gold;
-	float m_criticalAtk;
+	int m_sceneNum;
 	float m_speed;
 	float m_x;
 	float m_y;
-
 
 
 public:
@@ -31,7 +28,7 @@ public:
 	void update();
 	void render();
 
-	void setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int cri, int lv, int exp, int gold, float criatk, float speed, float x, float y);
+	void setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int lv, int exp, int gold, float speed, float x, float y, int num);
 
 	int getAtk() { return m_atk; }
 	int getDef() { return m_def; }
@@ -39,11 +36,10 @@ public:
 	int getMaxHp() { return m_maxHp; }
 	int getMp() { return m_mp; }
 	int getMaxMp() { return m_maxMp; }
-	int getCritical() { return m_critical; }
 	int getLv() { return m_lv; }
 	int getExp() { return m_exp; }
 	int getGold() { return m_gold; }
-	float getCriticalAtk() { return m_criticalAtk; }
+	int getSceneNum() { return m_sceneNum; }
 	float getSpeed() { return m_speed; }
 	float getX() { return m_x; }
 	float getY() { return m_y; }

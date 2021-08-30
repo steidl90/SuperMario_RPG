@@ -26,7 +26,7 @@ void CplayerData::render()
 {
 }
 
-void CplayerData::setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int cri, int lv, int exp, int gold, float criatk, float speed, float x, float y)
+void CplayerData::setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int lv, int exp, int gold, float speed, float x, float y, int num)
 {
 	m_atk = atk;
 	m_def = def;
@@ -34,11 +34,10 @@ void CplayerData::setData(int atk, int def, int hp, int maxhp, int mp, int maxmp
 	m_maxHp = maxhp;
 	m_mp = mp;
 	m_maxMp = maxmp;
-	m_critical = cri;
+	m_sceneNum = num;
 	m_lv = lv;
 	m_exp = exp;
 	m_gold = gold;
-	m_criticalAtk = criatk;
 	m_speed = speed;
 	m_x = x;
 	m_y = y;

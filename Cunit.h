@@ -6,7 +6,9 @@ struct stats
 	int atk;
 	int def;
 	int hp;
+	int maxHp;
 	int mp;
+	int maxMp;
 	int lv;
 	int exp;
 	int gold;
@@ -34,7 +36,9 @@ public:
 	int getAtk() { return m_stats.atk; }
 	int getDef() { return m_stats.def; }
 	int getHp() { return m_stats.hp; }
+	int getMaxHp() { return m_stats.maxHp; }
 	int getMp() { return m_stats.mp; }
+	int getMaxMp() { return m_stats.maxMp; }
 	int getLv() { return m_stats.lv; }
 	int getExp() { return m_stats.exp; }
 	int getGold() { return m_stats.gold; }
@@ -46,7 +50,9 @@ public:
 	void setAtk(int atk) { m_stats.atk = atk; }
 	void setDef(int def) { m_stats.def = def; }
 	void setHp(int hp) { m_stats.hp = hp; }
+	void setMaxHp(int maxhp) { m_stats.maxHp = maxhp; }
 	void setMp(int mp) { m_stats.mp = mp; }
+	void setMaxMp(int maxmp) { m_stats.maxMp = maxmp; }
 	void setLv(int lv) { m_stats.lv = lv; }
 	void setExp(int exp) { m_stats.exp = exp; }
 	void setGold(int gold) { m_stats.gold = gold; }
