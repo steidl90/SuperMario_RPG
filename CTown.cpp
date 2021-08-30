@@ -1,6 +1,5 @@
 #include "framework.h"
 #include "Ctown.h"
-#include "Ccamera.h"
 
 Ctown::Ctown()
 {
@@ -25,5 +24,6 @@ void Ctown::update()
 
 void Ctown::render()
 {
-    IMAGE->findImage("마을맵")->render(getMapDC());
+    ZORDER->zorderRender(IMAGE->findImage("마을맵"), ZMAP, 0, 0, 0);
+    ZORDER->zorderRender(IMAGE->findImage("마을맵제트오더"), ZABOVEMAP, 0, 0, 0);
 }

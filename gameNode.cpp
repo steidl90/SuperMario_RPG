@@ -81,6 +81,8 @@ void gameNode::release()
 		// 새로추가
 		PLAYERDATA->releaseSingleton();
 		PLAYERDATA->release();
+		ZORDER->releaseSingleton();
+		ZORDER->release();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

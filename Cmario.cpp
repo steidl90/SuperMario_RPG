@@ -80,7 +80,7 @@ void Cmario::update()
 void Cmario::render()
 {
 	if (InputManager->isToggleKey(VK_TAB))Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
-	IMAGE->findImage("마리오이동")->aniRender(getMapDC(), m_rc.left - 10, m_rc.top - 15, m_ani);
+	ZORDER->zorderAniRender(IMAGE->findImage("마리오이동"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15, m_ani);
 }
 
 void Cmario::move()

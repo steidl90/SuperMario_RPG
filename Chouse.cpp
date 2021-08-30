@@ -1,6 +1,5 @@
 #include "framework.h"
 #include "Chouse.h"
-#include "Ccamera.h"
 Chouse::Chouse()
 {
 }
@@ -24,5 +23,6 @@ void Chouse::update()
 
 void Chouse::render()
 {
-    IMAGE->findImage("마리오집")->render(getMapDC());
+    ZORDER->zorderRender(IMAGE->findImage("마리오집"), ZMAP, 0, 0, 0);
+    ZORDER->zorderRender(IMAGE->findImage("마리오집제트오더"), ZABOVEMAP, 0, 0, 0);
 }

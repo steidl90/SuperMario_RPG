@@ -30,9 +30,6 @@ public:
 		int frameWidth;			//1프레임  가로길이
 		int frameHeight;		//1프레임  세로길이
 
-		float z;				//z-order용
-
-
 		tagImage()
 		{
 			resID = 0;
@@ -94,8 +91,6 @@ public:
 	void setTransColor(bool isTrans, COLORREF transColor);
 
 	void release();
-
-	void zorderRender(HDC hdc, const float z);
 
 	//렌더
 	void render(HDC hdc);

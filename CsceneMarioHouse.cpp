@@ -44,7 +44,9 @@ void CsceneMarioHouse::render()
     m_playerM->render();
 
     Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
-    if (InputManager->isToggleKey(VK_TAB)) IMAGE->findImage("마리오집픽셀")->render(getMapDC());
+    if (InputManager->isToggleKey(VK_TAB)) ZORDER->zorderRender(IMAGE->findImage("마리오집픽셀"), ZDEBUG, 0, 0, 0);
+
+    ZORDER->zorderTotalRender(getMapDC());
 
 }
 

@@ -100,6 +100,9 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData">
       <UniqueIdentifier>{9005265e-3640-4188-bfa1-dd4830dedbad}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\Czorder">
+      <UniqueIdentifier>{3fede9af-319e-454a-a1a4-601c931fad79}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -237,6 +240,9 @@
     <ClInclude Include="CplayerData.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
     </ClInclude>
+    <ClInclude Include="Czorder.h">
+      <Filter>mainGame\Czorder</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -352,6 +358,9 @@
     </ClCompile>
     <ClCompile Include="CplayerData.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
+    </ClCompile>
+    <ClCompile Include="Czorder.cpp">
+      <Filter>mainGame\Czorder</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

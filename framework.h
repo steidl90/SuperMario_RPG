@@ -21,6 +21,7 @@
 #include<vector>
 #include<string>
 #include<list>
+#include<algorithm>
 //==========================================
 //				 내가만든 헤더파일
 //==========================================
@@ -38,7 +39,7 @@
 //새로등록
 #include"defineHeader.h"
 #include"CplayerData.h"
-
+#include"Czorder.h"
 //======================================
 //##			매니저들			  ##
 //======================================
@@ -53,7 +54,7 @@
 #define EFFECT			effectManager::getSingleton()
 // 새로등록
 #define PLAYERDATA		CplayerData::getSingleton()
-
+#define ZORDER			Czorder::getSingleton()
 //==========================================
 //				 매크로 설정
 //==========================================

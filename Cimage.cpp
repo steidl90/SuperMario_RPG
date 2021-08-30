@@ -12,7 +12,7 @@ Cimage::~Cimage()
 
 HRESULT Cimage::init()
 {
-	m_vImageList = TXT->txtLoad("이미지리스트.csv");
+	m_vImageList = TXT->txtLoad("images/이미지리스트.csv");
 	initImg();
 	addImage();
 	

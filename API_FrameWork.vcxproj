@@ -170,6 +170,7 @@
     <ClInclude Include="Cstate.h" />
     <ClInclude Include="Ctown.h" />
     <ClInclude Include="Cunit.h" />
+    <ClInclude Include="Czorder.h" />
     <ClInclude Include="defineHeader.h" />
     <ClInclude Include="effect.h" />
     <ClInclude Include="effectManager.h" />
@@ -216,6 +217,7 @@
     <ClCompile Include="Cstate.cpp" />
     <ClCompile Include="Ctown.cpp" />
     <ClCompile Include="Cunit.cpp" />
+    <ClCompile Include="Czorder.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
     <ClCompile Include="gameNode.cpp" />

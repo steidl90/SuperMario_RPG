@@ -14,7 +14,6 @@ CsceneTown::~CsceneTown()
 
 HRESULT CsceneTown::init()
 {
-	m_town->setCameraMemory(m_camera);
 	m_playerM->init();
 	m_door = RectMake(10, WINSIZEY + 230, 50, 50);
 	return S_OK;
@@ -39,20 +38,15 @@ void CsceneTown::render()
 {
 	this->getMapBuffer()->render(getMemDC(), 0, 0, m_camera->getCameraPoint().x, m_camera->getCameraPoint().y, m_camera->getCameraWidth(), m_camera->getCameraHeight());
 
-	m_camera->render();
 	m_town->render();
 	m_playerM->render();
 
 	if (InputManager->isToggleKey(VK_TAB))
 	{
-		IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿")->render(getMapDC());
+		ZORDER->zorderRender(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿"), ZDEBUG, 0, 0, 0);
 		Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
 	}
-
-    /*TCHAR str[10000];
-    sprintf_s(str, "%.1f /////// %.1f", m_playerM->getMario()->getX(), m_playerM->getMario()->getY());
-    TextOut(getMemDC(), 100, 100, str, strlen(str));*/
-
+	ZORDER->zorderTotalRender(getMapDC());
 }
 
 void CsceneTown::scenechange()
