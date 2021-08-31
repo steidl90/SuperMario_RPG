@@ -4,7 +4,7 @@
 #include "CFSM.h"
 #include "CmarioState.h"
 
-Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하"), prevX(0.0f), prevY(0.0f), m_sceneNum(0)
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하"), prevX(0.0f), prevY(0.0f), m_sceneNum(0), isfight(false)
 {
 }
 
@@ -136,8 +136,11 @@ void Cmario::move()
 	else direction = MOVE_TYPE::IDEL;
 
 	pixelCollision();
+	run();
+}
 
-	// 달리기
+void Cmario::run()
+{
 	if (InputManager->isStayKeyDown('A'))
 	{
 		setSpeed(runSpeed);
@@ -237,4 +240,20 @@ void Cmario::pixelCollision()
 
 	prevX = getX();
 	prevY = getY();
+}
+
+void Cmario::attack()
+{
+}
+
+void Cmario::item()
+{
+}
+
+void Cmario::special()
+{
+}
+
+void Cmario::etc()
+{
 }

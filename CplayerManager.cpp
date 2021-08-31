@@ -28,9 +28,19 @@ void CplayerManager::release()
 void CplayerManager::update()
 {
     m_mario->update();
+    isMyTurn();
 }
 
 void CplayerManager::render()
 {
     m_mario->render();
+}
+
+void CplayerManager::isMyTurn()
+{
+    m_command = m_button->buttonInput();
+    if (m_command)
+    {
+        m_command->execute(*m_mario);
+    }
 }

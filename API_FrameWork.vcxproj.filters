@@ -103,6 +103,24 @@
     <Filter Include="mainGame\Czorder">
       <UniqueIdentifier>{3fede9af-319e-454a-a1a4-601c931fad79}</UniqueIdentifier>
     </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand">
+      <UniqueIdentifier>{3067c777-161d-41a4-b9b9-b33a54c1afc5}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\Cinvoker">
+      <UniqueIdentifier>{8c04f84f-bd92-4ba6-ad68-75454c75bdb0}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\CcommandA">
+      <UniqueIdentifier>{5e6cb17a-bcb6-4860-8ad0-c95feb9af697}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\CcommandB">
+      <UniqueIdentifier>{989a0248-cbc9-4769-9899-3a909f0daf82}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\CcommandX">
+      <UniqueIdentifier>{909913ee-15b4-47a9-81a8-ee6402c11156}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\CcommandY">
+      <UniqueIdentifier>{dac5c500-0a5c-4705-91d7-3e50845d391b}</UniqueIdentifier>
+    </Filter>
   </ItemGroup>
   <ItemGroup>
     <ClInclude Include="framework.h">
@@ -243,6 +261,24 @@
     <ClInclude Include="Czorder.h">
       <Filter>mainGame\Czorder</Filter>
     </ClInclude>
+    <ClInclude Include="Ccommand.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand</Filter>
+    </ClInclude>
+    <ClInclude Include="Cinvoker.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\Cinvoker</Filter>
+    </ClInclude>
+    <ClInclude Include="CcommandA.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandA</Filter>
+    </ClInclude>
+    <ClInclude Include="CcommandB.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandB</Filter>
+    </ClInclude>
+    <ClInclude Include="CcommandX.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandX</Filter>
+    </ClInclude>
+    <ClInclude Include="CcommandY.h">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandY</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -362,6 +398,24 @@
     <ClCompile Include="Czorder.cpp">
       <Filter>mainGame\Czorder</Filter>
     </ClCompile>
+    <ClCompile Include="Ccommand.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand</Filter>
+    </ClCompile>
+    <ClCompile Include="Cinvoker.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\Cinvoker</Filter>
+    </ClCompile>
+    <ClCompile Include="CcommandA.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandA</Filter>
+    </ClCompile>
+    <ClCompile Include="CcommandB.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandB</Filter>
+    </ClCompile>
+    <ClCompile Include="CcommandX.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandX</Filter>
+    </ClCompile>
+    <ClCompile Include="CcommandY.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandY</Filter>
+    </ClCompile>
   </ItemGroup>
   <ItemGroup>
     <ResourceCompile Include="API_FrameWork.rc">
@@ -375,5 +429,8 @@
     <Image Include="API_FrameWork.ico">
       <Filter>리소스 파일</Filter>
     </Image>
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
 </Project>

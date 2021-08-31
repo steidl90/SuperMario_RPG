@@ -149,11 +149,15 @@
     <ClInclude Include="animation.h" />
     <ClInclude Include="animationManager.h" />
     <ClInclude Include="API_FrameWork.h" />
+    <ClInclude Include="CcommandA.h" />
     <ClInclude Include="CaddImg.h" />
+    <ClInclude Include="CcommandB.h" />
+    <ClInclude Include="Cinvoker.h" />
     <ClInclude Include="Ccamera.h" />
     <ClInclude Include="Canimation.h" />
     <ClInclude Include="Cbowser.h" />
     <ClInclude Include="Ccharacter.h" />
+    <ClInclude Include="Ccommand.h" />
     <ClInclude Include="Cfacade.h" />
     <ClInclude Include="CFSM.h" />
     <ClInclude Include="Chouse.h" />
@@ -170,6 +174,8 @@
     <ClInclude Include="Cstate.h" />
     <ClInclude Include="Ctown.h" />
     <ClInclude Include="Cunit.h" />
+    <ClInclude Include="CcommandX.h" />
+    <ClInclude Include="CcommandY.h" />
     <ClInclude Include="Czorder.h" />
     <ClInclude Include="defineHeader.h" />
     <ClInclude Include="effect.h" />
@@ -197,11 +203,15 @@
     <ClCompile Include="animation.cpp" />
     <ClCompile Include="animationManager.cpp" />
     <ClCompile Include="API_FrameWork.cpp" />
+    <ClCompile Include="CcommandA.cpp" />
     <ClCompile Include="CaddImg.cpp" />
+    <ClCompile Include="CcommandB.cpp" />
+    <ClCompile Include="Cinvoker.cpp" />
     <ClCompile Include="Ccamera.cpp" />
     <ClCompile Include="Canimation.cpp" />
     <ClCompile Include="Cbowser.cpp" />
     <ClCompile Include="Ccharacter.cpp" />
+    <ClCompile Include="Ccommand.cpp" />
     <ClCompile Include="Cfacade.cpp" />
     <ClCompile Include="CFSM.cpp" />
     <ClCompile Include="Chouse.cpp" />
@@ -217,6 +227,8 @@
     <ClCompile Include="Cstate.cpp" />
     <ClCompile Include="Ctown.cpp" />
     <ClCompile Include="Cunit.cpp" />
+    <ClCompile Include="CcommandX.cpp" />
+    <ClCompile Include="CcommandY.cpp" />
     <ClCompile Include="Czorder.cpp" />
     <ClCompile Include="effect.cpp" />
     <ClCompile Include="effectManager.cpp" />
@@ -240,6 +252,9 @@
   <ItemGroup>
     <Image Include="API_FrameWork.ico" />
     <Image Include="small.ico" />
+  </ItemGroup>
+  <ItemGroup>
+    <None Include="cpp.hint" />
   </ItemGroup>
   <Import Project="$(VCTargetsPath)\Microsoft.Cpp.targets" />
   <ImportGroup Label="ExtensionTargets">

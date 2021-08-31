@@ -1,6 +1,6 @@
 #include"framework.h"
 #include "mainGame.h"
-mainGame::mainGame()
+mainGame::mainGame():m_facade(new Cfacade)
 {
 }
 mainGame::~mainGame()
@@ -10,7 +10,6 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 
-	m_facade = new Cfacade;
 	m_facade->init();
 
 	SCENE->addScene("¸¶À»", new CsceneTown);

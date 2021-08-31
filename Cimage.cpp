@@ -2,7 +2,8 @@
 #include "Cimage.h"
 #include "CaddImg.h"
 
-Cimage::Cimage()
+Cimage::Cimage() :m_vTotalImg(NULL), m_viTotalImg(), m_vImageList(NULL), m_Type(IMAGE_TYPE::IMG), m_name(""), m_imageUrl(""), m_transColor(RGB(0, 0, 0)),
+				  m_width(NULL), m_height(NULL), m_frameX(NULL), m_frameY(NULL), m_trans(NULL)
 {
 }
 
@@ -16,7 +17,6 @@ HRESULT Cimage::init()
 	initImg();
 	addImage();
 	
-
 	return S_OK;
 }
 

@@ -15,7 +15,7 @@ CsceneTown::~CsceneTown()
 HRESULT CsceneTown::init()
 {
 	m_playerM->init();
-	/*m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
+	m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
 	m_playerM->getMario()->setDef(PLAYERDATA->getDef());
 	m_playerM->getMario()->setHp(PLAYERDATA->getHp());
 	m_playerM->getMario()->setMaxHp(PLAYERDATA->getMaxHp());
@@ -27,14 +27,13 @@ HRESULT CsceneTown::init()
 	m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
 	m_playerM->getMario()->setX(PLAYERDATA->getX());
 	m_playerM->getMario()->setY(PLAYERDATA->getY());
-	m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());*/
+	m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
 	m_door = RectMake(10, WINSIZEY + 230, 50, 50);
 	return S_OK;
 }
 
 void CsceneTown::release()
 {
-	
 }
 
 void CsceneTown::update()

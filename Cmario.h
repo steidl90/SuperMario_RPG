@@ -12,6 +12,8 @@ private:
 	float prevX;
 	float prevY;
 
+	bool isfight;
+
 public:
 	Cmario();
 	Cmario(float x, float y, RECT rc, stats stats);
@@ -23,11 +25,19 @@ public:
 	void render();
 
 	void move();
+	void run();
 	void animation();
 	void pixelCollision();
+
+	void attack();
+	void item();
+	void special();
+	void etc();
 
 	RECT* getRect() { return &m_rc; }
 
 	int getSceneNum() { return m_sceneNum; }
 	void setSceneNum(int num) { m_sceneNum = num; }
+
+	bool getisFight() { return isfight; }
 };
