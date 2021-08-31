@@ -16,9 +16,9 @@
 0,images/Town_Map.bmp,마을맵,1618,1434,0,0,1,255,0,255
 0,images/Town_Map_Pixel.bmp,마을맵픽셀,1618,1434,0,0,1,255,0,255
 0,images/Town_Map_Zorder.bmp,마을맵제트오더,1618,1434,0,0,1,255,0,255
-0,images/Mario_Map.bmp,마리오집,1344,872,0,0,1,255,0,255
-0,images/Mario_Map_Pixel.bmp,마리오집픽셀,1344,872,0,0,1,255,0,255
-0,images/Mario_Map_Zorder.bmp,마리오집제트오더,1344,872,0,0,1,255,0,255
+0,images/Mario_Map.bmp,마리오집,1500,1400,0,0,1,255,0,255
+0,images/Mario_Map_Pixel.bmp,마리오집픽셀,1500,1400,0,0,1,255,0,255
+0,images/Mario_Map_Zorder.bmp,마리오집제트오더,1500,1400,0,0,1,255,0,255
 0,images/Battle_Map.bmp,배틀맵1,256,222,0,0,1,255,0,255
 0,images/Battle_Map2.bmp,배틀맵2,256,222,0,0,1,255,0,255
 0,images/World_Map1.bmp,월드맵1,199,208,0,0,1,255,0,255
@@ -34,3 +34,4 @@
 1,images/LevelUP_stats.bmp,레벨업스탯,96,96,3,3,1,255,0,255
 1,images/LevelUP_flower.bmp,레벨업꽃,160,40,4,1,1,255,0,255
 1,images/LevelUP_Bonus.bmp,레벨업보너스,264,72,3,1,1,255,0,255
+0,images/Title_Screen.bmp,타이틀,1024,768,0,0,1,255,0,255

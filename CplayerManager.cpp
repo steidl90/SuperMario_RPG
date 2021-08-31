@@ -38,7 +38,7 @@ void CplayerManager::render()
 
 void CplayerManager::isMyTurn()
 {
-    m_command = m_button->buttonInput();
+    //m_command = m_button->buttonInput();
     if (m_command)
     {
         m_command->execute(*m_mario);

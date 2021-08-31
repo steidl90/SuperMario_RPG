@@ -27,5 +27,4 @@ public:
 
 	RECT* getMarioRect() { return m_mario->getRect(); }
 	Cmario* getMario() { return m_mario; }
-
 };

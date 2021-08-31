@@ -25,3 +25,11 @@ void Cpeach::update()
 void Cpeach::render()
 {
 }
+
+void Cpeach::run()
+{
+}
+
+void Cpeach::attack()
+{
+}

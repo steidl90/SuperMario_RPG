@@ -12,4 +12,7 @@ public:
 	void release();
 	void update();
 	void render();
+
+	virtual void run();
+	virtual void attack();
 };

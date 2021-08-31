@@ -4,7 +4,7 @@
 #include "CFSM.h"
 #include "CmarioState.h"
 
-Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("原軒神馬")), str("原軒神馬"), prevX(0.0f), prevY(0.0f), m_sceneNum(0), isfight(false)
+Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("原軒神馬")), str("原軒神馬"), prevX(0.0f), prevY(0.0f), m_sceneNum(0)
 {
 }
 
@@ -60,6 +60,7 @@ HRESULT Cmario::init()
 	setSpeed(m_stats.speed);
 	setX(m_x);
 	setY(m_y);
+	setisFight(false);
 
 	initAI(this, CHARACTER_TYPE::PLAYER);
 	return S_OK;
@@ -136,12 +137,11 @@ void Cmario::move()
 	else direction = MOVE_TYPE::IDEL;
 
 	pixelCollision();
-	run();
 }
 
 void Cmario::run()
 {
-	if (InputManager->isStayKeyDown('A'))
+	if (!getisFight())
 	{
 		setSpeed(runSpeed);
 		ANIMATION->findAnimation(str)->setFPS(runAniFrame);
