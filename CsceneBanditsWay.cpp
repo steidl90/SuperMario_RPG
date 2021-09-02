@@ -2,7 +2,7 @@
 #include "CsceneBanditsWay.h"
 
 CsceneBanditsWay::CsceneBanditsWay()
-    :m_camera(new Ccamera), m_banditsWay(new CbanditsWay), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0))
+    :m_camera(new Ccamera), m_banditsWay(new CbanditsWay), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0)), m_monsterM(new CmonsterManager)
 {
 }
 
@@ -11,6 +11,7 @@ CsceneBanditsWay::~CsceneBanditsWay()
     SAFE_DELETE(m_banditsWay);
     SAFE_DELETE(m_playerM);
     SAFE_DELETE(m_camera);
+    SAFE_DELETE(m_monsterM);
 }
 
 HRESULT CsceneBanditsWay::init()
@@ -30,6 +31,9 @@ HRESULT CsceneBanditsWay::init()
     m_playerM->getMario()->setY(PLAYERDATA->getY());
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
     m_door = RectMake(WINSIZEX / 2 + 80, WINSIZEY + 30, 50, 50);
+
+    m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA);
+    m_monsterM->init();
     return S_OK;
 }
 
@@ -43,6 +47,7 @@ void CsceneBanditsWay::update()
     m_camera->setTargetPoint(PointMake(m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top));
     m_banditsWay->update();
     m_playerM->update();
+    m_monsterM->update();
 
     scenechange();
 }
@@ -54,6 +59,7 @@ void CsceneBanditsWay::render()
     m_camera->render();
     m_banditsWay->render();
     m_playerM->render();
+    m_monsterM->render();
 
     //Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
     //if (InputManager->isToggleKey(VK_TAB)) ZORDER->zorderRender(IMAGE->findImage("마리오집픽셀"), ZDEBUG, 0, 0, 0);

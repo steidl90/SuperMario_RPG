@@ -3,11 +3,13 @@
 #include "CFSM.h"
 #include "CmarioState.h"
 
-Ccharacter::Ccharacter()
+Ccharacter::Ccharacter() :
+	Cunit(), m_AI(nullptr)
 {
 }
 
-Ccharacter::Ccharacter(float x, float y, RECT rc, stats stats)
+Ccharacter::Ccharacter(float x, float y, RECT rc, stats stats) :
+	Cunit(x, y, rc, stats), m_AI(nullptr)
 {
 }
 

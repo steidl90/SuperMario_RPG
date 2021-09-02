@@ -1,9 +1,10 @@
 #include "framework.h"
 #include "Cskytroopa.h"
 
-Cskytroopa::~Cskytroopa()
+Cskytroopa::Cskytroopa()
 {
 }
+
 
 HRESULT Cskytroopa::init()
 {
@@ -26,4 +27,8 @@ void Cskytroopa::render()
 void Cskytroopa::attack()
 {
 	TextOut(getMemDC(), 200, 100, TEXT("테스트1"), lstrlen("테스트1"));
+}
+
+void Cskytroopa::run()
+{
 }

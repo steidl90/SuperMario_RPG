@@ -2,24 +2,22 @@
 #include "Cmonster.h"
 #include "Cgoomba.h"
 #include "Cskytroopa.h"
+#include "Cspikey.h"
 class CmonsterFactory
 {
 public:
-	static Cmonster* createMonster(CHARACTER_TYPE _type,int x)
+	static Cmonster* createMonster(CHARACTER_TYPE _type, float x, float y, RECT rc, stats stats)
 	{
 		switch (_type)
 		{
-		case CHARACTER_TYPE::PLAYER:
-			break;
 		case CHARACTER_TYPE::GOOMBA:
-			return new Cgoomba(x);
+			return new Cgoomba(x, y, rc, stats);
 			break;
 		case CHARACTER_TYPE::SKYTROOPA:
-			return new Cskytroopa(x);
+			return new Cskytroopa(x, y, rc, stats);
 			break;
 		case CHARACTER_TYPE::SPIKEY:
-			break;
-		default:
+			return new Cspikey(x, y, rc, stats);
 			break;
 		}
 	}

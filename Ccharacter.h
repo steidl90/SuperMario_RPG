@@ -9,6 +9,7 @@ protected:
 public:
 	Ccharacter();
 	Ccharacter(float x, float y, RECT rc, stats stats);
+	
 	~Ccharacter();
 
 	virtual HRESULT init();

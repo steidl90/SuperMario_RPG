@@ -1,6 +1,6 @@
 #pragma once
 #include "gameNode.h"
-#include "Cfacade.h"
+//#include "Cfacade.h"
 #include "Cmario.h"
 #include "CsceneTown.h"
 #include "CsceneMarioHouse.h"
@@ -10,7 +10,7 @@
 class mainGame : public gameNode
 {
 private:
-	Cfacade* m_facade;
+	//Cfacade* m_facade;
 	
 
 public:

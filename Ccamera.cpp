@@ -52,13 +52,4 @@ void Ccamera::update()
 
 void Ccamera::render()
 {
-	/*TCHAR str[128];
-	sprintf(str, "%d : %d", m_ptMouse.x, m_ptMouse.y);
-	TextOut(getMemDC(), 100, 100, str, lstrlen(str));
-
-	POINT map;
-	map.x = m_ptMouse.x + camera_x1;
-	map.y = m_ptMouse.y + camera_y1;
-	sprintf(str, "%d : %d", map.x, map.y);
-	TextOut(getMemDC(), 200, 100, str, lstrlen(str));*/
 }

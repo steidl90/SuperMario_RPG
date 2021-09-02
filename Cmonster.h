@@ -1,13 +1,13 @@
 #pragma once
-#include "gameNode.h"
-class Cmonster :public gameNode
+#include "Cunit.h"
+class Cmonster :public Cunit
 {
 private:
 	friend class CmonsterFactory;
-	int X;
+
+	using Cunit::Cunit;
 
 public:
-	Cmonster(int x);
 	virtual ~Cmonster() = default;
 
 	virtual HRESULT init() = 0;
@@ -16,4 +16,5 @@ public:
 	virtual void render() = 0;
 
 	virtual void attack() = 0;
+	virtual void run() = 0;
 };

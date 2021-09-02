@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "gameNode.h"
-
+#include "Cfacade.h"
 
 gameNode::gameNode()
 {
@@ -45,6 +45,10 @@ HRESULT gameNode::init(bool managerInit)
 		SOUND->init();
 		// 새로추가
 		PLAYERDATA->init();
+
+		Cfacade* resourceLoadFacade = new Cfacade;
+		resourceLoadFacade->init();
+		SAFE_DELETE(resourceLoadFacade);
 	}
 
 

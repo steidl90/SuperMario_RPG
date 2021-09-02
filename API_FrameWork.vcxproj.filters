@@ -124,17 +124,20 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cspikey">
       <UniqueIdentifier>{53e69954-ddf1-490c-b280-93cf42fd7799}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cfacade">
-      <UniqueIdentifier>{0c158060-de9a-45ff-a3d5-469fcfb5049c}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cfacade\Cimage">
-      <UniqueIdentifier>{f90010ee-4cf1-41d3-b379-83fe23a8fedc}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cfacade\Canimation">
-      <UniqueIdentifier>{95fda417-4d7f-4ca2-ba97-47d702d5ef26}</UniqueIdentifier>
-    </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cobject\CbanditsWay">
       <UniqueIdentifier>{41b1370e-ab71-425e-aa23-5206f51bc57c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CmonsterManager">
+      <UniqueIdentifier>{1868d764-b482-4c28-aa50-5cb70a2c949f}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\CresourceLoadFacade">
+      <UniqueIdentifier>{0c158060-de9a-45ff-a3d5-469fcfb5049c}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\CresourceLoadFacade\Cimage">
+      <UniqueIdentifier>{f90010ee-4cf1-41d3-b379-83fe23a8fedc}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\CresourceLoadFacade\Canimation">
+      <UniqueIdentifier>{95fda417-4d7f-4ca2-ba97-47d702d5ef26}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -205,7 +208,7 @@
       <Filter>Manager</Filter>
     </ClInclude>
     <ClInclude Include="Cimage.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Cimage</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Cimage</Filter>
     </ClInclude>
     <ClInclude Include="effectManager.h">
       <Filter>Manager</Filter>
@@ -216,14 +219,14 @@
     <ClInclude Include="Ccamera.h">
       <Filter>mainGame\Ccamera</Filter>
     </ClInclude>
-    <ClInclude Include="Cfacade.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade</Filter>
+    <ClInclude Include="CresourceLoadFacade.h">
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade</Filter>
     </ClInclude>
     <ClInclude Include="Canimation.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Canimation</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Canimation</Filter>
     </ClInclude>
     <ClInclude Include="CaddImg.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Cimage</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Cimage</Filter>
     </ClInclude>
     <ClInclude Include="Cunit.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit</Filter>
@@ -315,6 +318,9 @@
     <ClInclude Include="CbanditsWay.h">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\CbanditsWay</Filter>
     </ClInclude>
+    <ClInclude Include="CmonsterManager.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CmonsterManager</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -366,7 +372,7 @@
       <Filter>Manager</Filter>
     </ClCompile>
     <ClCompile Include="Cimage.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Cimage</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Cimage</Filter>
     </ClCompile>
     <ClCompile Include="effectManager.cpp">
       <Filter>Manager</Filter>
@@ -377,14 +383,14 @@
     <ClCompile Include="Ccamera.cpp">
       <Filter>mainGame\Ccamera</Filter>
     </ClCompile>
-    <ClCompile Include="Cfacade.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade</Filter>
+    <ClCompile Include="CresourceLoadFacade.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade</Filter>
     </ClCompile>
     <ClCompile Include="Canimation.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Canimation</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Canimation</Filter>
     </ClCompile>
     <ClCompile Include="CaddImg.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cfacade\Cimage</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade\Cimage</Filter>
     </ClCompile>
     <ClCompile Include="Cunit.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit</Filter>
@@ -472,6 +478,9 @@
     </ClCompile>
     <ClCompile Include="CbanditsWay.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cobject\CbanditsWay</Filter>
+    </ClCompile>
+    <ClCompile Include="CmonsterManager.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CmonsterManager</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

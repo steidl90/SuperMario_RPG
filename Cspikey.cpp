@@ -25,3 +25,7 @@ void Cspikey::render()
 void Cspikey::attack()
 {
 }
+
+void Cspikey::run()
+{
+}

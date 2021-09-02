@@ -3,20 +3,16 @@
 #include "Ccamera.h"
 #include "CbanditsWay.h"
 #include "CplayerManager.h"
-#include "CmonsterFactory.h"
+#include "CmonsterManager.h"
+
 class CsceneBanditsWay :public gameNode
 {
 private:
 	Ccamera* m_camera;
 	CbanditsWay* m_banditsWay;
 	CplayerManager* m_playerM;
-
-	Cmonster* m_goomba;
-	Cmonster* m_skytroopa;
-
-	vector<Cmonster*> vMonster;
-	vector<Cmonster*>::iterator viMonster;
-
+	CmonsterManager* m_monsterM;
+	
 private:
 	RECT m_door;
 

@@ -6,7 +6,6 @@ private:
 	using Cmonster::Cmonster;
 	virtual ~Cspikey();
 
-	int x, y;
 public:
 
 	virtual HRESULT init();
@@ -15,4 +14,5 @@ public:
 	virtual void render();
 
 	virtual void attack();
+	virtual void run();
 };

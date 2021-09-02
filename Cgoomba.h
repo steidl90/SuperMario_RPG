@@ -4,17 +4,18 @@ class Cgoomba :public Cmonster
 {
 private:
 	using Cmonster::Cmonster;
-	virtual ~Cgoomba();
+	virtual ~Cgoomba() = default;
 
-	int x, y;
 public:
-
 	virtual HRESULT init();
 	virtual void release();
 	virtual void updata();
 	virtual void render();
 
 	virtual void attack();
+	virtual void run();
 
+private:
+	animation* m_ani;
 };
 

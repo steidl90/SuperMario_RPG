@@ -3,7 +3,7 @@
 0,images/Bowser_idle.bmp,쿠파대기,34,44,0,0,1,255,0,255
 1,images/Mario_move.bmp,마리오이동,280,590,5,8,1,255,0,255
 1,images/Mario_attack.bmp,마리오공격,245,79,7,2,1,255,0,255
-1,images/Goomba_move.bmp,굼바이동,75,50,3,2,1,255,0,255
+1,images/Goomba_move.bmp,굼바이동,150,100,3,2,1,255,0,255
 1,images/Goomba_attack.bmp,굼바공격,250,25,10,1,1,255,0,255
 1,images/Spikey_move.bmp,가시돌이이동,90,60,3,2,1,255,0,255
 1,images/Spikey_attack.bmp,가시돌이공격,150,30,5,1,1,255,0,255

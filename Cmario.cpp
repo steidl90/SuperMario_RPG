@@ -11,19 +11,7 @@ Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("原
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
 	Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("原軒神馬")), str("原軒神馬")
 {
-	m_x = x;
-	m_y = y;
-	m_rc = rc;
-	m_stats.atk = stats.atk;
-	m_stats.def = stats.def;
-	m_stats.exp = stats.exp;
-	m_stats.gold = stats.gold;
-	m_stats.hp = stats.hp;
-	m_stats.maxHp = stats.maxHp;
-	m_stats.lv = stats.lv;
-	m_stats.mp = stats.mp;
-	m_stats.maxMp = stats.maxMp;
-	m_stats.speed = stats.speed;
+	
 }
 
 Cmario::~Cmario()
