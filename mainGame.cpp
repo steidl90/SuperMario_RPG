@@ -14,7 +14,8 @@ HRESULT mainGame::init()
 
 	SCENE->addScene("마을", new CsceneTown);
 	SCENE->addScene("마리오의집", new CsceneMarioHouse);
-	SCENE->changeScene("마을");
+	SCENE->addScene("무법자의길", new CsceneBanditsWay);
+	SCENE->changeScene("무법자의길");
 	return S_OK;
 }
 

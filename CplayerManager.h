@@ -23,6 +23,9 @@ public:
 	void update();
 	void render();
 
+	virtual void attack();
+	virtual void run();
+
 	void isMyTurn();
 
 	RECT* getMarioRect() { return m_mario->getRect(); }

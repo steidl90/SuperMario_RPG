@@ -36,6 +36,14 @@ void CplayerManager::render()
     m_mario->render();
 }
 
+void CplayerManager::attack()
+{
+}
+
+void CplayerManager::run()
+{
+}
+
 void CplayerManager::isMyTurn()
 {
     //m_command = m_button->buttonInput();

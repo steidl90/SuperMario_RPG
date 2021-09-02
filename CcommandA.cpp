@@ -7,8 +7,8 @@
 //	else m_mario.run();
 //}
 
-void CcommandA::execute(Cunit& unit)
+void CcommandA::execute(Cmario& m_mario)
 {
-	if (unit.getisFight()) unit.attack();
-	else unit.run();
+	if (m_mario.getisFight()) m_mario.attack();
+	else m_mario.run();
 }

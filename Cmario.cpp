@@ -137,11 +137,12 @@ void Cmario::move()
 	else direction = MOVE_TYPE::IDEL;
 
 	pixelCollision();
+	run();
 }
 
 void Cmario::run()
 {
-	if (!getisFight())
+	if (InputManager->isStayKeyDown('A'))
 	{
 		setSpeed(runSpeed);
 		ANIMATION->findAnimation(str)->setFPS(runAniFrame);
@@ -225,7 +226,7 @@ void Cmario::pixelCollision()
 		}
 		else if (m_sceneNum == 0b0001)
 		{
-			COLORREF color = GetPixel(IMAGE->findImage("¸¶¸®¿ÀÁýÇÈ¼¿")->getMemDC(), getX(), getY());
+			COLORREF color = GetPixel(IMAGE->findImage("¸¶¸®¿ÀÁýÇÈ¼¿")->getMemDC(), getX(), getY() + 20.0f);
 			int r = GetRValue(color);
 			int g = GetGValue(color);
 			int b = GetBValue(color);
@@ -236,6 +237,19 @@ void Cmario::pixelCollision()
 				setY(prevY);
 			}
 		}
+		/*else if (m_sceneNum == 0b0010)
+		{
+			COLORREF color = GetPixel(IMAGE->findImage("ÇÊµå¸Ê1ÇÈ¼¿")->getMemDC(), getX(), getY() + 20.0f);
+			int r = GetRValue(color);
+			int g = GetGValue(color);
+			int b = GetBValue(color);
+
+			if (!(r == 255 && g == 0 && b == 255))
+			{
+				setX(prevX);
+				setY(prevY);
+			}
+		}*/
 	}
 
 	prevX = getX();

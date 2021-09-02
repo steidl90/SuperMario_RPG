@@ -4,10 +4,14 @@
 #include "Cmario.h"
 #include "CsceneTown.h"
 #include "CsceneMarioHouse.h"
+#include "CsceneBanditsWay.h"
+#include "Cmonster.h"
+#include "CmonsterFactory.h"
 class mainGame : public gameNode
 {
 private:
 	Cfacade* m_facade;
+	
 
 public:
 	mainGame();
