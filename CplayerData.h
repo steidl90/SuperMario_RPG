@@ -14,6 +14,7 @@ private:
 	int m_exp;
 	int m_gold;
 	int m_sceneNum;
+	int m_BeforeSceneNum;
 	float m_speed;
 	float m_x;
 	float m_y;
@@ -28,7 +29,7 @@ public:
 	void update();
 	void render();
 
-	void setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int lv, int exp, int gold, float speed, float x, float y, int num);
+	void setData(int atk, int def, int hp, int maxhp, int mp, int maxmp, int lv, int exp, int gold, float speed, float x, float y, int num, int beforeNum);
 
 	int getAtk() { return m_atk; }
 	int getDef() { return m_def; }
@@ -40,6 +41,7 @@ public:
 	int getExp() { return m_exp; }
 	int getGold() { return m_gold; }
 	int getSceneNum() { return m_sceneNum; }
+	int getBeforeSceneNum() { return m_BeforeSceneNum; }
 	float getSpeed() { return m_speed; }
 	float getX() { return m_x; }
 	float getY() { return m_y; }

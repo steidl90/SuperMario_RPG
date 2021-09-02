@@ -85,14 +85,8 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Cobject\Chouse">
       <UniqueIdentifier>{c6f4ca13-4bb0-4d33-b1b1-19a853829fe2}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\Ccamera">
-      <UniqueIdentifier>{a073fbc0-fcd1-4831-88ff-a22b5fb1361a}</UniqueIdentifier>
-    </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData">
       <UniqueIdentifier>{9005265e-3640-4188-bfa1-dd4830dedbad}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\Czorder">
-      <UniqueIdentifier>{3fede9af-319e-454a-a1a4-601c931fad79}</UniqueIdentifier>
     </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Ccommand">
       <UniqueIdentifier>{3067c777-161d-41a4-b9b9-b33a54c1afc5}</UniqueIdentifier>
@@ -112,18 +106,6 @@
     <Filter Include="mainGame\슈퍼마리오RPG\Ccommand\CcommandY">
       <UniqueIdentifier>{dac5c500-0a5c-4705-91d7-3e50845d391b}</UniqueIdentifier>
     </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster">
-      <UniqueIdentifier>{1c17f1e5-1f8c-4aa5-bd3f-056dd36d1d95}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cgoomba">
-      <UniqueIdentifier>{63779d1a-246b-407d-96e2-d351508ef756}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\CskyTroopa">
-      <UniqueIdentifier>{8b78f532-6a8c-42a4-8db9-7d933721ce81}</UniqueIdentifier>
-    </Filter>
-    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cspikey">
-      <UniqueIdentifier>{53e69954-ddf1-490c-b280-93cf42fd7799}</UniqueIdentifier>
-    </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\Cobject\CbanditsWay">
       <UniqueIdentifier>{41b1370e-ab71-425e-aa23-5206f51bc57c}</UniqueIdentifier>
     </Filter>
@@ -138,6 +120,27 @@
     </Filter>
     <Filter Include="mainGame\슈퍼마리오RPG\CresourceLoadFacade\Canimation">
       <UniqueIdentifier>{95fda417-4d7f-4ca2-ba97-47d702d5ef26}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod">
+      <UniqueIdentifier>{7a19939e-941b-4870-852a-1d2afefe28d9}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster">
+      <UniqueIdentifier>{1c17f1e5-1f8c-4aa5-bd3f-056dd36d1d95}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cgoomba">
+      <UniqueIdentifier>{63779d1a-246b-407d-96e2-d351508ef756}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\CskyTroopa">
+      <UniqueIdentifier>{8b78f532-6a8c-42a4-8db9-7d933721ce81}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cspikey">
+      <UniqueIdentifier>{53e69954-ddf1-490c-b280-93cf42fd7799}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Czorder">
+      <UniqueIdentifier>{3fede9af-319e-454a-a1a4-601c931fad79}</UniqueIdentifier>
+    </Filter>
+    <Filter Include="mainGame\슈퍼마리오RPG\Ccamera">
+      <UniqueIdentifier>{a073fbc0-fcd1-4831-88ff-a22b5fb1361a}</UniqueIdentifier>
     </Filter>
   </ItemGroup>
   <ItemGroup>
@@ -217,7 +220,7 @@
       <Filter>이펙트</Filter>
     </ClInclude>
     <ClInclude Include="Ccamera.h">
-      <Filter>mainGame\Ccamera</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Ccamera</Filter>
     </ClInclude>
     <ClInclude Include="CresourceLoadFacade.h">
       <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade</Filter>
@@ -277,7 +280,7 @@
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
     </ClInclude>
     <ClInclude Include="Czorder.h">
-      <Filter>mainGame\Czorder</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Czorder</Filter>
     </ClInclude>
     <ClInclude Include="Ccommand.h">
       <Filter>mainGame\슈퍼마리오RPG\Ccommand</Filter>
@@ -297,20 +300,14 @@
     <ClInclude Include="CcommandY.h">
       <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandY</Filter>
     </ClInclude>
-    <ClInclude Include="Cmonster.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster</Filter>
-    </ClInclude>
-    <ClInclude Include="CmonsterFactory.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster</Filter>
-    </ClInclude>
     <ClInclude Include="Cgoomba.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cgoomba</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cgoomba</Filter>
     </ClInclude>
     <ClInclude Include="Cskytroopa.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\CskyTroopa</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\CskyTroopa</Filter>
     </ClInclude>
     <ClInclude Include="Cspikey.h">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cspikey</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cspikey</Filter>
     </ClInclude>
     <ClInclude Include="CsceneBanditsWay.h">
       <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
@@ -320,6 +317,12 @@
     </ClInclude>
     <ClInclude Include="CmonsterManager.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CmonsterManager</Filter>
+    </ClInclude>
+    <ClInclude Include="CmonsterFactory.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod</Filter>
+    </ClInclude>
+    <ClInclude Include="Cmonster.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -381,7 +384,7 @@
       <Filter>이펙트</Filter>
     </ClCompile>
     <ClCompile Include="Ccamera.cpp">
-      <Filter>mainGame\Ccamera</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Ccamera</Filter>
     </ClCompile>
     <ClCompile Include="CresourceLoadFacade.cpp">
       <Filter>mainGame\슈퍼마리오RPG\CresourceLoadFacade</Filter>
@@ -438,7 +441,7 @@
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CplayerManager\CplayerData</Filter>
     </ClCompile>
     <ClCompile Include="Czorder.cpp">
-      <Filter>mainGame\Czorder</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Czorder</Filter>
     </ClCompile>
     <ClCompile Include="Ccommand.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Ccommand</Filter>
@@ -458,20 +461,14 @@
     <ClCompile Include="CcommandY.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Ccommand\CcommandY</Filter>
     </ClCompile>
-    <ClCompile Include="Cmonster.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster</Filter>
-    </ClCompile>
-    <ClCompile Include="CmonsterFactory.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster</Filter>
-    </ClCompile>
     <ClCompile Include="Cgoomba.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cgoomba</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cgoomba</Filter>
     </ClCompile>
     <ClCompile Include="Cskytroopa.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\CskyTroopa</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\CskyTroopa</Filter>
     </ClCompile>
     <ClCompile Include="Cspikey.cpp">
-      <Filter>mainGame\슈퍼마리오RPG\Cunit\Ccharacter\Cmonster\Cspikey</Filter>
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster\Cspikey</Filter>
     </ClCompile>
     <ClCompile Include="CsceneBanditsWay.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
@@ -481,6 +478,12 @@
     </ClCompile>
     <ClCompile Include="CmonsterManager.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\CmonsterManager</Filter>
+    </ClCompile>
+    <ClCompile Include="CmonsterFactory.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod</Filter>
+    </ClCompile>
+    <ClCompile Include="Cmonster.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\CfactoryMethod\Cmonster</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

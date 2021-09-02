@@ -4,12 +4,9 @@ class Cskytroopa :public Cmonster
 {
 private:
 	using Cmonster::Cmonster;
-
-	Cskytroopa();
 	virtual ~Cskytroopa() = default;
 
 public:
-
 	virtual HRESULT init();
 	virtual void release();
 	virtual void updata();
@@ -17,4 +14,7 @@ public:
 
 	virtual void attack();
 	virtual void run();
+
+private:
+	animation* m_ani;
 };

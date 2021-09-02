@@ -1,8 +1,9 @@
 #include "framework.h"
 #include "Ccamera.h"
 
-Ccamera::Ccamera():camera_width(WINSIZEX), camera_height(WINSIZEY)
+Ccamera::Ccamera() :camera_width(WINSIZEX), camera_height(WINSIZEY), camera_x1(0), camera_y1(0), camera_x2(0), camera_y2(0), target_x(0), target_y(0)
 {
+
 }
 
 Ccamera::~Ccamera()

@@ -1,13 +1,12 @@
 #include "framework.h"
 #include "CsceneTown.h"
 CsceneTown::CsceneTown()
-	:m_camera(new Ccamera), m_town(new Ctown), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0))
+	:m_town(new Ctown), m_playerM(new CplayerManager), m_doorA(RectMake(0, 0, 0, 0)), m_doorB(RectMake(0, 0, 0, 0))
 {
 }
 
 CsceneTown::~CsceneTown()
 {
-    SAFE_DELETE(m_camera);
     SAFE_DELETE(m_town);
     SAFE_DELETE(m_playerM);
 }
@@ -25,10 +24,21 @@ HRESULT CsceneTown::init()
 	m_playerM->getMario()->setExp(PLAYERDATA->getExp());
 	m_playerM->getMario()->setGold(PLAYERDATA->getGold());
 	m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
-	m_playerM->getMario()->setX(PLAYERDATA->getX());
-	m_playerM->getMario()->setY(PLAYERDATA->getY());
 	m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
-	m_door = RectMake(10, WINSIZEY + 230, 50, 50);
+	m_playerM->getMario()->setBeforeSceneNum(PLAYERDATA->getBeforeSceneNum());
+
+	if (m_playerM->getMario()->getBeforeSceneNum() == 0b0001)
+	{
+		m_playerM->getMario()->setX(80);
+		m_playerM->getMario()->setY(MAPSIZEY - 470);
+	}
+	else if (m_playerM->getMario()->getBeforeSceneNum() == 0b0010)
+	{
+		m_playerM->getMario()->setX(MAPSIZEX - 210);
+		m_playerM->getMario()->setY(WINSIZEY + 530);
+	}
+	m_doorA = RectMake(10, WINSIZEY + 230, 50, 50);
+	m_doorB = RectMake(MAPSIZEX - 180, WINSIZEY + 550, 50, 50);
 	return S_OK;
 }
 
@@ -38,8 +48,8 @@ void CsceneTown::release()
 
 void CsceneTown::update()
 {
-	m_camera->update();
-	m_camera->setTargetPoint(PointMake(m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top));
+	CAMERA->update();
+	CAMERA->setTargetPoint(PointMake(m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top));
 	m_town->update();
 	m_playerM->update();
 
@@ -48,7 +58,7 @@ void CsceneTown::update()
 
 void CsceneTown::render()
 {
-	this->getMapBuffer()->render(getMemDC(), 0, 0, m_camera->getCameraPoint().x, m_camera->getCameraPoint().y, m_camera->getCameraWidth(), m_camera->getCameraHeight());
+	this->getMapBuffer()->render(getMemDC(), 0, 0, CAMERA->getCameraPoint().x, CAMERA->getCameraPoint().y, CAMERA->getCameraWidth(), CAMERA->getCameraHeight());
 
 	m_town->render();
 	m_playerM->render();
@@ -56,7 +66,7 @@ void CsceneTown::render()
 	if (InputManager->isToggleKey(VK_TAB))
 	{
 		ZORDER->zorderRender(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿"), ZDEBUG, 0, 0, 0);
-		Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
+		Rectangle(getMapDC(), m_doorA.left, m_doorA.top, m_doorA.right, m_doorA.bottom);
 	}
 	ZORDER->zorderTotalRender(getMapDC());
 }
@@ -64,7 +74,7 @@ void CsceneTown::render()
 void CsceneTown::scenechange()
 {
 	RECT temp;
-	if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_door))
+	if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_doorA))
 	{
 		m_playerM->getMario()->setSceneNum(0b0001);
 		PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
@@ -79,8 +89,29 @@ void CsceneTown::scenechange()
 			m_playerM->getMario()->getSpeed(),
 			m_playerM->getMario()->getX(),
 			m_playerM->getMario()->getY(),
-			m_playerM->getMario()->getSceneNum());
+			m_playerM->getMario()->getSceneNum(),
+			m_playerM->getMario()->getBeforeSceneNum());
 		SCENE->changeScene("¸¶¸®¿ÀÀÇÁý");
+	}
+
+	if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_doorB))
+	{
+		m_playerM->getMario()->setSceneNum(0b0010);
+		PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
+			m_playerM->getMario()->getDef(),
+			m_playerM->getMario()->getHp(),
+			m_playerM->getMario()->getMaxHp(),
+			m_playerM->getMario()->getMp(),
+			m_playerM->getMario()->getMaxMp(),
+			m_playerM->getMario()->getLv(),
+			m_playerM->getMario()->getExp(),
+			m_playerM->getMario()->getGold(),
+			m_playerM->getMario()->getSpeed(),
+			m_playerM->getMario()->getX(),
+			m_playerM->getMario()->getY(),
+			m_playerM->getMario()->getSceneNum(),
+			m_playerM->getMario()->getBeforeSceneNum());
+		SCENE->changeScene("µµµÏ·Îµå");
 	}
 }
 

@@ -20,8 +20,13 @@ HRESULT Canimation::init()
 	ANIMATION->addAnimation("마리오우하", "마리오이동", 30, 32, 8, false, true);
 	ANIMATION->addAnimation("마리오우상", "마리오이동", 35, 37, 8, false, true);
 
-	ANIMATION->addAnimation("굼바좌상", "굼바이동", 0, 2, 8, false, true);
-	ANIMATION->addAnimation("굼바좌하", "굼바이동", 3, 5, 8, false, true);
+	ANIMATION->addAnimation("굼바좌하", "굼바이동", 0, 2, 5, false, true);
+	ANIMATION->addAnimation("굼바좌상", "굼바이동", 3, 5, 5, false, true);
 
+	ANIMATION->addAnimation("날개거북이좌하", "날개거북이이동", 0, 2, 5, false, true);
+	ANIMATION->addAnimation("날개거북이좌상", "날개거북이이동", 3, 5, 5, false, true);
+
+	ANIMATION->addAnimation("가시돌이좌하", "가시돌이이동", 0, 2, 5, false, true);
+	ANIMATION->addAnimation("가시돌이좌상", "가시돌이이동", 3, 5, 5, false, true);
 	return S_OK;
 }

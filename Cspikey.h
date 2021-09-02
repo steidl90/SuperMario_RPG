@@ -4,10 +4,9 @@ class Cspikey :public Cmonster
 {
 private:
 	using Cmonster::Cmonster;
-	virtual ~Cspikey();
+	virtual ~Cspikey() = default;
 
 public:
-
 	virtual HRESULT init();
 	virtual void release();
 	virtual void updata();
@@ -15,4 +14,7 @@ public:
 
 	virtual void attack();
 	virtual void run();
+
+private:
+	animation* m_ani;
 };

@@ -1,6 +1,6 @@
 #include"framework.h"
 #include "mainGame.h"
-mainGame::mainGame()/*:m_facade(new Cfacade)*/
+mainGame::mainGame()
 {
 }
 mainGame::~mainGame()
@@ -9,13 +9,12 @@ mainGame::~mainGame()
 HRESULT mainGame::init()
 {
 	gameNode::init(true);
-	//m_facade->init();
 
 
 	SCENE->addScene("마을", new CsceneTown);
 	SCENE->addScene("마리오의집", new CsceneMarioHouse);
-	SCENE->addScene("무법자의길", new CsceneBanditsWay);
-	SCENE->changeScene("무법자의길");
+	SCENE->addScene("도둑로드", new CsceneBanditsWay);
+	SCENE->changeScene("도둑로드");
 
 
 	return S_OK;
@@ -27,7 +26,6 @@ void mainGame::release()
 	EFFECT->release();
 	SCENE->release();
 	ANIMATION->release();
-	//SAFE_DELETE(m_facade);
 }
 
 void mainGame::update()

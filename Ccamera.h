@@ -1,6 +1,6 @@
 #pragma once
-#include "gameNode.h"
-class Ccamera : public gameNode
+#include "singleton.h"
+class Ccamera : public Singleton<Ccamera>
 {
 	int camera_x1, camera_y1;
 	int camera_x2, camera_y2;

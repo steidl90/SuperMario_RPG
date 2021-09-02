@@ -8,6 +8,8 @@ private:
 	Cmonster* m_monster;
 
 	vector<Cmonster*> vGoomBaMonster;
+	vector<Cmonster*> vSkyTroopaMonster;
+	vector<Cmonster*> vSpikeyMonster;
 	vector<Cmonster*>::iterator viMonster;
 
 public:
@@ -19,6 +21,6 @@ public:
 	void update();
 	void render();
 
-	void addMonster(CHARACTER_TYPE monster);
+	void addMonster(CHARACTER_TYPE monster, float x, float y);
 };
 

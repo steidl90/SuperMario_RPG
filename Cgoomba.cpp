@@ -4,6 +4,7 @@
 HRESULT Cgoomba::init()
 {
 	m_ani = ANIMATION->findAnimation("±À¹ÙÁÂÇÏ");
+	ANIMATION->start("±À¹ÙÁÂÇÏ");
     return S_OK;
 }
 
@@ -17,12 +18,12 @@ void Cgoomba::updata()
 
 void Cgoomba::render()
 {
-	ZORDER->zorderAniRender(IMAGE->findImage("±À¹ÙÀÌµ¿"), ZUNIT, 0, 500, 500, m_ani);
+	ZORDER->zorderAniRender(IMAGE->findImage("±À¹ÙÀÌµ¿"), ZUNIT, 0, m_x, m_y, m_ani);
 }
 
 void Cgoomba::attack()
 {
-	TextOut(getMemDC(), 100, 100, TEXT("Å×½ºÆ®2"), lstrlen("Å×½ºÆ®2"));
+
 }
 
 void Cgoomba::run()

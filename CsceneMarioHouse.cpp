@@ -2,7 +2,7 @@
 #include "CsceneMarioHouse.h"
 
 CsceneMarioHouse::CsceneMarioHouse()
-    :m_camera(new Ccamera), m_house(new Chouse), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0))
+    : m_house(new Chouse), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0))
 {
 }
 
@@ -10,7 +10,6 @@ CsceneMarioHouse::~CsceneMarioHouse()
 {
     SAFE_DELETE(m_house);
     SAFE_DELETE(m_playerM);
-    SAFE_DELETE(m_camera);
 }
 
 HRESULT CsceneMarioHouse::init()
@@ -26,8 +25,8 @@ HRESULT CsceneMarioHouse::init()
     m_playerM->getMario()->setExp(PLAYERDATA->getExp());
     m_playerM->getMario()->setGold(PLAYERDATA->getGold());
     m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
-    m_playerM->getMario()->setX(PLAYERDATA->getX());
-    m_playerM->getMario()->setY(PLAYERDATA->getY());
+    m_playerM->getMario()->setX(500);
+    m_playerM->getMario()->setY(500);
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
     m_door = RectMake(WINSIZEX / 2 + 80, WINSIZEY + 30, 50, 50);
     return S_OK;
@@ -40,8 +39,8 @@ void CsceneMarioHouse::release()
 
 void CsceneMarioHouse::update()
 {
-    m_camera->update();
-    m_camera->setTargetPoint(PointMake(m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top));
+    CAMERA->update();
+    CAMERA->setTargetPoint(PointMake(m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top));
     m_house->update();
     m_playerM->update();
 
@@ -50,9 +49,8 @@ void CsceneMarioHouse::update()
 
 void CsceneMarioHouse::render()
 {
-    this->getMapBuffer()->render(getMemDC(), 0, 0, m_camera->getCameraPoint().x, m_camera->getCameraPoint().y, m_camera->getCameraWidth(), m_camera->getCameraHeight());
+    this->getMapBuffer()->render(getMemDC(), 0, 0, CAMERA->getCameraPoint().x, CAMERA->getCameraPoint().y, CAMERA->getCameraWidth(), CAMERA->getCameraHeight());
 
-    m_camera->render();
     m_house->render();
     m_playerM->render();
 
@@ -68,6 +66,7 @@ void CsceneMarioHouse::scenechange()
     if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_door))
     {
         m_playerM->getMario()->setSceneNum(0b0000);
+        m_playerM->getMario()->setBeforeSceneNum(0b0001);
         PLAYERDATA->setData(m_playerM->getMario()->getAtk(), 
             m_playerM->getMario()->getDef(), 
             m_playerM->getMario()->getHp(), 
@@ -80,7 +79,8 @@ void CsceneMarioHouse::scenechange()
             m_playerM->getMario()->getSpeed(), 
             m_playerM->getMario()->getX(), 
             m_playerM->getMario()->getY(), 
-            m_playerM->getMario()->getSceneNum());
+            m_playerM->getMario()->getSceneNum(),
+            m_playerM->getMario()->getBeforeSceneNum());
         SCENE->changeScene("¸¶À»");
     }
 }

@@ -4,10 +4,10 @@
 1,images/Mario_move.bmp,마리오이동,280,590,5,8,1,255,0,255
 1,images/Mario_attack.bmp,마리오공격,245,79,7,2,1,255,0,255
 1,images/Goomba_move.bmp,굼바이동,150,100,3,2,1,255,0,255
-1,images/Goomba_attack.bmp,굼바공격,250,25,10,1,1,255,0,255
-1,images/Spikey_move.bmp,가시돌이이동,90,60,3,2,1,255,0,255
-1,images/Spikey_attack.bmp,가시돌이공격,150,30,5,1,1,255,0,255
-1,images/SkyTroopa_move.bmp,날개거북이이동,105,75,3,2,1,255,0,255
+1,images/Goomba_attack.bmp,굼바공격,500,50,10,1,1,255,0,255
+1,images/Spikey_move.bmp,가시돌이이동,180,120,3,2,1,255,0,255
+1,images/Spikey_attack.bmp,가시돌이공격,300,60,5,1,1,255,0,255
+1,images/SkyTroopa_move.bmp,날개거북이이동,210,150,3,2,1,255,0,255
 1,images/BigCoin_Effect.bmp,큰코인,544,34,16,1,1,255,0,255
 1,images/SmallCoin_Effect.bmp,작은코인,544,34,16,1,1,255,0,255
 1,images/SaveBox.bmp,세이브상자,141,35,4,1,1,255,0,255

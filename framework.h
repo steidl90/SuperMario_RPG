@@ -40,6 +40,7 @@
 #include"defineHeader.h"
 #include"CplayerData.h"
 #include"Czorder.h"
+#include"Ccamera.h"
 //======================================
 //##			매니저들			  ##
 //======================================
@@ -55,6 +56,7 @@
 // 새로등록
 #define PLAYERDATA		CplayerData::getSingleton()
 #define ZORDER			Czorder::getSingleton()
+#define CAMERA			Ccamera::getSingleton()
 //==========================================
 //				 매크로 설정
 //==========================================

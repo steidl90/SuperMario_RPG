@@ -1,13 +1,10 @@
 #include "framework.h"
 #include "Cskytroopa.h"
 
-Cskytroopa::Cskytroopa()
-{
-}
-
-
 HRESULT Cskytroopa::init()
 {
+	m_ani = ANIMATION->findAnimation("날개거북이좌하");
+	ANIMATION->start("날개거북이좌하");
 	return S_OK;
 }
 
@@ -21,12 +18,11 @@ void Cskytroopa::updata()
 
 void Cskytroopa::render()
 {
-	this->attack();
+	ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_x, m_y, m_ani);
 }
 
 void Cskytroopa::attack()
 {
-	TextOut(getMemDC(), 200, 100, TEXT("테스트1"), lstrlen("테스트1"));
 }
 
 void Cskytroopa::run()

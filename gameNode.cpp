@@ -1,6 +1,6 @@
 #include "framework.h"
 #include "gameNode.h"
-#include "Cfacade.h"
+#include "CresourceLoadFacade.h"
 
 gameNode::gameNode()
 {
@@ -46,7 +46,7 @@ HRESULT gameNode::init(bool managerInit)
 		// 새로추가
 		PLAYERDATA->init();
 
-		Cfacade* resourceLoadFacade = new Cfacade;
+		CresourceLoadFacade* resourceLoadFacade = new CresourceLoadFacade;
 		resourceLoadFacade->init();
 		SAFE_DELETE(resourceLoadFacade);
 	}
@@ -87,6 +87,7 @@ void gameNode::release()
 		PLAYERDATA->release();
 		ZORDER->releaseSingleton();
 		ZORDER->release();
+		CAMERA->releaseSingleton();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

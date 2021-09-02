@@ -8,6 +8,7 @@ private:
 	char str[20];
 
 	int m_sceneNum;
+	int m_beforeSceneNum;
 
 	float prevX;
 	float prevY;
@@ -36,6 +37,9 @@ public:
 
 	int getSceneNum() { return m_sceneNum; }
 	void setSceneNum(int num) { m_sceneNum = num; }
+	
+	int getBeforeSceneNum() { return m_beforeSceneNum; }
+	void setBeforeSceneNum(int num) { m_beforeSceneNum = num; }
 
 	bool getisFight() { return isFight; }
 };
