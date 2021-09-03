@@ -26,7 +26,7 @@ void Cbowser::render()
 {
 }
 
-void Cbowser::run()
+void Cbowser::move()
 {
 }
 

@@ -24,7 +24,7 @@ public:
 	void render();
 
 	virtual void attack();
-	virtual void run();
+	virtual void move();
 
 	void isMyTurn();
 

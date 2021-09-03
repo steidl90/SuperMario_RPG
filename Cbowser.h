@@ -13,6 +13,6 @@ public:
 	void update();
 	void render();
 
-	virtual void run();
+	virtual void move();
 	virtual void attack();
 };

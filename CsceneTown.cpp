@@ -37,6 +37,7 @@ HRESULT CsceneTown::init()
 		m_playerM->getMario()->setX(MAPSIZEX - 210);
 		m_playerM->getMario()->setY(WINSIZEY + 530);
 	}
+
 	m_doorA = RectMake(10, WINSIZEY + 230, 50, 50);
 	m_doorB = RectMake(MAPSIZEX - 180, WINSIZEY + 550, 50, 50);
 	return S_OK;

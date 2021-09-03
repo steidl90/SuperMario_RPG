@@ -13,9 +13,9 @@ public:
 	~Ccharacter();
 
 	virtual HRESULT init();
-	virtual void release() = 0;
-	virtual void update() = 0;
-	virtual void render() = 0;
+	virtual void release();
+	virtual void update();
+	virtual void render();
 
 	void initAI(Ccharacter* character, CHARACTER_TYPE type);
 	void updateAI();

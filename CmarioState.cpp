@@ -35,7 +35,7 @@ player_Move::~player_Move()
 
 void player_Move::update()
 {
-	if ((InputManager->isStayKeyDown(VK_LEFT) ||
+	if (!(InputManager->isStayKeyDown(VK_LEFT) ||
 		InputManager->isStayKeyDown(VK_RIGHT) ||
 		InputManager->isStayKeyDown(VK_UP) ||
 		InputManager->isStayKeyDown(VK_DOWN)))

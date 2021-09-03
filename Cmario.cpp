@@ -1,7 +1,6 @@
 #include "framework.h"
 #include "Cmario.h"
 #include "Cstate.h"
-#include "CFSM.h"
 #include "CmarioState.h"
 
 Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하"), prevX(0.0f), prevY(0.0f), m_sceneNum(0)
@@ -9,7 +8,7 @@ Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마
 }
 
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
-	Ccharacter(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하")
+	Cunit(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하")
 {
 	
 }
@@ -49,8 +48,8 @@ HRESULT Cmario::init()
 	setX(m_x);
 	setY(m_y);
 	setisFight(false);
-
-	initAI(this, CHARACTER_TYPE::PLAYER);
+	m_FSM = new CFSMController;
+	m_FSM->initState(this, CHARACTER_TYPE::PLAYER);
 	return S_OK;
 }
 
@@ -60,14 +59,15 @@ void Cmario::release()
 
 void Cmario::update()
 {
-	if (getstate() == STATE_TYPE::IDLE || getstate() == STATE_TYPE::MOVE)
+	if (m_FSM->getstate() == STATE_TYPE::IDLE || m_FSM->getstate() == STATE_TYPE::MOVE)
 	{
 		move();
 		animation();
 	}
+	
 	m_rc = RectMakeCenter(getX(), getY(), IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
 
-	updateAI();
+	m_FSM->updateState();
 }
 
 void Cmario::render()

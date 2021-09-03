@@ -28,6 +28,7 @@ void CplayerManager::release()
 void CplayerManager::update()
 {
     m_mario->update();
+    
     isMyTurn();
 }
 
@@ -40,7 +41,7 @@ void CplayerManager::attack()
 {
 }
 
-void CplayerManager::run()
+void CplayerManager::move()
 {
 }
 

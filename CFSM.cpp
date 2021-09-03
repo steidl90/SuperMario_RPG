@@ -2,7 +2,11 @@
 #include "CFSM.h"
 #include "Cstate.h"
 
-CFSM::CFSM(Ccharacter* character) :m_character(character)
+CFSM::CFSM()
+{
+}
+
+CFSM::CFSM(Cunit* unit) :m_unit(unit), m_curState()
 {
 }
 

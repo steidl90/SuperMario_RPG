@@ -22,18 +22,19 @@ protected:
 	RECT m_rc;
 	float m_x, m_y;
 	bool isFight;
+
 public:
 	Cunit();
 	Cunit(float x, float y, RECT rc, stats stats);
-	~Cunit();
+	~Cunit() = default;
 
-	virtual HRESULT init();
-	virtual void release();
-	virtual void update();
-	virtual void render();
+	virtual HRESULT init() = 0;
+	virtual void release() = 0;
+	virtual void update() = 0;
+	virtual void render() = 0;
 
 	virtual void attack() = 0;
-	virtual void run() = 0;
+	virtual void move() = 0;
 
 	//================ get ================//
 	int getAtk() { return m_stats.atk; }
@@ -48,6 +49,7 @@ public:
 	float getSpeed() { return m_stats.speed; }
 	float getX() { return m_x; }
 	float getY() { return m_y; }
+	RECT getRect() { return m_rc; }
 	bool getisFight() { return isFight; }
 
 	//================ set ================//
@@ -63,6 +65,7 @@ public:
 	void setSpeed(float speed) { m_stats.speed = speed; }
 	void setX(float x) { m_x = x; }
 	void setY(float y) { m_y = y; }
+	void setRect(RECT rc) { m_rc = rc; }
 	void setisFight(bool fight) { isFight = fight; }
 };
 

@@ -7,9 +7,7 @@ private:
 
 	Cmonster* m_monster;
 
-	vector<Cmonster*> vGoomBaMonster;
-	vector<Cmonster*> vSkyTroopaMonster;
-	vector<Cmonster*> vSpikeyMonster;
+	vector<Cmonster*> vMonster;
 	vector<Cmonster*>::iterator viMonster;
 
 public:

@@ -9,11 +9,11 @@ private:
 public:
 	virtual HRESULT init();
 	virtual void release();
-	virtual void updata();
+	virtual void update();
 	virtual void render();
 
 	virtual void attack();
-	virtual void run();
+	virtual void move();
 
 private:
 	animation* m_ani;

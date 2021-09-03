@@ -11,7 +11,7 @@ Cpeach::~Cpeach()
 
 HRESULT Cpeach::init()
 {
-    return E_NOTIMPL;
+    return S_OK;
 }
 
 void Cpeach::release()
@@ -26,7 +26,7 @@ void Cpeach::render()
 {
 }
 
-void Cpeach::run()
+void Cpeach::move()
 {
 }
 

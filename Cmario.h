@@ -1,6 +1,7 @@
 #pragma once
-#include "Ccharacter.h"
-class Cmario :public Ccharacter
+#include "Cunit.h"
+#include "CFSMController.h"
+class Cmario :public Cunit
 {
 private:
 	MOVE_TYPE direction;
@@ -13,6 +14,8 @@ private:
 	float prevX;
 	float prevY;
 
+	CFSMController* m_FSM;
+
 public:
 	Cmario();
 	Cmario(float x, float y, RECT rc, stats stats);
@@ -23,11 +26,11 @@ public:
 	void update();
 	void render();
 
-	void move();
+	void run();
 	void animation();
 	void pixelCollision();
 
-	virtual void run();
+	virtual void move();
 	virtual void attack();
 	void item();
 	void special();

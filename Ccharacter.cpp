@@ -23,6 +23,18 @@ HRESULT Ccharacter::init()
     return S_OK;
 }
 
+void Ccharacter::release()
+{
+}
+
+void Ccharacter::update()
+{
+}
+
+void Ccharacter::render()
+{
+}
+
 void Ccharacter::initAI(Ccharacter* character, CHARACTER_TYPE type)
 {
     m_AI = new CFSM(character);
