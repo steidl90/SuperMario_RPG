@@ -2,7 +2,7 @@
 #include "CFSMController.h"
 #include "CFSM.h"
 #include "CmarioState.h"
-#include "CgoombaState.h"
+#include "CmonsterWorldState.h"
 
 CFSMController::CFSMController() :m_AI(nullptr)
 {
@@ -14,19 +14,21 @@ void CFSMController::initState(Cunit* unit, CHARACTER_TYPE type)
 
 	switch (type)
 	{
-	case CHARACTER_TYPE::PLAYER:
+	case CHARACTER_TYPE::PLAYER_WORLD:
 		m_AI->addState(new player_Idle);
 		m_AI->addState(new player_Move);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
-	case CHARACTER_TYPE::GOOMBA:
-		m_AI->addState(new goomba_Idle);
-		m_AI->addState(new goomba_Move);
+
+	case CHARACTER_TYPE::GOOMBA_WORLD:
+	case CHARACTER_TYPE::SKYTROOPA_WORLD:
+	case CHARACTER_TYPE::SPIKEY_WORLD:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Die);
 		m_AI->setState(STATE_TYPE::IDLE);
-		break;
-	case CHARACTER_TYPE::SKYTROOPA:
-		break;
-	case CHARACTER_TYPE::SPIKEY:
 		break;
 	default:
 		break;

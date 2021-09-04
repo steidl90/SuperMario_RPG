@@ -1,8 +1,9 @@
 #include "framework.h"
 #include "CmonsterWorldState.h"
 
-monster_Idle::monster_Idle()
+monster_Idle::monster_Idle() :m_timer(TIME->getWorldTime())
 {
+	m_eState = STATE_TYPE::IDLE;
 }
 
 monster_Idle::~monster_Idle()
@@ -11,30 +12,41 @@ monster_Idle::~monster_Idle()
 
 void monster_Idle::update()
 {
+	if (m_timer + 1 < TIME->getWorldTime())
+	{
+		m_FSM->changeState(STATE_TYPE::MOVE);
+	}
 }
 
 void monster_Idle::Enter()
 {
+	m_timer = TIME->getWorldTime();
+
 }
 
 void monster_Idle::Exit()
 {
 }
 
-monster_Move::monster_Move()
+monster_Move::monster_Move() :m_timer(TIME->getWorldTime())
 {
+	m_eState = STATE_TYPE::MOVE;
 }
 
 monster_Move::~monster_Move()
-{
-}
+{}
 
 void monster_Move::update()
 {
+	if (m_timer + 10 < TIME->getWorldTime())
+	{
+		m_FSM->changeState(STATE_TYPE::IDLE);
+	}
 }
 
 void monster_Move::Enter()
 {
+	m_timer = TIME->getWorldTime();
 }
 
 void monster_Move::Exit()

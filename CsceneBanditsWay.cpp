@@ -34,14 +34,14 @@ HRESULT CsceneBanditsWay::init()
 
     for (int i = 0; i < 2; i++)
     {
-        m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA, 580 + (i * 250), 680 - (i * 100));
+        m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_WORLD, 580 + (i * 250), 680 - (i * 100));
     }
 
-    m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA, 400, 380);
+    m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_WORLD, 400, 380);
 
     for (int i = 0; i < 2; i++)
     {
-        m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY, 900 - (i * 500), 830 - (i * 70));
+        m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_WORLD, 900 - (i * 500), 830 - (i * 70));
     }
 
     m_monsterM->init();

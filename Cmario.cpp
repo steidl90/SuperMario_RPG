@@ -49,7 +49,7 @@ HRESULT Cmario::init()
 	setY(m_y);
 	setisFight(false);
 	m_FSM = new CFSMController;
-	m_FSM->initState(this, CHARACTER_TYPE::PLAYER);
+	m_FSM->initState(this, CHARACTER_TYPE::PLAYER_WORLD);
 	return S_OK;
 }
 
