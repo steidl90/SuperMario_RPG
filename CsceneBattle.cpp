@@ -24,7 +24,6 @@ HRESULT CsceneBattle::init()
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
     m_monsterM->setPlayerMemory(m_playerM->getMario());
-
     m_monsterM->init();
 
     return S_OK;
@@ -32,6 +31,9 @@ HRESULT CsceneBattle::init()
 
 void CsceneBattle::release()
 {
+    SAFE_DELETE(m_battle);
+    SAFE_DELETE(m_playerM);
+    SAFE_DELETE(m_monsterM);
 }
 
 void CsceneBattle::update()

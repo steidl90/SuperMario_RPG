@@ -16,7 +16,6 @@ void monster_Idle::update()
 	{
 		m_FSM->changeState(STATE_TYPE::MOVE);
 	}
-	
 	if (IntersectRect(&temp, &m_FSM->getUnit()->getRect(), m_FSM->getPlayer()->getRect()))
 	{
 		m_FSM->getPlayer()->setisFight(true);

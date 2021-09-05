@@ -105,30 +105,5 @@ void CsceneBanditsWay::scenechange()
             m_playerM->getMario()->getisFight());
         SCENE->changeScene("마을");
     }
-
-    /*for (m_viMonster = m_monsterM->getVecMonster().begin(); m_viMonster != m_monsterM->getVecMonster().end(); ++m_viMonster)
-    {
-        if((*m_viMonster)->)
-    }
-
-        m_playerM->getMario()->setSceneNum(0b0000);
-        m_playerM->getMario()->setBeforeSceneNum(0b0010);
-        PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
-            m_playerM->getMario()->getDef(),
-            m_playerM->getMario()->getHp(),
-            m_playerM->getMario()->getMaxHp(),
-            m_playerM->getMario()->getMp(),
-            m_playerM->getMario()->getMaxMp(),
-            m_playerM->getMario()->getLv(),
-            m_playerM->getMario()->getExp(),
-            m_playerM->getMario()->getGold(),
-            m_playerM->getMario()->getSpeed(),
-            m_playerM->getMario()->getX(),
-            m_playerM->getMario()->getY(),
-            m_playerM->getMario()->getSceneNum(),
-            m_playerM->getMario()->getBeforeSceneNum(),
-            m_playerM->getMario()->getisFight());
-        SCENE->changeScene("배틀맵");
-    }*/
 }
 

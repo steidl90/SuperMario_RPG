@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CmonsterWorld.h"
 #include "CFSM.h"
+#include "Cmario.h"
 
 CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
@@ -37,7 +38,10 @@ HRESULT CmonsterWorld::init()
 		setSpikeyStats();
 		break;
 	}
-	
+	m_FSM = new CFSMController;
+	m_FSM->initState(this, CHARACTER_TYPE::MONSTER_WORLD);
+	m_FSM->getAI()->setPlayerMemory(m_player);
+
 	m_startX = m_x;
 	m_startY = m_y;
 	return S_OK;
@@ -45,11 +49,13 @@ HRESULT CmonsterWorld::init()
 
 void CmonsterWorld::release()
 {
+	SAFE_DELETE(m_FSM);
 }
 
 void CmonsterWorld::update()
 {
-	move();
+	if (m_FSM->getstate() == STATE_TYPE::MOVE)move();
+	m_FSM->updateState();
 }
 
 void CmonsterWorld::render()
