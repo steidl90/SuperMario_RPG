@@ -10,12 +10,11 @@ HRESULT mainGame::init()
 {
 	gameNode::init(true);
 
-
 	SCENE->addScene("마을", new CsceneTown);
 	SCENE->addScene("마리오의집", new CsceneMarioHouse);
 	SCENE->addScene("도둑로드", new CsceneBanditsWay);
+	SCENE->addScene("배틀맵", new CsceneBattle);
 	SCENE->changeScene("도둑로드");
-
 
 	return S_OK;
 }

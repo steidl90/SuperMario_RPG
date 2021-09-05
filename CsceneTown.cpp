@@ -26,6 +26,7 @@ HRESULT CsceneTown::init()
 	m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
 	m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
 	m_playerM->getMario()->setBeforeSceneNum(PLAYERDATA->getBeforeSceneNum());
+	m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
 	if (m_playerM->getMario()->getBeforeSceneNum() == 0b0001)
 	{
@@ -91,7 +92,8 @@ void CsceneTown::scenechange()
 			m_playerM->getMario()->getX(),
 			m_playerM->getMario()->getY(),
 			m_playerM->getMario()->getSceneNum(),
-			m_playerM->getMario()->getBeforeSceneNum());
+			m_playerM->getMario()->getBeforeSceneNum(),
+			m_playerM->getMario()->getisFight());
 		SCENE->changeScene("마리오의집");
 	}
 
@@ -111,7 +113,8 @@ void CsceneTown::scenechange()
 			m_playerM->getMario()->getX(),
 			m_playerM->getMario()->getY(),
 			m_playerM->getMario()->getSceneNum(),
-			m_playerM->getMario()->getBeforeSceneNum());
+			m_playerM->getMario()->getBeforeSceneNum(),
+			m_playerM->getMario()->getisFight());
 		SCENE->changeScene("도둑로드");
 	}
 }

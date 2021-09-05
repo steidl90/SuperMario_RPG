@@ -1,22 +1,22 @@
 #pragma once
 #include "Cunit.h"
 #include "Cmario.h"
+#include "CmarioBattle.h"
 #include "Cpeach.h"
 #include "Cbowser.h"
-#include "Ccommand.h"
-#include "Cinvoker.h"
+#include "CFSMController.h"
 class CplayerManager :public Cunit
 {
 private:
 	Cmario* m_mario;
+	CmarioBattle* m_marioBattle;
 	Cpeach* m_peach;
 	Cbowser* m_bowser;
+	CFSMController* m_FSM;
 
-	Cinvoker* m_button;
-	Ccommand* m_command;
 public:
 	CplayerManager();
-	~CplayerManager();
+	~CplayerManager() = default;
 
 	HRESULT init();
 	void release();

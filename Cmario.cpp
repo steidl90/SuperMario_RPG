@@ -59,15 +59,11 @@ void Cmario::release()
 
 void Cmario::update()
 {
-	if (m_FSM->getstate() == STATE_TYPE::IDLE || m_FSM->getstate() == STATE_TYPE::MOVE)
-	{
-		move();
-		animation();
-	}
+	move();
+	animation();
 	
 	m_rc = RectMakeCenter(getX(), getY(), IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
 
-	m_FSM->updateState();
 }
 
 void Cmario::render()

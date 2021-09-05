@@ -44,5 +44,5 @@ public:
 	int getBeforeSceneNum() { return m_beforeSceneNum; }
 	void setBeforeSceneNum(int num) { m_beforeSceneNum = num; }
 
-	bool getisFight() { return isFight; }
+	//bool getisFight() { return isFight; }
 };

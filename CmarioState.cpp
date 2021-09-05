@@ -1,7 +1,8 @@
 #include "framework.h"
 #include "CmarioState.h"
+#include "CplayerManager.h"
 
-player_Idle::player_Idle() //처음 상태
+player_Idle::player_Idle() :temp(RectMake(0, 0, 0, 0))
 {
 	m_eState = STATE_TYPE::IDLE;
 }
@@ -16,6 +17,11 @@ void player_Idle::update()
 		InputManager->isStayKeyDown(VK_DOWN))
 	{
 		m_FSM->changeState(STATE_TYPE::MOVE);
+	}
+	
+	if (m_FSM->getUnit()->getisFight())
+	{
+		m_FSM->changeState(STATE_TYPE::BATTLE);
 	}
 }
 
@@ -42,6 +48,11 @@ void player_Move::update()
 	{
 		m_FSM->changeState(STATE_TYPE::IDLE);
 	}
+
+	if (m_FSM->getUnit()->getisFight())
+	{
+		m_FSM->changeState(STATE_TYPE::BATTLE);
+	}
 }
 
 void player_Move::Enter()
@@ -51,45 +62,46 @@ void player_Move::Enter()
 void player_Move::Exit()
 {
 }
-//
-//player_Atk::player_Atk()
-//{
-//	m_eState = STATE_TYPE::ATTACK;
-//}
-//
-//player_Atk::~player_Atk()
-//{
-//}
-//
-//void player_Atk::update()
-//{
-//}
-//
-//void player_Atk::Enter()
-//{
-//}
-//
-//void player_Atk::Exit()
-//{
-//}
-//
-//player_Die::player_Die()
-//{
-//	m_eState = STATE_TYPE::DEAD;
-//}
-//
-//player_Die::~player_Die()
-//{
-//}
-//
-//void player_Die::update()
-//{
-//}
-//
-//void player_Die::Enter()
-//{
-//}
-//
-//void player_Die::Exit()
-//{
-//}
+
+
+player_Battle::player_Battle()
+{
+	m_eState = STATE_TYPE::BATTLE;
+}
+
+player_Battle::~player_Battle()
+{
+}
+
+void player_Battle::update()
+{
+
+}
+
+void player_Battle::Enter()
+{
+}
+
+void player_Battle::Exit()
+{
+}
+
+player_Die::player_Die()
+{
+}
+
+player_Die::~player_Die()
+{
+}
+
+void player_Die::update()
+{
+}
+
+void player_Die::Enter()
+{
+}
+
+void player_Die::Exit()
+{
+}

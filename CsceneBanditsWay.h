@@ -11,6 +11,7 @@ private:
 	CplayerManager* m_playerM;
 	CmonsterManager* m_monsterM;
 	
+	vector<Cmonster*>::iterator m_viMonster;
 private:
 	RECT m_door;
 

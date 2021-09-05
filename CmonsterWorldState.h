@@ -1,9 +1,11 @@
 #pragma once
 #include "Cstate.h"
+class CmonsterManager;
 class monster_Idle :public Cstate
 {
 private:
 	int m_timer;
+	RECT temp;
 public:
 	monster_Idle();
 	~monster_Idle();
@@ -16,6 +18,7 @@ class monster_Move :public Cstate
 {
 private:
 	int m_timer;
+	RECT temp;
 public:
 	monster_Move();
 	~monster_Move();
@@ -28,6 +31,7 @@ class monster_Trace :public Cstate
 {
 private:
 	int m_timer;
+	RECT temp;
 public:
 	monster_Trace();
 	~monster_Trace();

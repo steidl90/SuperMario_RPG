@@ -1,6 +1,8 @@
 #pragma once
 #include "Cmonster.h"
 #include "CFSMController.h"
+
+class Cmario;
 class CmonsterWorld :public Cmonster
 {
 private:
@@ -8,11 +10,11 @@ private:
 	CHARACTER_TYPE m_type;
 	CFSMController* m_FSM;
 	MONSTER_MOVE_TYPE m_moveType;
+	Cmario* m_player;
 
-	float m_startX, m_startY;
-	float m_pos;
 public:
 	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type);
+	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, Cmario* player);
 	virtual ~CmonsterWorld() = default;
 
 	virtual HRESULT init();
@@ -29,6 +31,11 @@ public:
 	void setSkyTroopbStats();
 	void setSpikeyStats();
 
+	CFSMController* getMonsterFSM() { return m_FSM; }
+
 private:
+	float m_startX, m_startY;
+	float m_pos;
+
 	bool isDirection;
 };

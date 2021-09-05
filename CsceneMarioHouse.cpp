@@ -28,6 +28,7 @@ HRESULT CsceneMarioHouse::init()
     m_playerM->getMario()->setX(500);
     m_playerM->getMario()->setY(500);
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
+    m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
     m_door = RectMake(WINSIZEX / 2 + 80, WINSIZEY + 30, 50, 50);
     return S_OK;
 }
@@ -67,20 +68,21 @@ void CsceneMarioHouse::scenechange()
     {
         m_playerM->getMario()->setSceneNum(0b0000);
         m_playerM->getMario()->setBeforeSceneNum(0b0001);
-        PLAYERDATA->setData(m_playerM->getMario()->getAtk(), 
-            m_playerM->getMario()->getDef(), 
-            m_playerM->getMario()->getHp(), 
-            m_playerM->getMario()->getMaxHp(), 
-            m_playerM->getMario()->getMp(), 
+        PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
+            m_playerM->getMario()->getDef(),
+            m_playerM->getMario()->getHp(),
+            m_playerM->getMario()->getMaxHp(),
+            m_playerM->getMario()->getMp(),
             m_playerM->getMario()->getMaxMp(),
-            m_playerM->getMario()->getLv(), 
-            m_playerM->getMario()->getExp(), 
-            m_playerM->getMario()->getGold(), 
-            m_playerM->getMario()->getSpeed(), 
-            m_playerM->getMario()->getX(), 
-            m_playerM->getMario()->getY(), 
+            m_playerM->getMario()->getLv(),
+            m_playerM->getMario()->getExp(),
+            m_playerM->getMario()->getGold(),
+            m_playerM->getMario()->getSpeed(),
+            m_playerM->getMario()->getX(),
+            m_playerM->getMario()->getY(),
             m_playerM->getMario()->getSceneNum(),
-            m_playerM->getMario()->getBeforeSceneNum());
+            m_playerM->getMario()->getBeforeSceneNum(),
+            m_playerM->getMario()->getisFight());
         SCENE->changeScene("¸¶À»");
     }
 }

@@ -1,12 +1,12 @@
 #include "framework.h"
 #include "CFSM.h"
 #include "Cstate.h"
+#include "Cmario.h"
 
-CFSM::CFSM()
+CFSM::CFSM() :m_unit(nullptr), m_curState(nullptr), m_player(nullptr)
 {
 }
-
-CFSM::CFSM(Cunit* unit) :m_unit(unit), m_curState()
+CFSM::CFSM(Cunit* unit) :m_unit(unit), m_curState(nullptr), m_player(nullptr)
 {
 }
 

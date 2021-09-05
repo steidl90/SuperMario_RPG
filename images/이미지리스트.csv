@@ -19,7 +19,7 @@
 0,images/Mario_Map.bmp,마리오집,1500,1400,0,0,1,255,0,255
 0,images/Mario_Map_Pixel.bmp,마리오집픽셀,1500,1400,0,0,1,255,0,255
 0,images/Mario_Map_Zorder.bmp,마리오집제트오더,1500,1400,0,0,1,255,0,255
-0,images/Battle_Map.bmp,배틀맵1,256,222,0,0,1,255,0,255
+0,images/Battle_Map.bmp,배틀맵1,1024,768,0,0,1,255,0,255
 0,images/Battle_Map2.bmp,배틀맵2,256,222,0,0,1,255,0,255
 0,images/World_Map1.bmp,월드맵1,199,208,0,0,1,255,0,255
 0,images/World_Map2.bmp,월드맵2,199,208,0,0,1,255,0,255

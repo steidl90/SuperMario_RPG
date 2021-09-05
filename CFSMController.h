@@ -16,4 +16,3 @@ public:
 	STATE_TYPE getstate();
 	CFSM* getAI() { return m_AI; }
 };
-

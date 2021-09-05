@@ -29,12 +29,15 @@ HRESULT CsceneBanditsWay::init()
     m_playerM->getMario()->setX(300);
     m_playerM->getMario()->setY(150);
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
+    m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
     m_door = RectMake(220, 60, 50, 50);
 
+    m_monsterM->setPlayerMemory(m_playerM->getMario());
+
     for (int i = 0; i < 2; i++)
     {
-        m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_WORLD, 580 + (i * 250), 680 - (i * 100));
+        m_monsterM->addMonster(CHARACTER_TYPE::MONSTER_WORLD, 580 + (i * 250), 680 - (i * 100));
     }
 
     m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_WORLD, 400, 380);
@@ -45,6 +48,7 @@ HRESULT CsceneBanditsWay::init()
     }
 
     m_monsterM->init();
+
     return S_OK;
 }
 
@@ -97,7 +101,34 @@ void CsceneBanditsWay::scenechange()
             m_playerM->getMario()->getX(),
             m_playerM->getMario()->getY(),
             m_playerM->getMario()->getSceneNum(),
-            m_playerM->getMario()->getBeforeSceneNum());
+            m_playerM->getMario()->getBeforeSceneNum(),
+            m_playerM->getMario()->getisFight());
         SCENE->changeScene("마을");
     }
+
+    /*for (m_viMonster = m_monsterM->getVecMonster().begin(); m_viMonster != m_monsterM->getVecMonster().end(); ++m_viMonster)
+    {
+        if((*m_viMonster)->)
+    }
+
+        m_playerM->getMario()->setSceneNum(0b0000);
+        m_playerM->getMario()->setBeforeSceneNum(0b0010);
+        PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
+            m_playerM->getMario()->getDef(),
+            m_playerM->getMario()->getHp(),
+            m_playerM->getMario()->getMaxHp(),
+            m_playerM->getMario()->getMp(),
+            m_playerM->getMario()->getMaxMp(),
+            m_playerM->getMario()->getLv(),
+            m_playerM->getMario()->getExp(),
+            m_playerM->getMario()->getGold(),
+            m_playerM->getMario()->getSpeed(),
+            m_playerM->getMario()->getX(),
+            m_playerM->getMario()->getY(),
+            m_playerM->getMario()->getSceneNum(),
+            m_playerM->getMario()->getBeforeSceneNum(),
+            m_playerM->getMario()->getisFight());
+        SCENE->changeScene("배틀맵");
+    }*/
 }
+

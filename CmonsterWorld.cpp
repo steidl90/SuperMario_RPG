@@ -1,9 +1,16 @@
 #include "framework.h"
 #include "CmonsterWorld.h"
+#include "CFSM.h"
 
 CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
-m_pos(40.0f), m_startX(NULL), m_startY(NULL)
+m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(nullptr)
+{
+}
+
+CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, Cmario* player) :Cmonster(x, y, rc, stats),
+m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
+m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player)
 {
 }
 
@@ -11,7 +18,7 @@ HRESULT CmonsterWorld::init()
 {
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::GOOMBA_WORLD:
+	case CHARACTER_TYPE::MONSTER_WORLD:
 		m_ani = ANIMATION->findAnimation("±¿πŸ¡¬«œ");
 		ANIMATION->start("±¿πŸ¡¬«œ");
 		m_stats.speed = 1.0f;
@@ -31,8 +38,6 @@ HRESULT CmonsterWorld::init()
 		break;
 	}
 	
-	m_FSM = new CFSMController;
-	m_FSM->initState(this, CHARACTER_TYPE::GOOMBA_WORLD);
 	m_startX = m_x;
 	m_startY = m_y;
 	return S_OK;
@@ -44,15 +49,14 @@ void CmonsterWorld::release()
 
 void CmonsterWorld::update()
 {
-	if (m_FSM->getstate() == STATE_TYPE::MOVE)move();
-	m_FSM->updateState();
+	move();
 }
 
 void CmonsterWorld::render()
 {
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::GOOMBA_WORLD:
+	case CHARACTER_TYPE::MONSTER_WORLD:
 		ZORDER->zorderAniRender(IMAGE->findImage("±¿πŸ¿Ãµø"), ZUNIT, 0, m_x, m_y, m_ani);
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
@@ -66,13 +70,22 @@ void CmonsterWorld::render()
 
 void CmonsterWorld::attack()
 {
+	switch (m_type)
+	{
+	case CHARACTER_TYPE::MONSTER_WORLD:
+		break;
+	case CHARACTER_TYPE::SKYTROOPA_WORLD:
+		break;
+	case CHARACTER_TYPE::SPIKEY_WORLD:
+		break;
+	}
 }
 
 void CmonsterWorld::move()
 {
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::GOOMBA_WORLD:
+	case CHARACTER_TYPE::MONSTER_WORLD:
 		moveAi();
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
