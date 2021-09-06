@@ -71,6 +71,16 @@ void Czorder::zorderAniRender(image* img, float z, float bottom, int destX, int 
 	_vZorder.push_back(_zo);
 }
 
+void Czorder::zorderRectangle(RECT rc, float z)
+{
+	tagZorder _zo(ZORDERKIND::IMG_RECTANGLE, nullptr, z, 0, 0);
+	_zo.bottom = rc.bottom;
+	_zo.rc = rc;
+	_vZorder.push_back(_zo);
+}
+
+
+
 inline void Czorder::zorderSort()
 {
 	stable_sort(_vZorder.begin(), _vZorder.end(), zordorCompare);
@@ -132,6 +142,8 @@ void Czorder::zorderTotalRender(HDC hdc)
 		case ZORDERKIND::IMG_ANI:
 			_vZorder[i].img->aniRender(hdc, _vZorder[i].destX, _vZorder[i].destY, _vZorder[i].ani);
 			break;
+		case ZORDERKIND::IMG_RECTANGLE:
+			Rectangle(hdc, _vZorder[i].rc.left, _vZorder[i].rc.top, _vZorder[i].rc.right, _vZorder[i].rc.bottom);
 		}
 	}
 	//∫§≈Õ√ ±‚»≠

@@ -76,7 +76,7 @@ void CmonsterWorld::render()
 		break;
 	}
 
-	Rectangle(getMemDC(), getRect().left, getRect().top, getRect().right, getRect().bottom);
+	ZORDER->zorderRectangle(m_rc, ZUNIT);
 }
 
 void CmonsterWorld::attack()

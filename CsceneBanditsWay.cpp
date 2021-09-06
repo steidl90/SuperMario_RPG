@@ -79,6 +79,7 @@ void CsceneBanditsWay::render()
     //if (InputManager->isToggleKey(VK_TAB)) ZORDER->zorderRender(IMAGE->findImage("마리오집픽셀"), ZDEBUG, 0, 0, 0);
 
     ZORDER->zorderTotalRender(getMapDC());
+    Rectangle(getMapDC(), m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top, m_playerM->getMarioRect()->right, m_playerM->getMarioRect()->bottom);
 }
 
 void CsceneBanditsWay::scenechange()

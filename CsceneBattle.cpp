@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CsceneBattle.h"
+#include "Cmario.h"
 
 CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager)
 {
@@ -24,6 +25,19 @@ HRESULT CsceneBattle::init()
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
     m_monsterM->setPlayerMemory(m_playerM->getMario());
+
+    for (int i = 0; i < 2; i++)
+    {
+        m_monsterM->addMonster(CHARACTER_TYPE::MONSTER_WORLD, 580 + (i * 250), 680 - (i * 100));
+    }
+
+    m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_WORLD, 400, 380);
+
+    for (int i = 0; i < 2; i++)
+    {
+        m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_WORLD, 900 - (i * 500), 830 - (i * 70));
+    }
+
     m_monsterM->init(m_playerM->getMario());
 
     return S_OK;

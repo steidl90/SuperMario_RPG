@@ -12,6 +12,8 @@ private:
 	Cmario* m_player;
 	CFSMController* m_FSM;
 
+	vector<CFSMController*> m_vFSM;
+	vector<CFSMController*>::iterator m_viFSM;
 	vector<Cmonster*> vMonster;
 	vector<Cmonster*>::iterator viMonster;
 

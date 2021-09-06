@@ -4,8 +4,8 @@
 #include "CFSM.h"
 #include "Cmario.h"
 
-CmonsterManager::CmonsterManager() :m_stats({NULL}), m_monster(nullptr), vMonster(), viMonster(vMonster.begin()), m_player(nullptr),
-m_FSM(new CFSMController)
+CmonsterManager::CmonsterManager() :m_stats({ NULL }), m_monster(nullptr), vMonster(), viMonster(vMonster.begin()), m_player(nullptr),
+m_FSM(new CFSMController), m_vFSM(), m_viFSM(m_vFSM.begin())
 {
 	//memset(&m_stats, 0, sizeof(m_stats));
 }
@@ -31,14 +31,15 @@ HRESULT CmonsterManager::init(Cmario* player)
 
 	m_FSM = new CFSMController;
 	m_player = player;
-
-	for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
+	
+	for (viMonster = vMonster.begin(); viMonster != vMonster.end(); ++viMonster)
 	{
 		(*viMonster)->init();
 		m_FSM->initState((*viMonster), CHARACTER_TYPE::MONSTER_WORLD);
+		m_FSM->getAI()->setPlayerMemory(m_player);
+		m_vFSM.push_back(m_FSM);
 	}
 
-	m_FSM->getAI()->setPlayerMemory(m_player);
 
     return S_OK;
 }
@@ -50,11 +51,14 @@ void CmonsterManager::release()
 
 void CmonsterManager::update()
 {
-	if (m_FSM->getstate()==STATE_TYPE::MOVE)
+	for (m_viFSM = m_vFSM.begin(); m_viFSM != m_vFSM.end(); ++m_viFSM)
 	{
-		for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
+		if ((*m_viFSM)->getstate()==STATE_TYPE::MOVE)
 		{
-			(*viMonster)->update();
+			for (viMonster = vMonster.begin(); viMonster != vMonster.end(); ++viMonster)
+			{
+				(*viMonster)->update();
+			}
 		}
 	}
 	m_FSM->updateState();
@@ -64,7 +68,7 @@ void CmonsterManager::render()
 {
 	if (m_FSM->getstate() == STATE_TYPE::MOVE || m_FSM->getstate() == STATE_TYPE::IDLE)
 	{
-		for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
+		for (viMonster = vMonster.begin(); viMonster != vMonster.end(); ++viMonster)
 		{
 			(*viMonster)->render();
 		}

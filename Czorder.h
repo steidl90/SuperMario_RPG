@@ -4,6 +4,7 @@ class Czorder : public Singleton<Czorder>
 {
 private:
 	vector<tagZorder> _vZorder;
+
 public:
 	Czorder() {}
 	~Czorder() {}
@@ -18,6 +19,9 @@ public:
 	void zorderAlphaRender(image* img, float z, float bottom, int destX, int destY, int sourX, int sourY, int sourWidth, int sourHeight, BYTE alpha);
 	void zorderAlphaFrameRender(image* img, float z, float bottom, int destX, int destY, int frameX, int frameY, BYTE alpha);
 	void zorderAniRender(image* img, float z, float bottom, int destX, int destY, animation* ani);
+
+	void zorderRectangle(RECT rc, float z);
+
 
 	//정렬
 	inline void zorderSort();	//Z부터 X, Y 순서로 정렬
