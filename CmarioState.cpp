@@ -75,7 +75,10 @@ player_Battle::~player_Battle()
 
 void player_Battle::update()
 {
-
+	if (!(m_FSM->getUnit()->getisFight()))
+	{
+		m_FSM->changeState(STATE_TYPE::IDLE);
+	}
 }
 
 void player_Battle::Enter()

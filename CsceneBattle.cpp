@@ -3,12 +3,20 @@
 #include "CsceneBanditsWay.h"
 #include "Cmario.h"
 
-CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager)
+CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager), m_type(CHARACTER_TYPE::GOOMBA_WORLD)
+{
+}
+
+CsceneBattle::~CsceneBattle()
 {
 }
 
 HRESULT CsceneBattle::init()
 {
+    m_battle = new Cbattle;
+    m_playerM = new CplayerManager;
+    m_monsterM = new CmonsterManager;
+
     m_playerM->init();
     m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
     m_playerM->getMario()->setDef(PLAYERDATA->getDef());
@@ -64,8 +72,9 @@ void CsceneBattle::scenechange()
 {
     if (InputManager->isOnceKeyDown(VK_F2))
     {
-        m_playerM->getMario()->setSceneNum(0b0000);
+        m_playerM->getMario()->setSceneNum(0b0010);
         m_playerM->getMario()->setBeforeSceneNum(0b0010);
+        m_playerM->getMario()->setisFight(false);
         PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
             m_playerM->getMario()->getDef(),
             m_playerM->getMario()->getHp(),
@@ -89,25 +98,31 @@ void CsceneBattle::setMonsterType()
 {
     CsceneBanditsWay* scene = dynamic_cast<CsceneBanditsWay*>(SCENE->Find("µµµÏ·Îµå"));
 
-    if (scene->getMonsterManager()->getType() == CHARACTER_TYPE::GOOMBA_WORLD)
+    m_type = scene->getMonsterManager()->getType();
+
+    scene->release();
+
+    if (m_type == CHARACTER_TYPE::GOOMBA_WORLD)
     {
         for (int i = 0; i < 3; i++)
         {
             m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_BATTLE, 580 + (i * 120), 300 + (i * 100));
         }
     }
-    else if (scene->getMonsterManager()->getType() == CHARACTER_TYPE::SKYTROOPA_WORLD)
+    else if (m_type == CHARACTER_TYPE::SKYTROOPA_WORLD)
     {
         for (int i = 0; i < 3; i++)
         {
             m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_BATTLE, 580 + (i * 120), 300 + (i * 100));
         }
     }
-    else if (scene->getMonsterManager()->getType() == CHARACTER_TYPE::SPIKEY_WORLD)
+    else if (m_type == CHARACTER_TYPE::SPIKEY_WORLD)
     {
         for (int i = 0; i < 3; i++)
         {
             m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_BATTLE, 580 + (i * 120), 300 + (i * 100));
         }
     }
+
+
 }

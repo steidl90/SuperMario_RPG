@@ -2,7 +2,6 @@
 #include "CmonsterWorldState.h"
 #include "CmonsterManager.h"
 #include "CmonsterFactory.h"
-//#include "CmonsterWorld.h"
 
 monster_Idle::monster_Idle() :m_timer(TIME->getWorldTime()), temp(RectMake(0, 0, 0, 0))
 {
@@ -116,25 +115,24 @@ monster_Battle::~monster_Battle()
 
 void monster_Battle::update()
 {
-	PLAYERDATA->setData(m_FSM->getPlayer()->getAtk(),
-		m_FSM->getPlayer()->getDef(),
-		m_FSM->getPlayer()->getHp(),
-		m_FSM->getPlayer()->getMaxHp(),
-		m_FSM->getPlayer()->getMp(),
-		m_FSM->getPlayer()->getMaxMp(),
-		m_FSM->getPlayer()->getLv(),
-		m_FSM->getPlayer()->getExp(),
-		m_FSM->getPlayer()->getGold(),
-		m_FSM->getPlayer()->getSpeed(),
-		m_FSM->getPlayer()->getX(),
-		m_FSM->getPlayer()->getY(),
-		m_FSM->getPlayer()->getSceneNum(),
-		m_FSM->getPlayer()->getBeforeSceneNum(),
-		m_FSM->getPlayer()->getisFight());
-	//dynamic_cast<CmonsterFactory*>(m_FSM->getUnit())->deleteMonster();
-	//dynamic_cast<CmonsterManager*>(*((m_FSM->getUnit())->getVecMonster())->clear();
-	dynamic_cast<CmonsterManager*>(m_FSM->getUnit())->vecClear();
-	SCENE->changeBattleScene("πË∆≤∏ ");
+	m_FSM->changeState(STATE_TYPE::IDLE);
+	//PLAYERDATA->setData(m_FSM->getPlayer()->getAtk(),
+	//	m_FSM->getPlayer()->getDef(),
+	//	m_FSM->getPlayer()->getHp(),
+	//	m_FSM->getPlayer()->getMaxHp(),
+	//	m_FSM->getPlayer()->getMp(),
+	//	m_FSM->getPlayer()->getMaxMp(),
+	//	m_FSM->getPlayer()->getLv(),
+	//	m_FSM->getPlayer()->getExp(),
+	//	m_FSM->getPlayer()->getGold(),
+	//	m_FSM->getPlayer()->getSpeed(),
+	//	m_FSM->getPlayer()->getX(),
+	//	m_FSM->getPlayer()->getY(),
+	//	m_FSM->getPlayer()->getSceneNum(),
+	//	m_FSM->getPlayer()->getBeforeSceneNum(),
+	//	m_FSM->getPlayer()->getisFight());
+	////m_monsterM->vecClear();
+	//SCENE->changeBattleScene("πË∆≤∏ ");
 }
 
 void monster_Battle::Enter()

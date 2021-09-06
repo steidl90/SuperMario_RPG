@@ -29,7 +29,32 @@ void CFSMController::initState(Cunit* unit, CHARACTER_TYPE type)
 		m_AI->addState(new monster_Die);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
+	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Die);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Die);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Die);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
 	}
+		
 }
 
 void CFSMController::updateState()

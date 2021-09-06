@@ -41,16 +41,10 @@ HRESULT CmonsterManager::init(Cmario* player)
 	m_stats.maxHp = m_stats.hp = 30;
 	m_stats.maxMp = m_stats.mp = 10;
 	m_stats.gold = 10;
-
-	/*m_FSM = new CFSMController;
-	m_player = player;*/
 	
 	for (viMonster = vMonster.begin(); viMonster != vMonster.end(); ++viMonster)
 	{
 		(*viMonster)->init();
-		/*m_FSM->initState((*viMonster), CHARACTER_TYPE::MONSTER_WORLD);
-		m_FSM->getAI()->setPlayerMemory(m_player);
-		m_vFSM.push_back(m_FSM);*/
 	}
 
     return S_OK;
@@ -58,7 +52,7 @@ HRESULT CmonsterManager::init(Cmario* player)
 
 void CmonsterManager::release()
 {
-	//SAFE_DELETE(m_FSM);
+
 }
 
 void CmonsterManager::update()

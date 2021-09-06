@@ -9,9 +9,10 @@ private:
 	Cbattle* m_battle;
 	CplayerManager* m_playerM;
 	CmonsterManager* m_monsterM;
+	CHARACTER_TYPE m_type;
 public:
 	CsceneBattle();
-	~CsceneBattle() = default;
+	~CsceneBattle();
 
 	HRESULT init();
 	void release();

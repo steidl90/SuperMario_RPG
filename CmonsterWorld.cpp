@@ -79,7 +79,9 @@ void CmonsterWorld::release()
 
 void CmonsterWorld::update()
 {
-	if (m_FSM->getstate() == STATE_TYPE::MOVE)move();
+	if (m_FSM->getstate() == STATE_TYPE::MOVE)
+		move();
+
 	m_FSM->updateState();
 }
 

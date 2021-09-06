@@ -1,5 +1,6 @@
 #include "framework.h"
 #include "CsceneBanditsWay.h"
+#include "CmonsterWorld.h"
 
 CsceneBanditsWay::CsceneBanditsWay()
     : m_banditsWay(new CbanditsWay), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0)), m_monsterM(new CmonsterManager),
@@ -9,13 +10,15 @@ CsceneBanditsWay::CsceneBanditsWay()
 
 CsceneBanditsWay::~CsceneBanditsWay()
 {
-    SAFE_DELETE(m_banditsWay);
-    SAFE_DELETE(m_playerM);
-    SAFE_DELETE(m_monsterM);
+    
 }
 
 HRESULT CsceneBanditsWay::init()
 {
+    m_banditsWay = new CbanditsWay;
+    m_playerM = new CplayerManager;
+    m_monsterM = new CmonsterManager;
+
     m_playerM->init();
     m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
     m_playerM->getMario()->setDef(PLAYERDATA->getDef());
@@ -57,6 +60,9 @@ HRESULT CsceneBanditsWay::init()
 
 void CsceneBanditsWay::release()
 {
+    SAFE_DELETE(m_banditsWay);
+    SAFE_DELETE(m_playerM);
+    SAFE_DELETE(m_monsterM);
 }
 
 void CsceneBanditsWay::update()
@@ -81,13 +87,41 @@ void CsceneBanditsWay::render()
     //Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
     //if (InputManager->isToggleKey(VK_TAB)) ZORDER->zorderRender(IMAGE->findImage("마리오집픽셀"), ZDEBUG, 0, 0, 0);
 
+    ZORDER->zorderRectangle(*m_playerM->getMarioRect(), 1);
+    ZORDER->zorderRectangle(m_door, 1);
     ZORDER->zorderTotalRender(getMapDC());
-    Rectangle(getMapDC(), m_playerM->getMarioRect()->left, m_playerM->getMarioRect()->top, m_playerM->getMarioRect()->right, m_playerM->getMarioRect()->bottom);
 }
 
 void CsceneBanditsWay::scenechange()
 {
     RECT temp;
+    for (m_viMonster = m_monsterM->getVecMonster()->begin(); m_viMonster != m_monsterM->getVecMonster()->end(); ++m_viMonster)
+    {
+        if (dynamic_cast<CmonsterWorld*>(*m_viMonster)->getMonsterFSM()->getstate() == STATE_TYPE::BATTLE)
+        {
+            m_playerM->getMario()->setSceneNum(0b0000);
+            m_playerM->getMario()->setBeforeSceneNum(0b0010);
+            PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
+                m_playerM->getMario()->getDef(),
+                m_playerM->getMario()->getHp(),
+                m_playerM->getMario()->getMaxHp(),
+                m_playerM->getMario()->getMp(),
+                m_playerM->getMario()->getMaxMp(),
+                m_playerM->getMario()->getLv(),
+                m_playerM->getMario()->getExp(),
+                m_playerM->getMario()->getGold(),
+                m_playerM->getMario()->getSpeed(),
+                m_playerM->getMario()->getX(),
+                m_playerM->getMario()->getY(),
+                m_playerM->getMario()->getSceneNum(),
+                m_playerM->getMario()->getBeforeSceneNum(),
+                m_playerM->getMario()->getisFight());
+            m_monsterM->vecClear();
+            SCENE->changeBattleScene("배틀맵");
+            return;
+        }
+    }
+
     if (IntersectRect(&temp, m_playerM->getMarioRect(), &m_door))
     {
         m_playerM->getMario()->setSceneNum(0b0000);
@@ -107,6 +141,7 @@ void CsceneBanditsWay::scenechange()
             m_playerM->getMario()->getSceneNum(),
             m_playerM->getMario()->getBeforeSceneNum(),
             m_playerM->getMario()->getisFight());
+        m_monsterM->vecClear();
         SCENE->changeScene("마을");
     }
 }

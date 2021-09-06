@@ -44,6 +44,7 @@ class monster_Battle :public Cstate
 {
 private:
 	int m_timer;
+	CmonsterManager* m_monsterM;
 public:
 	monster_Battle();
 	~monster_Battle();
