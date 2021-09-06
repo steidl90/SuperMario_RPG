@@ -21,6 +21,7 @@ public:
 	virtual void release();
 	virtual void update();
 	virtual void render();
+	virtual void render(MONSTER_TYPE type);
 
 	virtual void attack();
 	virtual void move();
@@ -32,7 +33,7 @@ public:
 	void setSpikeyStats();
 
 	CFSMController* getMonsterFSM() { return m_FSM; }
-
+	CHARACTER_TYPE getMonsterType() { return m_type; }
 private:
 	float m_startX, m_startY;
 	float m_pos;

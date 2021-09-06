@@ -1,6 +1,8 @@
 #include "framework.h"
 #include "CmonsterWorldState.h"
 #include "CmonsterManager.h"
+#include "CmonsterFactory.h"
+//#include "CmonsterWorld.h"
 
 monster_Idle::monster_Idle() :m_timer(TIME->getWorldTime()), temp(RectMake(0, 0, 0, 0))
 {
@@ -129,7 +131,10 @@ void monster_Battle::update()
 		m_FSM->getPlayer()->getSceneNum(),
 		m_FSM->getPlayer()->getBeforeSceneNum(),
 		m_FSM->getPlayer()->getisFight());
-	SCENE->changeScene("πË∆≤∏ ");
+	//dynamic_cast<CmonsterFactory*>(m_FSM->getUnit())->deleteMonster();
+	//dynamic_cast<CmonsterManager*>(*((m_FSM->getUnit())->getVecMonster())->clear();
+	dynamic_cast<CmonsterManager*>(m_FSM->getUnit())->vecClear();
+	SCENE->changeBattleScene("πË∆≤∏ ");
 }
 
 void monster_Battle::Enter()

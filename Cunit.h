@@ -22,6 +22,8 @@ protected:
 	RECT m_rc;
 	float m_x, m_y;
 	bool isFight;
+	MONSTER_TYPE m_unitType;
+	CHARACTER_TYPE m_type;
 
 public:
 	Cunit();
@@ -50,6 +52,7 @@ public:
 	float getX() { return m_x; }
 	float getY() { return m_y; }
 	RECT getRect() { return m_rc; }
+	//CHARACTER_TYPE getCharacterType() { return m_type; }
 	bool getisFight() { return isFight; }
 
 	//================ set ================//
@@ -66,6 +69,7 @@ public:
 	void setX(float x) { m_x = x; }
 	void setY(float y) { m_y = y; }
 	void setRect(RECT rc) { m_rc = rc; }
+	//void setCharacterType(CHARACTER_TYPE type) { m_type = type; }
 	void setisFight(bool fight) { isFight = fight; }
 };
 

@@ -11,6 +11,8 @@ private:
 	CplayerManager* m_playerM;
 	CmonsterManager* m_monsterM;
 	
+	CHARACTER_TYPE m_monsterType;
+
 	vector<Cmonster*>::iterator m_viMonster;
 private:
 	RECT m_door;
@@ -25,4 +27,6 @@ public:
 	void render();
 
 	void scenechange();
+
+	CmonsterManager* getMonsterManager() { return m_monsterM; }
 };

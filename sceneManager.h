@@ -14,6 +14,7 @@ private:
 	static gameNode* _currentScene;
 	sceneList _sceneList;
 
+	isceneList find;
 public:
 	sceneManager();
 	~sceneManager();
@@ -25,4 +26,9 @@ public:
 
 	gameNode* addScene(string sceneName, gameNode* scene);
 	HRESULT changeScene(string sceneName);
+	HRESULT changeBattleScene(string sceneName);
+
+	gameNode* Find(string findDate);
+
+	
 };

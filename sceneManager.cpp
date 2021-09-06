@@ -82,3 +82,29 @@ HRESULT sceneManager::changeScene(string sceneName)
 		return S_OK;
 	}
 }
+
+HRESULT sceneManager::changeBattleScene(string sceneName)
+{
+	// 찾아서 바꿈
+
+	isceneList find = _sceneList.find(sceneName);
+
+	// 못찾으면 E_FAIL
+	if (find == _sceneList.end()) return E_FAIL;
+
+	// 바꾸려는 씬이 현재 씬이랑 같아도 FAIL
+	if (find->second == _currentScene) return E_FAIL;
+
+	// 여기까지 왔다면 문제가 없다, 즉 씬을 초기화 하고 변경
+	if (SUCCEEDED(find->second->init()))
+	{
+		_currentScene = find->second;
+		return S_OK;
+	}
+}
+
+gameNode* sceneManager::Find(string findDate)
+{
+	isceneList find = _sceneList.find(findDate);
+	return find->second;
+}

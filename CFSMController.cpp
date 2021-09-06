@@ -21,7 +21,7 @@ void CFSMController::initState(Cunit* unit, CHARACTER_TYPE type)
 		m_AI->addState(new player_Die);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
-	case CHARACTER_TYPE::MONSTER_WORLD:
+	case CHARACTER_TYPE::GOOMBA_WORLD:
 		m_AI->addState(new monster_Idle);
 		m_AI->addState(new monster_Move);
 		m_AI->addState(new monster_Trace);

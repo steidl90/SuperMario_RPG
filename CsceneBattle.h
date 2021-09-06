@@ -19,4 +19,6 @@ public:
 	void render();
 
 	void scenechange();
+
+	void setMonsterType();
 };

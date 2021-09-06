@@ -2,6 +2,7 @@
 #include "CmonsterWorld.h"
 #include "CFSM.h"
 #include "Cmario.h"
+#include "Cunit.h"
 
 CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
@@ -17,9 +18,10 @@ m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player)
 
 HRESULT CmonsterWorld::init()
 {
+	m_unitType = MONSTER_TYPE::WORLD;
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::MONSTER_WORLD:
+	case CHARACTER_TYPE::GOOMBA_WORLD:
 		m_ani = ANIMATION->findAnimation("±À¹ÙÁÂÇÏ");
 		ANIMATION->start("±À¹ÙÁÂÇÏ");
 		m_rc = RectMake(m_x, m_y, IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameWidth(), IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameHeight());
@@ -40,10 +42,30 @@ HRESULT CmonsterWorld::init()
 		m_stats.speed = 1.25f;
 		setSpikeyStats();
 		break;
+///////////////////////////////////////////////////////////////
+///////////////////////////////////////////////////////////////
+	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		m_ani = ANIMATION->findAnimation("±À¹ÙÁÂÇÏ");
+		ANIMATION->start("±À¹ÙÁÂÇÏ");
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameWidth(), IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameHeight());
+		setGoombaStats();
+		break;
+	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		m_ani = ANIMATION->findAnimation("³¯°³°ÅºÏÀÌÁÂÇÏ");
+		ANIMATION->start("³¯°³°ÅºÏÀÌÁÂÇÏ");
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("³¯°³°ÅºÏÀÌÀÌµ¿")->getFrameWidth(), IMAGE->findImage("³¯°³°ÅºÏÀÌÀÌµ¿")->getFrameHeight());
+		setSkyTroopbStats();
+		break;
+	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		m_ani = ANIMATION->findAnimation("°¡½Ãµ¹ÀÌÁÂÇÏ");
+		ANIMATION->start("°¡½Ãµ¹ÀÌÁÂÇÏ");
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("°¡½Ãµ¹ÀÌÀÌµ¿")->getFrameWidth(), IMAGE->findImage("°¡½Ãµ¹ÀÌÀÌµ¿")->getFrameHeight());
+		setSpikeyStats();
+		break;
 	}
-	/*m_FSM = new CFSMController;
-	m_FSM->initState(this, CHARACTER_TYPE::MONSTER_WORLD);
-	m_FSM->getAI()->setPlayerMemory(m_player);*/
+	m_FSM = new CFSMController;
+	m_FSM->initState(this, CHARACTER_TYPE::GOOMBA_WORLD);
+	m_FSM->getAI()->setPlayerMemory(m_player);
 
 	m_startX = m_x;
 	m_startY = m_y;
@@ -57,33 +79,57 @@ void CmonsterWorld::release()
 
 void CmonsterWorld::update()
 {
-	/*if (m_FSM->getstate() == STATE_TYPE::MOVE)*/move();
-	//m_FSM->updateState();
+	if (m_FSM->getstate() == STATE_TYPE::MOVE)move();
+	m_FSM->updateState();
 }
 
 void CmonsterWorld::render()
 {
-	switch (m_type)
+}
+
+void CmonsterWorld::render(MONSTER_TYPE type)
+{
+	switch (type)
 	{
-	case CHARACTER_TYPE::MONSTER_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("±À¹ÙÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+	case MONSTER_TYPE::WORLD:
+		switch (m_type)
+		{
+		case CHARACTER_TYPE::GOOMBA_WORLD:
+			ZORDER->zorderAniRender(IMAGE->findImage("±À¹ÙÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		case CHARACTER_TYPE::SKYTROOPA_WORLD:
+			ZORDER->zorderAniRender(IMAGE->findImage("³¯°³°ÅºÏÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		case CHARACTER_TYPE::SPIKEY_WORLD:
+			ZORDER->zorderAniRender(IMAGE->findImage("°¡½Ãµ¹ÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		}
 		break;
-	case CHARACTER_TYPE::SKYTROOPA_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("³¯°³°ÅºÏÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-		break;
-	case CHARACTER_TYPE::SPIKEY_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("°¡½Ãµ¹ÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+	case MONSTER_TYPE::BATTLE:
+		switch (m_type)
+		{
+		case CHARACTER_TYPE::GOOMBA_BATTLE:
+			ZORDER->zorderAniRender(IMAGE->findImage("±À¹ÙÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+			ZORDER->zorderAniRender(IMAGE->findImage("³¯°³°ÅºÏÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		case CHARACTER_TYPE::SPIKEY_BATTLE:
+			ZORDER->zorderAniRender(IMAGE->findImage("°¡½Ãµ¹ÀÌÀÌµ¿"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+			break;
+		}
 		break;
 	}
 
-	ZORDER->zorderRectangle(m_rc, ZUNIT);
+	//Å×½ºÆ®¿ë
+	ZORDER->zorderRectangle(m_rc, ZCOLMAP);
 }
 
 void CmonsterWorld::attack()
 {
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::MONSTER_WORLD:
+	case CHARACTER_TYPE::GOOMBA_WORLD:
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
 		break;
@@ -96,7 +142,7 @@ void CmonsterWorld::move()
 {
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::MONSTER_WORLD:
+	case CHARACTER_TYPE::GOOMBA_WORLD:
 		moveAi();
 		m_rc = RectMake(m_x, m_y, IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameWidth(), IMAGE->findImage("±À¹ÙÀÌµ¿")->getFrameHeight());
 		break;
