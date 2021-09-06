@@ -16,6 +16,11 @@ CmonsterManager::~CmonsterManager()
 
 HRESULT CmonsterManager::init()
 {
+	return S_OK;
+}
+
+HRESULT CmonsterManager::init(Cmario* player)
+{
 	m_stats.lv = 1;
     m_stats.atk = 10;
     m_stats.def = 10;
@@ -24,15 +29,16 @@ HRESULT CmonsterManager::init()
 	m_stats.maxMp = m_stats.mp = 10;
 	m_stats.gold = 10;
 
-	//m_FSM = new CFSMController;
+	m_FSM = new CFSMController;
+	m_player = player;
 
 	for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
 	{
 		(*viMonster)->init();
-		//m_FSM->initState((*viMonster), CHARACTER_TYPE::MONSTER_WORLD);
+		m_FSM->initState((*viMonster), CHARACTER_TYPE::MONSTER_WORLD);
 	}
 
-	//m_FSM->getAI()->setPlayerMemory(m_player);
+	m_FSM->getAI()->setPlayerMemory(m_player);
 
     return S_OK;
 }
@@ -44,25 +50,25 @@ void CmonsterManager::release()
 
 void CmonsterManager::update()
 {
-	/*if (m_FSM->getstate()==STATE_TYPE::MOVE)
-	{*/
+	if (m_FSM->getstate()==STATE_TYPE::MOVE)
+	{
 		for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
 		{
 			(*viMonster)->update();
 		}
-	//}
-	//m_FSM->updateState();
+	}
+	m_FSM->updateState();
 }
 
 void CmonsterManager::render()
 {
-	/*if (m_FSM->getstate() == STATE_TYPE::MOVE || m_FSM->getstate() == STATE_TYPE::IDLE)
-	{*/
+	if (m_FSM->getstate() == STATE_TYPE::MOVE || m_FSM->getstate() == STATE_TYPE::IDLE)
+	{
 		for (viMonster = vMonster.begin(); viMonster < vMonster.end(); ++viMonster)
 		{
 			(*viMonster)->render();
 		}
-	//}
+	}
 }
 
 void CmonsterManager::attack()

@@ -24,7 +24,7 @@ HRESULT CsceneBattle::init()
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
     m_monsterM->setPlayerMemory(m_playerM->getMario());
-    m_monsterM->init();
+    m_monsterM->init(m_playerM->getMario());
 
     return S_OK;
 }

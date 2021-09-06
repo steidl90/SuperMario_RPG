@@ -20,6 +20,7 @@ public:
 	~CmonsterManager();
 
 	HRESULT init();
+	HRESULT init(Cmario* player);
 	void release();
 	void update();
 	void render();

@@ -22,25 +22,28 @@ HRESULT CmonsterWorld::init()
 	case CHARACTER_TYPE::MONSTER_WORLD:
 		m_ani = ANIMATION->findAnimation("굼바좌하");
 		ANIMATION->start("굼바좌하");
-		m_stats.speed = 1.0f;
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("굼바이동")->getFrameWidth(), IMAGE->findImage("굼바이동")->getFrameHeight());
+		m_stats.speed = 0.75f;
 		setGoombaStats();
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
 		m_ani = ANIMATION->findAnimation("날개거북이좌하");
 		ANIMATION->start("날개거북이좌하");
-		m_stats.speed = 5.0f;
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("날개거북이이동")->getFrameWidth(), IMAGE->findImage("날개거북이이동")->getFrameHeight());
+		m_stats.speed = 1.5f;
 		setSkyTroopbStats();
 		break;
 	case CHARACTER_TYPE::SPIKEY_WORLD:
 		m_ani = ANIMATION->findAnimation("가시돌이좌하");
 		ANIMATION->start("가시돌이좌하");
-		m_stats.speed = 3.0f;
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("가시돌이이동")->getFrameWidth(), IMAGE->findImage("가시돌이이동")->getFrameHeight());
+		m_stats.speed = 1.25f;
 		setSpikeyStats();
 		break;
 	}
-	m_FSM = new CFSMController;
+	/*m_FSM = new CFSMController;
 	m_FSM->initState(this, CHARACTER_TYPE::MONSTER_WORLD);
-	m_FSM->getAI()->setPlayerMemory(m_player);
+	m_FSM->getAI()->setPlayerMemory(m_player);*/
 
 	m_startX = m_x;
 	m_startY = m_y;
@@ -54,8 +57,8 @@ void CmonsterWorld::release()
 
 void CmonsterWorld::update()
 {
-	if (m_FSM->getstate() == STATE_TYPE::MOVE)move();
-	m_FSM->updateState();
+	/*if (m_FSM->getstate() == STATE_TYPE::MOVE)*/move();
+	//m_FSM->updateState();
 }
 
 void CmonsterWorld::render()
@@ -63,15 +66,17 @@ void CmonsterWorld::render()
 	switch (m_type)
 	{
 	case CHARACTER_TYPE::MONSTER_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_x, m_y, m_ani);
+		ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_x, m_y, m_ani);
+		ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
 	case CHARACTER_TYPE::SPIKEY_WORLD:
-		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_x, m_y, m_ani);
+		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
 	}
+
+	Rectangle(getMemDC(), getRect().left, getRect().top, getRect().right, getRect().bottom);
 }
 
 void CmonsterWorld::attack()
@@ -93,12 +98,15 @@ void CmonsterWorld::move()
 	{
 	case CHARACTER_TYPE::MONSTER_WORLD:
 		moveAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("굼바이동")->getFrameWidth(), IMAGE->findImage("굼바이동")->getFrameHeight());
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_WORLD:
 		moveAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("날개거북이이동")->getFrameWidth(), IMAGE->findImage("날개거북이이동")->getFrameHeight());
 		break;
 	case CHARACTER_TYPE::SPIKEY_WORLD:
 		moveAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("가시돌이이동")->getFrameWidth(), IMAGE->findImage("가시돌이이동")->getFrameHeight());
 		break;
 	}
 }

@@ -47,7 +47,7 @@ HRESULT CsceneBanditsWay::init()
         m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_WORLD, 900 - (i * 500), 830 - (i * 70));
     }
 
-    m_monsterM->init();
+    m_monsterM->init(m_playerM->getMario());
 
     return S_OK;
 }

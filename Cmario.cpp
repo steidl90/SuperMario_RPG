@@ -61,8 +61,8 @@ void Cmario::update()
 {
 	move();
 	animation();
-	
 	m_rc = RectMakeCenter(getX(), getY(), IMAGE->findImage("마리오이동")->getFrameWidth() - 20, IMAGE->findImage("마리오이동")->getFrameHeight() - 20);
+	
 
 }
 
@@ -70,6 +70,8 @@ void Cmario::render()
 {
 	if (InputManager->isToggleKey(VK_TAB))Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
 	ZORDER->zorderAniRender(IMAGE->findImage("마리오이동"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15, m_ani);
+
+	Rectangle(getMemDC(), getRect()->left, getRect()->top, getRect()->right, getRect()->bottom);
 }
 
 void Cmario::move()
