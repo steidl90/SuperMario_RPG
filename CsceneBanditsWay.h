@@ -26,6 +26,8 @@ public:
 	void update();
 	void render();
 
+	void initMonster();
+
 	void scenechange();
 
 	CmonsterManager* getMonsterManager() { return m_monsterM; }

@@ -246,10 +246,10 @@
     <ClInclude Include="Cmario.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
     </ClInclude>
-    <ClInclude Include="Cbowser.h">
+    <ClInclude Include="CbowserBattle.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cbowser</Filter>
     </ClInclude>
-    <ClInclude Include="Cpeach.h">
+    <ClInclude Include="CpeachBattle.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cpeach</Filter>
     </ClInclude>
     <ClInclude Include="CplayerManager.h">
@@ -351,6 +351,12 @@
     <ClInclude Include="CmarioBattle.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
     </ClInclude>
+    <ClInclude Include="CmarioBattleState.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
+    </ClInclude>
+    <ClInclude Include="CmarioBattleUi.h">
+      <Filter>헤더 파일</Filter>
+    </ClInclude>
   </ItemGroup>
   <ItemGroup>
     <ClCompile Include="API_FrameWork.cpp">
@@ -428,10 +434,10 @@
     <ClCompile Include="Cmario.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
     </ClCompile>
-    <ClCompile Include="Cbowser.cpp">
+    <ClCompile Include="CbowserBattle.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cbowser</Filter>
     </ClCompile>
-    <ClCompile Include="Cpeach.cpp">
+    <ClCompile Include="CpeachBattle.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cpeach</Filter>
     </ClCompile>
     <ClCompile Include="CplayerManager.cpp">
@@ -529,6 +535,12 @@
     </ClCompile>
     <ClCompile Include="CmarioBattle.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
+    </ClCompile>
+    <ClCompile Include="CmarioBattleState.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cmario</Filter>
+    </ClCompile>
+    <ClCompile Include="CmarioBattleUi.cpp">
+      <Filter>소스 파일</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

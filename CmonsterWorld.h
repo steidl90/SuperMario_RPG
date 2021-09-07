@@ -21,12 +21,13 @@ public:
 	virtual void release();
 	virtual void update();
 	virtual void render();
-	virtual void render(MONSTER_TYPE type);
+	//virtual void render(MONSTER_TYPE type);
 
 	virtual void attack();
 	virtual void move();
 
 	void moveAi();
+	void attackAi();
 
 	void setGoombaStats();
 	void setSkyTroopbStats();

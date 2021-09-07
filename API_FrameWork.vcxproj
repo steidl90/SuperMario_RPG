@@ -158,6 +158,8 @@
     <ClInclude Include="Cgoomba.h" />
     <ClInclude Include="CgoombaState.h" />
     <ClInclude Include="CmarioBattle.h" />
+    <ClInclude Include="CmarioBattleState.h" />
+    <ClInclude Include="CmarioBattleUi.h" />
     <ClInclude Include="CmonsterFactory.h" />
     <ClInclude Include="CmonsterManager.h" />
     <ClInclude Include="CmonsterWorld.h" />
@@ -168,7 +170,7 @@
     <ClInclude Include="Cinvoker.h" />
     <ClInclude Include="Ccamera.h" />
     <ClInclude Include="Canimation.h" />
-    <ClInclude Include="Cbowser.h" />
+    <ClInclude Include="CbowserBattle.h" />
     <ClInclude Include="Ccommand.h" />
     <ClInclude Include="CresourceLoadFacade.h" />
     <ClInclude Include="CFSM.h" />
@@ -179,7 +181,7 @@
     <ClInclude Include="Cmonster.h" />
     <ClInclude Include="Cobject.h" />
     <ClInclude Include="commonMacroFunction.h" />
-    <ClInclude Include="Cpeach.h" />
+    <ClInclude Include="CpeachBattle.h" />
     <ClInclude Include="CplayerData.h" />
     <ClInclude Include="CplayerManager.h" />
     <ClInclude Include="CsceneMarioHouse.h" />
@@ -226,6 +228,8 @@
     <ClCompile Include="Cgoomba.cpp" />
     <ClCompile Include="CgoombaState.cpp" />
     <ClCompile Include="CmarioBattle.cpp" />
+    <ClCompile Include="CmarioBattleState.cpp" />
+    <ClCompile Include="CmarioBattleUi.cpp" />
     <ClCompile Include="CmonsterFactory.cpp" />
     <ClCompile Include="CmonsterManager.cpp" />
     <ClCompile Include="CmonsterWorld.cpp" />
@@ -236,7 +240,7 @@
     <ClCompile Include="Cinvoker.cpp" />
     <ClCompile Include="Ccamera.cpp" />
     <ClCompile Include="Canimation.cpp" />
-    <ClCompile Include="Cbowser.cpp" />
+    <ClCompile Include="CbowserBattle.cpp" />
     <ClCompile Include="Ccommand.cpp" />
     <ClCompile Include="CresourceLoadFacade.cpp" />
     <ClCompile Include="CFSM.cpp" />
@@ -246,7 +250,7 @@
     <ClCompile Include="CmarioState.cpp" />
     <ClCompile Include="Cmonster.cpp" />
     <ClCompile Include="Cobject.cpp" />
-    <ClCompile Include="Cpeach.cpp" />
+    <ClCompile Include="CpeachBattle.cpp" />
     <ClCompile Include="CplayerData.cpp" />
     <ClCompile Include="CplayerManager.cpp" />
     <ClCompile Include="CsceneMarioHouse.cpp" />

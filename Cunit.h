@@ -22,7 +22,6 @@ protected:
 	RECT m_rc;
 	float m_x, m_y;
 	bool isFight;
-	MONSTER_TYPE m_unitType;
 	CHARACTER_TYPE m_type;
 
 public:

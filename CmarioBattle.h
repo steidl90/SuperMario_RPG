@@ -1,10 +1,15 @@
 #pragma once
 #include "Cunit.h"
+#include "CmarioBattleUi.h"
+#include "CFSMController.h"
 class CmarioBattle :public Cunit
 {
 private:
 	MOVE_TYPE direction;
 	animation* m_ani;
+	CFSMController* m_FSM;
+	CmarioBattleUi* m_UI;
+
 	char str[20];
 
 	int m_sceneNum;
@@ -20,7 +25,7 @@ public:
 	void render();
 
 	void animation();
-
+	void action();
 	void move();
 	void attack();
 
@@ -29,5 +34,7 @@ public:
 
 	int getBeforeSceneNum() { return m_beforeSceneNum; }
 	void setBeforeSceneNum(int num) { m_beforeSceneNum = num; }
+
+	CFSMController* getFSM() { return m_FSM; }
 };
 

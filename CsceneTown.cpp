@@ -35,12 +35,12 @@ HRESULT CsceneTown::init()
 	}
 	else if (m_playerM->getMario()->getBeforeSceneNum() == 0b0010)
 	{
-		m_playerM->getMario()->setX(MAPSIZEX - 210);
+		m_playerM->getMario()->setX(MAPSIZEX - 220);
 		m_playerM->getMario()->setY(WINSIZEY + 530);
 	}
 
 	m_doorA = RectMake(10, WINSIZEY + 230, 50, 50);
-	m_doorB = RectMake(MAPSIZEX - 180, WINSIZEY + 550, 50, 50);
+	m_doorB = RectMake(MAPSIZEX - 200, WINSIZEY + 550, 50, 50);
 	return S_OK;
 }
 
@@ -68,7 +68,8 @@ void CsceneTown::render()
 	if (InputManager->isToggleKey(VK_TAB))
 	{
 		ZORDER->zorderRender(IMAGE->findImage("¸¶À»¸ÊÇÈ¼¿"), ZDEBUG, 0, 0, 0);
-		Rectangle(getMapDC(), m_doorA.left, m_doorA.top, m_doorA.right, m_doorA.bottom);
+		ZORDER->zorderRectangle(m_doorA, ZDEBUG);
+		ZORDER->zorderRectangle(m_doorB, ZDEBUG);
 	}
 	ZORDER->zorderTotalRender(getMapDC());
 }
@@ -110,12 +111,11 @@ void CsceneTown::scenechange()
 			m_playerM->getMario()->getExp(),
 			m_playerM->getMario()->getGold(),
 			m_playerM->getMario()->getSpeed(),
-			m_playerM->getMario()->getX(),
-			m_playerM->getMario()->getY(),
+			300,
+			150,
 			m_playerM->getMario()->getSceneNum(),
 			m_playerM->getMario()->getBeforeSceneNum(),
 			m_playerM->getMario()->getisFight());
 		SCENE->changeScene("µµµÏ·Îµå");
 	}
 }
-

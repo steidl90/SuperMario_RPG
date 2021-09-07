@@ -69,11 +69,9 @@ void CmonsterManager::render()
 {
 	for (viMonster = vMonster.begin(); viMonster != vMonster.end(); ++viMonster)
 	{
-		//(*viMonster)->render();
-		if (m_unitType == MONSTER_TYPE::WORLD) 
-			(*viMonster)->render(MONSTER_TYPE::WORLD);
-		else if(m_unitType == MONSTER_TYPE::BATTLE)
-			(*viMonster)->render(MONSTER_TYPE::BATTLE);
+		(*viMonster)->render();
+		/*(*viMonster)->render(MONSTER_TYPE::WORLD);
+		(*viMonster)->render(MONSTER_TYPE::BATTLE);*/
 	}
 }
 

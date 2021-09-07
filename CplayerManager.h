@@ -2,16 +2,16 @@
 #include "Cunit.h"
 #include "Cmario.h"
 #include "CmarioBattle.h"
-#include "Cpeach.h"
-#include "Cbowser.h"
+#include "CpeachBattle.h"
+#include "CbowserBattle.h"
 #include "CFSMController.h"
 class CplayerManager :public Cunit
 {
 private:
 	Cmario* m_mario;
 	CmarioBattle* m_marioBattle;
-	Cpeach* m_peach;
-	Cbowser* m_bowser;
+	CpeachBattle* m_peachBattle;
+	CbowserBattle* m_bowserBattle;
 	CFSMController* m_FSM;
 
 public:
@@ -30,4 +30,6 @@ public:
 
 	RECT* getMarioRect() { return m_mario->getRect(); }
 	Cmario* getMario() { return m_mario; }
+	CmarioBattle* getMarioBattle() { return m_marioBattle; }
+
 };

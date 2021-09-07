@@ -30,30 +30,15 @@ HRESULT CsceneBanditsWay::init()
     m_playerM->getMario()->setExp(PLAYERDATA->getExp());
     m_playerM->getMario()->setGold(PLAYERDATA->getGold());
     m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
-    m_playerM->getMario()->setX(300);
-    m_playerM->getMario()->setY(150);
+    m_playerM->getMario()->setX(PLAYERDATA->getX());
+    m_playerM->getMario()->setY(PLAYERDATA->getY());
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
-    m_door = RectMake(220, 60, 50, 50);
+    m_door = RectMake(220, 80, 50, 50);
 
     m_monsterM->setPlayerMemory(m_playerM->getMario());
-
-    for (int i = 0; i < 2; i++)
-    {
-        m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_WORLD, 580 + (i * 250), 680 - (i * 100));
-    }
-
-    m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_WORLD, 400, 380);
-
-    for (int i = 0; i < 2; i++)
-    {
-        m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_WORLD, 900 - (i * 500), 830 - (i * 70));
-    }
-
-    m_monsterM->init();
-
-    //m_monsterType=
+    initMonster();
 
     return S_OK;
 }
@@ -87,9 +72,29 @@ void CsceneBanditsWay::render()
     //Rectangle(getMapDC(), m_door.left, m_door.top, m_door.right, m_door.bottom);
     //if (InputManager->isToggleKey(VK_TAB)) ZORDER->zorderRender(IMAGE->findImage("마리오집픽셀"), ZDEBUG, 0, 0, 0);
 
-    ZORDER->zorderRectangle(*m_playerM->getMarioRect(), 1);
-    ZORDER->zorderRectangle(m_door, 1);
+    if (InputManager->isToggleKey(VK_TAB))
+    {
+        ZORDER->zorderRectangle(*m_playerM->getMarioRect(), ZCOLMAP);
+        ZORDER->zorderRectangle(m_door, ZDEBUG);
+    }
     ZORDER->zorderTotalRender(getMapDC());
+}
+
+void CsceneBanditsWay::initMonster()
+{
+    for (int i = 0; i < 2; i++)
+    {
+        m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_WORLD, 580 + (i * 250), 680 - (i * 100));
+    }
+
+    m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_WORLD, 400, 380);
+
+    for (int i = 0; i < 2; i++)
+    {
+        m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_WORLD, 900 - (i * 500), 900 - (i * 70));
+    }
+
+    m_monsterM->init();
 }
 
 void CsceneBanditsWay::scenechange()
@@ -111,8 +116,8 @@ void CsceneBanditsWay::scenechange()
                 m_playerM->getMario()->getExp(),
                 m_playerM->getMario()->getGold(),
                 m_playerM->getMario()->getSpeed(),
-                m_playerM->getMario()->getX(),
-                m_playerM->getMario()->getY(),
+                (*m_viMonster)->getX() - 30,
+                (*m_viMonster)->getY() - 30,
                 m_playerM->getMario()->getSceneNum(),
                 m_playerM->getMario()->getBeforeSceneNum(),
                 m_playerM->getMario()->getisFight());

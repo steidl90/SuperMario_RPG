@@ -20,6 +20,10 @@ HRESULT Canimation::init()
 	ANIMATION->addAnimation("마리오우하", "마리오이동", 30, 32, 8, false, true);
 	ANIMATION->addAnimation("마리오우상", "마리오이동", 35, 37, 8, false, true);
 
+	ANIMATION->addDefAnimation("마리오상태", "마리오아이콘", 2, false, true);
+	ANIMATION->addDefAnimation("피치상태", "피치아이콘", 2, false, true);
+	ANIMATION->addDefAnimation("쿠파상태", "쿠파아이콘", 2, false, true);
+
 	ANIMATION->addAnimation("굼바좌하", "굼바이동", 0, 2, 5, false, true);
 	ANIMATION->addAnimation("굼바좌상", "굼바이동", 3, 5, 5, false, true);
 

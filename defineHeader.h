@@ -33,6 +33,13 @@ enum class STATE_TYPE
 	MOVE,
 	TRACE,
 	BATTLE,
+	MYTURN,
+	ATTACK,
+	ITEM,
+	SKILL,
+	ETC,
+	RUN,
+	DEFENCE,
 	DEAD
 };
 

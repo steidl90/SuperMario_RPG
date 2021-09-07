@@ -18,7 +18,6 @@ m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player)
 
 HRESULT CmonsterWorld::init()
 {
-	m_unitType = MONSTER_TYPE::WORLD;
 	switch (m_type)
 	{
 	case CHARACTER_TYPE::GOOMBA_WORLD:
@@ -81,61 +80,95 @@ void CmonsterWorld::update()
 {
 	if (m_FSM->getstate() == STATE_TYPE::MOVE)
 		move();
+	else if (m_FSM->getstate() == STATE_TYPE::BATTLE)
+		attack();
 
 	m_FSM->updateState();
 }
 
 void CmonsterWorld::render()
 {
-}
-
-void CmonsterWorld::render(MONSTER_TYPE type)
-{
-	switch (type)
+	switch (m_type)
 	{
-	case MONSTER_TYPE::WORLD:
-		switch (m_type)
-		{
-		case CHARACTER_TYPE::GOOMBA_WORLD:
-			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		case CHARACTER_TYPE::SKYTROOPA_WORLD:
-			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		case CHARACTER_TYPE::SPIKEY_WORLD:
-			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		}
+	case CHARACTER_TYPE::GOOMBA_WORLD:
+		ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
-	case MONSTER_TYPE::BATTLE:
-		switch (m_type)
-		{
-		case CHARACTER_TYPE::GOOMBA_BATTLE:
-			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		case CHARACTER_TYPE::SKYTROOPA_BATTLE:
-			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		case CHARACTER_TYPE::SPIKEY_BATTLE:
-			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-			break;
-		}
+	case CHARACTER_TYPE::SKYTROOPA_WORLD:
+		ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		break;
+	case CHARACTER_TYPE::SPIKEY_WORLD:
+		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		break;
+	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		break;
+	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		break;
+	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
 	}
 
 	//테스트용
-	ZORDER->zorderRectangle(m_rc, ZCOLMAP);
+	if (InputManager->isToggleKey(VK_TAB))
+	{
+		ZORDER->zorderRectangle(m_rc, ZCOLMAP);
+	}
 }
+//
+//void CmonsterWorld::render(MONSTER_TYPE type)
+//{
+//	switch (type)
+//	{
+//	case MONSTER_TYPE::WORLD:
+//		switch (m_type)
+//		{
+//		case CHARACTER_TYPE::GOOMBA_WORLD:
+//			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		case CHARACTER_TYPE::SKYTROOPA_WORLD:
+//			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		case CHARACTER_TYPE::SPIKEY_WORLD:
+//			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		case CHARACTER_TYPE::GOOMBA_BATTLE:
+//			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+//			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		case CHARACTER_TYPE::SPIKEY_BATTLE:
+//			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+//			break;
+//		}
+//		break;
+//	}
+//
+//	//테스트용
+//	if (InputManager->isToggleKey(VK_TAB))
+//	{
+//		ZORDER->zorderRectangle(m_rc, ZCOLMAP);
+//	}
+//}
 
 void CmonsterWorld::attack()
 {
+	m_moveType = MONSTER_MOVE_TYPE::LEFTDOWN;
 	switch (m_type)
 	{
-	case CHARACTER_TYPE::GOOMBA_WORLD:
+	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		attackAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("굼바이동")->getFrameWidth(), IMAGE->findImage("굼바이동")->getFrameHeight());
 		break;
-	case CHARACTER_TYPE::SKYTROOPA_WORLD:
+	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		attackAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("날개거북이이동")->getFrameWidth(), IMAGE->findImage("날개거북이이동")->getFrameHeight());
 		break;
-	case CHARACTER_TYPE::SPIKEY_WORLD:
+	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		attackAi();
+		m_rc = RectMake(m_x, m_y, IMAGE->findImage("가시돌이이동")->getFrameWidth(), IMAGE->findImage("가시돌이이동")->getFrameHeight());
 		break;
 	}
 }
@@ -214,6 +247,15 @@ void CmonsterWorld::moveAi()
 			}
 			else m_moveType = MONSTER_MOVE_TYPE::LEFTUP;
 		}
+		break;
+	}
+}
+
+void CmonsterWorld::attackAi()
+{
+	switch (m_moveType)
+	{
+	case MONSTER_MOVE_TYPE::LEFTDOWN:
 		break;
 	}
 }

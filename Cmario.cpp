@@ -10,7 +10,7 @@ Cmario::Cmario() :direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마
 Cmario::Cmario(float x, float y, RECT rc, stats stats) :
 	Cunit(x, y, rc, stats), direction(MOVE_TYPE::DOWN), m_ani(ANIMATION->findAnimation("마리오하")), str("마리오하")
 {
-	
+
 }
 
 Cmario::~Cmario()
@@ -70,6 +70,7 @@ void Cmario::render()
 	if (InputManager->isToggleKey(VK_TAB))Rectangle(getMapDC(), m_rc.left, m_rc.top, m_rc.right, m_rc.bottom);
 	ZORDER->zorderAniRender(IMAGE->findImage("마리오이동"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15, m_ani);
 
+	
 }
 
 void Cmario::move()
@@ -195,7 +196,7 @@ void Cmario::pixelCollision()
 {
 	if (prevX != getX() || prevY != getY() + 20.0f)
 	{
-		if (m_sceneNum == 0b0000) 
+		if (m_sceneNum == 0b0000)
 		{
 			COLORREF color = GetPixel(IMAGE->findImage("마을맵픽셀")->getMemDC(), getX(), getY() + 20.0f);
 			int r = GetRValue(color);

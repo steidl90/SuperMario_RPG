@@ -3,7 +3,8 @@
 #include "CsceneBanditsWay.h"
 #include "Cmario.h"
 
-CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager), m_type(CHARACTER_TYPE::GOOMBA_WORLD)
+CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager), m_type(CHARACTER_TYPE::GOOMBA_BATTLE),
+m_x(PLAYERDATA->getX()), m_y(PLAYERDATA->getY())
 {
 }
 
@@ -16,6 +17,9 @@ HRESULT CsceneBattle::init()
     m_battle = new Cbattle;
     m_playerM = new CplayerManager;
     m_monsterM = new CmonsterManager;
+
+    m_x = PLAYERDATA->getX();
+    m_y = PLAYERDATA->getY();
 
     m_playerM->init();
     m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
@@ -70,7 +74,7 @@ void CsceneBattle::render()
 
 void CsceneBattle::scenechange()
 {
-    if (InputManager->isOnceKeyDown(VK_F2))
+    if (m_playerM->getMarioBattle()->getFSM()->getstate() == STATE_TYPE::RUN)
     {
         m_playerM->getMario()->setSceneNum(0b0010);
         m_playerM->getMario()->setBeforeSceneNum(0b0010);
@@ -85,8 +89,8 @@ void CsceneBattle::scenechange()
             m_playerM->getMario()->getExp(),
             m_playerM->getMario()->getGold(),
             m_playerM->getMario()->getSpeed(),
-            m_playerM->getMario()->getX(),
-            m_playerM->getMario()->getY(),
+            m_x,
+            m_y,
             m_playerM->getMario()->getSceneNum(),
             m_playerM->getMario()->getBeforeSceneNum(),
             m_playerM->getMario()->getisFight());
@@ -106,21 +110,21 @@ void CsceneBattle::setMonsterType()
     {
         for (int i = 0; i < 3; i++)
         {
-            m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_BATTLE, 580 + (i * 120), 300 + (i * 100));
+            m_monsterM->addMonster(CHARACTER_TYPE::GOOMBA_BATTLE, 580 + (i * 140), 320 + (i * 80));
         }
     }
     else if (m_type == CHARACTER_TYPE::SKYTROOPA_WORLD)
     {
         for (int i = 0; i < 3; i++)
         {
-            m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_BATTLE, 580 + (i * 120), 300 + (i * 100));
+            m_monsterM->addMonster(CHARACTER_TYPE::SKYTROOPA_BATTLE, 580 + (i * 140), 320 + (i * 80));
         }
     }
     else if (m_type == CHARACTER_TYPE::SPIKEY_WORLD)
     {
         for (int i = 0; i < 3; i++)
         {
-            m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_BATTLE, 580 + (i * 120), 300 + (i * 100));
+            m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_BATTLE, 580 + (i * 140), 320 + (i * 80));
         }
     }
 
