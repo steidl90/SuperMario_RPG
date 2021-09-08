@@ -10,6 +10,11 @@ HRESULT CplayerManager::init()
     m_marioBattle->init();
     m_peachBattle->init();
     m_bowserBattle->init();
+
+    m_vPlayer.push_back(m_marioBattle);
+    m_vPlayer.push_back(m_peachBattle);
+    m_vPlayer.push_back(m_bowserBattle);
+
     m_FSM = new CFSMController;
     m_FSM->initState(m_mario, CHARACTER_TYPE::PLAYER_WORLD);
     return S_OK;
@@ -26,6 +31,7 @@ void CplayerManager::release()
 
 void CplayerManager::update()
 {
+
     if (m_FSM->getstate() == STATE_TYPE::IDLE || m_FSM->getstate() == STATE_TYPE::MOVE)
     {
         m_mario->update();
@@ -60,9 +66,4 @@ void CplayerManager::attack()
 
 void CplayerManager::move()
 {
-}
-
-void CplayerManager::isMyTurn()
-{
-    
 }

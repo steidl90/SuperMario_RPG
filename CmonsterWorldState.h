@@ -4,7 +4,6 @@ class CmonsterManager;
 class monster_Idle :public Cstate
 {
 private:
-	int m_timer;
 	RECT temp;
 public:
 	monster_Idle();
@@ -17,7 +16,6 @@ public:
 class monster_Move :public Cstate
 {
 private:
-	int m_timer;
 	RECT temp;
 public:
 	monster_Move();
@@ -30,7 +28,6 @@ public:
 class monster_Trace :public Cstate
 {
 private:
-	int m_timer;
 	RECT temp;
 public:
 	monster_Trace();
@@ -43,7 +40,6 @@ public:
 class monster_Battle :public Cstate
 {
 private:
-	int m_timer;
 	CmonsterManager* m_monsterM;
 public:
 	monster_Battle();
@@ -56,10 +52,21 @@ public:
 class monster_Die :public Cstate
 {
 private:
-	int m_timer;
 public:
 	monster_Die();
 	~monster_Die();
+	virtual void update();
+	virtual void Enter();
+	virtual void Exit();
+};
+
+class monster_Attack :public Cstate
+{
+private:
+	float m_x, m_y;
+public:
+	monster_Attack();
+	~monster_Attack();
 	virtual void update();
 	virtual void Enter();
 	virtual void Exit();

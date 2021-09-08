@@ -230,12 +230,23 @@ void animation::start()
 	_nowPlayIndex = 0;
 }
 
+void animation::startAttack()
+{
+	_play = true;
+	
+	if (_nowPlayIndex >= 6)
+	{
+		_play = false;
+		_nowPlayIndex = 0;
+	}
+}
+
 void animation::fullstart()
 {
 	_play = true;
 	if (_nowPlayIndex == _endPlayIndex)
 	{
-		stop();
+		stopAttack();
 	}
 }
 
@@ -244,7 +255,17 @@ void animation::stop()
 	_play = false;
 	_nowPlayIndex = 1;
 }
+void animation::stopAttack()
+{
+	_play = false;
+	_nowPlayIndex = 6;
+}
 
+void animation::initAni()
+{
+	_play = false;
+	_nowPlayIndex = 0;
+}
 
 void animation::pause()
 {

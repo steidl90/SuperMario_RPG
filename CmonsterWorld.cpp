@@ -1,18 +1,26 @@
 #include "framework.h"
 #include "CmonsterWorld.h"
-#include "CFSM.h"
+#include "CmonsterWorldState.h"
+#include "CFSMController.h"
 #include "Cmario.h"
+#include "CmarioBattle.h"
 #include "Cunit.h"
 
 CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
-m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(nullptr)
+m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(nullptr), m_isDie(false)
 {
 }
 
 CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, Cmario* player) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
-m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player)
+m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player), m_isDie(false)
+{
+}
+
+CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, CmarioBattle* m_playerBattle) :Cmonster(x, y, rc, stats),
+m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
+m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_playerBattle(m_playerBattle), m_isDie(false)
 {
 }
 
@@ -65,6 +73,7 @@ HRESULT CmonsterWorld::init()
 	m_FSM = new CFSMController;
 	m_FSM->initState(this, CHARACTER_TYPE::GOOMBA_WORLD);
 	m_FSM->getAI()->setPlayerMemory(m_player);
+	m_FSM->getAI()->setPlayerBattleMemory(m_playerBattle);
 
 	m_startX = m_x;
 	m_startY = m_y;
@@ -80,7 +89,8 @@ void CmonsterWorld::update()
 {
 	if (m_FSM->getstate() == STATE_TYPE::MOVE)
 		move();
-	else if (m_FSM->getstate() == STATE_TYPE::BATTLE)
+
+	//if (m_FSM->getstate() == STATE_TYPE::BATTLE)
 		attack();
 
 	m_FSM->updateState();
@@ -100,13 +110,40 @@ void CmonsterWorld::render()
 		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
 		break;
 	case CHARACTER_TYPE::GOOMBA_BATTLE:
-		ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		if (m_FSM->getAI()->getState()->getMotion() == ATTACK_MOTION::ATTACK)
+		{
+			m_ani = ANIMATION->findAnimation("굼바기본공격");
+			ZORDER->zorderAniRender(IMAGE->findImage("굼바공격"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
+		else 
+		{
+			m_ani = ANIMATION->findAnimation("굼바좌하");
+			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
-		ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		if (m_FSM->getAI()->getState()->getMotion() == ATTACK_MOTION::ATTACK)
+		{
+			m_ani = ANIMATION->findAnimation("날개거북이기본공격");
+			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이공격"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
+		else
+		{
+			m_ani = ANIMATION->findAnimation("날개거북이좌하");
+			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
 		break;
 	case CHARACTER_TYPE::SPIKEY_BATTLE:
-		ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		if (m_FSM->getAI()->getState()->getMotion() == ATTACK_MOTION::ATTACK)
+		{
+			m_ani = ANIMATION->findAnimation("가시돌이기본공격");
+			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이공격"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
+		else
+		{
+			m_ani = ANIMATION->findAnimation("가시돌이좌하");
+			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
+		}
 		break;
 	}
 
@@ -116,57 +153,23 @@ void CmonsterWorld::render()
 		ZORDER->zorderRectangle(m_rc, ZCOLMAP);
 	}
 }
-//
-//void CmonsterWorld::render(MONSTER_TYPE type)
-//{
-//	switch (type)
-//	{
-//	case MONSTER_TYPE::WORLD:
-//		switch (m_type)
-//		{
-//		case CHARACTER_TYPE::GOOMBA_WORLD:
-//			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		case CHARACTER_TYPE::SKYTROOPA_WORLD:
-//			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		case CHARACTER_TYPE::SPIKEY_WORLD:
-//			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		case CHARACTER_TYPE::GOOMBA_BATTLE:
-//			ZORDER->zorderAniRender(IMAGE->findImage("굼바이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		case CHARACTER_TYPE::SKYTROOPA_BATTLE:
-//			ZORDER->zorderAniRender(IMAGE->findImage("날개거북이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		case CHARACTER_TYPE::SPIKEY_BATTLE:
-//			ZORDER->zorderAniRender(IMAGE->findImage("가시돌이이동"), ZUNIT, 0, m_rc.left, m_rc.top, m_ani);
-//			break;
-//		}
-//		break;
-//	}
-//
-//	//테스트용
-//	if (InputManager->isToggleKey(VK_TAB))
-//	{
-//		ZORDER->zorderRectangle(m_rc, ZCOLMAP);
-//	}
-//}
 
 void CmonsterWorld::attack()
 {
-	m_moveType = MONSTER_MOVE_TYPE::LEFTDOWN;
 	switch (m_type)
 	{
 	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		m_moveType = MONSTER_MOVE_TYPE::LEFTDOWN;
 		attackAi();
 		m_rc = RectMake(m_x, m_y, IMAGE->findImage("굼바이동")->getFrameWidth(), IMAGE->findImage("굼바이동")->getFrameHeight());
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		m_moveType = MONSTER_MOVE_TYPE::LEFTDOWN;
 		attackAi();
 		m_rc = RectMake(m_x, m_y, IMAGE->findImage("날개거북이이동")->getFrameWidth(), IMAGE->findImage("날개거북이이동")->getFrameHeight());
 		break;
 	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		m_moveType = MONSTER_MOVE_TYPE::LEFTDOWN;
 		attackAi();
 		m_rc = RectMake(m_x, m_y, IMAGE->findImage("가시돌이이동")->getFrameWidth(), IMAGE->findImage("가시돌이이동")->getFrameHeight());
 		break;
@@ -262,12 +265,39 @@ void CmonsterWorld::attackAi()
 
 void CmonsterWorld::setGoombaStats()
 {
+	m_stats.lv = 1;
+	m_stats.atk = 10;
+	m_stats.def = 10;
+	m_stats.exp = 10;
+	m_stats.maxHp = m_stats.hp = 30;
+	m_stats.maxMp = m_stats.mp = 10;
+	m_stats.gold = 10;
+	m_stats.num = RND->getFromIntTo(4, 1000000);
+	m_isDie = false;
 }
 
 void CmonsterWorld::setSkyTroopbStats()
 {
+	m_stats.lv = 1;
+	m_stats.atk = 10;
+	m_stats.def = 10;
+	m_stats.exp = 10;
+	m_stats.maxHp = m_stats.hp = 30;
+	m_stats.maxMp = m_stats.mp = 10;
+	m_stats.gold = 10;
+	m_stats.num = RND->getFromIntTo(4, 1000000);
+	m_isDie = false;
 }
 
 void CmonsterWorld::setSpikeyStats()
 {
+	m_stats.lv = 1;
+	m_stats.atk = 10;
+	m_stats.def = 10;
+	m_stats.exp = 10;
+	m_stats.maxHp = m_stats.hp = 30;
+	m_stats.maxMp = m_stats.mp = 10;
+	m_stats.gold = 10;
+	m_stats.num = RND->getFromIntTo(4, 1000000);
+	m_isDie = false;
 }

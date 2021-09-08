@@ -17,6 +17,11 @@ void player_Battle_Idle::update()
 	{
 		m_FSM->changeState(STATE_TYPE::MYTURN);
 	}
+
+	if (SEQUENCE->getVecSequence()[0] == m_FSM->getUnit()->getNum())
+	{
+		m_FSM->changeState(STATE_TYPE::MYTURN);
+	}
 }
 
 void player_Battle_Idle::Enter()
@@ -79,10 +84,6 @@ void player_Attack::update()
 	if (InputManager->isOnceKeyDown('A'))
 	{
 		m_FSM->changeState(STATE_TYPE::ITEM);
-	}
-	else if (InputManager->isOnceKeyDown('S'))
-	{
-		m_FSM->changeState(STATE_TYPE::ATTACK);
 	}
 	else if (InputManager->isOnceKeyDown('X'))
 	{

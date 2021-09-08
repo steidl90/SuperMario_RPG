@@ -45,6 +45,8 @@ HRESULT gameNode::init(bool managerInit)
 		SOUND->init();
 		// 새로추가
 		PLAYERDATA->init();
+		CAMERA->init();
+		SEQUENCE->init();
 
 		CresourceLoadFacade* resourceLoadFacade = new CresourceLoadFacade;
 		resourceLoadFacade->init();
@@ -88,6 +90,7 @@ void gameNode::release()
 		ZORDER->releaseSingleton();
 		ZORDER->release();
 		CAMERA->releaseSingleton();
+		SEQUENCE->releaseSingleton();
 	}
 
 	ReleaseDC(m_hWnd, _hdc);

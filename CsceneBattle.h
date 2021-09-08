@@ -25,4 +25,6 @@ public:
 	void scenechange();
 
 	void setMonsterType();
+
+	void initSequence();
 };

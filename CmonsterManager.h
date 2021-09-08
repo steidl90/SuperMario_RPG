@@ -2,6 +2,7 @@
 #include "CmonsterFactory.h"
 #include "Cunit.h"
 class Cmario;
+class CmarioBattle;
 class CmonsterManager:public Cunit
 {
 private:
@@ -10,10 +11,12 @@ private:
 
 	Cmonster* m_monster;
 	Cmario* m_player;
+	CmarioBattle* m_playerBattle;
 
 	vector<Cmonster*> vMonster;
 	vector<Cmonster*>::iterator viMonster;
 
+	float timer;
 public:
 	CmonsterManager();
 	~CmonsterManager();
@@ -30,6 +33,7 @@ public:
 	void addMonster(CHARACTER_TYPE monster, float x, float y);
 
 	void setPlayerMemory(Cmario* player) { m_player = player; }
+	void setPlayerBattleMemory(CmarioBattle* playerbattle) { m_playerBattle = playerbattle; }
 
 	Cmario* getPlayer() { return m_player; }
 	vector<Cmonster*>* getVecMonster() { return &vMonster; }

@@ -2,11 +2,15 @@
 #include "CFSM.h"
 #include "Cstate.h"
 #include "Cmario.h"
+#include "CmarioBattle.h"
 
 CFSM::CFSM() :m_unit(nullptr), m_curState(nullptr), m_player(nullptr)
 {
 }
 CFSM::CFSM(Cunit* unit) :m_unit(unit), m_curState(nullptr), m_player(nullptr)
+{
+}
+CFSM::CFSM(CmonsterWorld* monster) :m_monster(monster), m_curState(nullptr), m_player(nullptr)
 {
 }
 

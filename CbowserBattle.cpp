@@ -12,6 +12,7 @@ HRESULT CbowserBattle::init()
 
     setX(420);
     setY(605);
+    setNum(3);
 
     return S_OK;
 }

@@ -22,26 +22,29 @@ HRESULT CsceneBattle::init()
     m_y = PLAYERDATA->getY();
 
     m_playerM->init();
-    m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
-    m_playerM->getMario()->setDef(PLAYERDATA->getDef());
-    m_playerM->getMario()->setHp(PLAYERDATA->getHp());
-    m_playerM->getMario()->setMaxHp(PLAYERDATA->getMaxHp());
-    m_playerM->getMario()->setMp(PLAYERDATA->getMp());
-    m_playerM->getMario()->setMaxMp(PLAYERDATA->getMaxMp());
-    m_playerM->getMario()->setLv(PLAYERDATA->getLv());
-    m_playerM->getMario()->setExp(PLAYERDATA->getExp());
-    m_playerM->getMario()->setGold(PLAYERDATA->getGold());
-    m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
-    m_playerM->getMario()->setX(220);
-    m_playerM->getMario()->setY(510);
-    m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
+    m_playerM->getMarioBattle()->setAtk(PLAYERDATA->getAtk());
+    m_playerM->getMarioBattle()->setDef(PLAYERDATA->getDef());
+    m_playerM->getMarioBattle()->setHp(PLAYERDATA->getHp());
+    m_playerM->getMarioBattle()->setMaxHp(PLAYERDATA->getMaxHp());
+    m_playerM->getMarioBattle()->setMp(PLAYERDATA->getMp());
+    m_playerM->getMarioBattle()->setMaxMp(PLAYERDATA->getMaxMp());
+    m_playerM->getMarioBattle()->setLv(PLAYERDATA->getLv());
+    m_playerM->getMarioBattle()->setExp(PLAYERDATA->getExp());
+    m_playerM->getMarioBattle()->setGold(PLAYERDATA->getGold());
+    m_playerM->getMarioBattle()->setSpeed(PLAYERDATA->getSpeed());
+    m_playerM->getMarioBattle()->setX(220);
+    m_playerM->getMarioBattle()->setY(510);
+    m_playerM->getMarioBattle()->setSceneNum(PLAYERDATA->getSceneNum());
+    m_playerM->getMarioBattle()->setisFight(PLAYERDATA->getisFight());
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
-    m_monsterM->setPlayerMemory(m_playerM->getMario());
+    m_monsterM->setPlayerBattleMemory(m_playerM->getMarioBattle());
 
     setMonsterType();
 
     m_monsterM->init();
+
+    m_playerM->getMarioBattle()->setMonsterManagerMemory(m_monsterM);
 
     return S_OK;
 }
@@ -55,6 +58,19 @@ void CsceneBattle::release()
 
 void CsceneBattle::update()
 {
+
+    if (SEQUENCE->getVecSequence().size() == 0)
+    {
+        for (int i = 0; i < m_playerM->getVecPlayer()->size() - 2; i++)
+        {
+            SEQUENCE->pushSequence((*m_playerM->getVecPlayer())[i]->getNum());
+        }
+        for (int i = 0; i < m_monsterM->getVecMonster()->size(); i++)
+        {
+            SEQUENCE->pushSequence((*m_monsterM->getVecMonster())[i]->getNum());
+        }
+    }
+    
     m_playerM->update();
     m_monsterM->update();
 
@@ -74,26 +90,27 @@ void CsceneBattle::render()
 
 void CsceneBattle::scenechange()
 {
-    if (m_playerM->getMarioBattle()->getFSM()->getstate() == STATE_TYPE::RUN)
+    if (m_playerM->getMarioBattle()->getFSM()->getstate() == STATE_TYPE::RUN || m_monsterM->getVecMonster()->size() == 0)
     {
-        m_playerM->getMario()->setSceneNum(0b0010);
-        m_playerM->getMario()->setBeforeSceneNum(0b0010);
-        m_playerM->getMario()->setisFight(false);
-        PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
-            m_playerM->getMario()->getDef(),
-            m_playerM->getMario()->getHp(),
-            m_playerM->getMario()->getMaxHp(),
-            m_playerM->getMario()->getMp(),
-            m_playerM->getMario()->getMaxMp(),
-            m_playerM->getMario()->getLv(),
-            m_playerM->getMario()->getExp(),
-            m_playerM->getMario()->getGold(),
-            m_playerM->getMario()->getSpeed(),
+        m_playerM->getMarioBattle()->setSceneNum(0b0010);
+        m_playerM->getMarioBattle()->setBeforeSceneNum(0b0010);
+        m_playerM->getMarioBattle()->setisFight(false);
+        initSequence();
+        PLAYERDATA->setData(m_playerM->getMarioBattle()->getAtk(),
+            m_playerM->getMarioBattle()->getDef(),
+            m_playerM->getMarioBattle()->getHp(),
+            m_playerM->getMarioBattle()->getMaxHp(),
+            m_playerM->getMarioBattle()->getMp(),
+            m_playerM->getMarioBattle()->getMaxMp(),
+            m_playerM->getMarioBattle()->getLv(),
+            m_playerM->getMarioBattle()->getExp(),
+            m_playerM->getMarioBattle()->getGold(),
+            m_playerM->getMarioBattle()->getSpeed(),
             m_x,
             m_y,
-            m_playerM->getMario()->getSceneNum(),
-            m_playerM->getMario()->getBeforeSceneNum(),
-            m_playerM->getMario()->getisFight());
+            m_playerM->getMarioBattle()->getSceneNum(),
+            m_playerM->getMarioBattle()->getBeforeSceneNum(),
+            m_playerM->getMarioBattle()->getisFight());
         SCENE->changeScene("µµµÏ·Îµå");
     }
 }
@@ -127,6 +144,13 @@ void CsceneBattle::setMonsterType()
             m_monsterM->addMonster(CHARACTER_TYPE::SPIKEY_BATTLE, 580 + (i * 140), 320 + (i * 80));
         }
     }
+}
 
+void CsceneBattle::initSequence()
+{
+    for (int i = 0; i < SEQUENCE->getVecSequence().size() + i; i++)
+    {
+        SEQUENCE->remover();
+    }
 
 }

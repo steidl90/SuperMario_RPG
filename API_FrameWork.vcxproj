@@ -151,6 +151,7 @@
     <ClInclude Include="API_FrameWork.h" />
     <ClInclude Include="CbanditsWay.h" />
     <ClInclude Include="Cbattle.h" />
+    <ClInclude Include="CbattleSequence.h" />
     <ClInclude Include="CcommandA.h" />
     <ClInclude Include="CaddImg.h" />
     <ClInclude Include="CcommandB.h" />
@@ -221,6 +222,7 @@
     <ClCompile Include="API_FrameWork.cpp" />
     <ClCompile Include="CbanditsWay.cpp" />
     <ClCompile Include="Cbattle.cpp" />
+    <ClCompile Include="CbattleSequence.cpp" />
     <ClCompile Include="CcommandA.cpp" />
     <ClCompile Include="CaddImg.cpp" />
     <ClCompile Include="CcommandB.cpp" />

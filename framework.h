@@ -41,6 +41,7 @@
 #include"CplayerData.h"
 #include"Czorder.h"
 #include"Ccamera.h"
+#include"CbattleSequence.h"
 //======================================
 //##			매니저들			  ##
 //======================================
@@ -57,6 +58,7 @@
 #define PLAYERDATA		CplayerData::getSingleton()
 #define ZORDER			Czorder::getSingleton()
 #define CAMERA			Ccamera::getSingleton()
+#define SEQUENCE		CbattleSequence::getSingleton()
 //==========================================
 //				 매크로 설정
 //==========================================

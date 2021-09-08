@@ -32,33 +32,91 @@ void CFSMController::initState(Cunit* unit, CHARACTER_TYPE type)
 		m_AI->addState(new player_ETC);
 		m_AI->addState(new player_Run);
 		m_AI->addState(new player_Defence);
-		m_AI->setState(STATE_TYPE::MYTURN);
+		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	case CHARACTER_TYPE::GOOMBA_WORLD:
 		m_AI->addState(new monster_Idle);
 		m_AI->addState(new monster_Move);
-		m_AI->addState(new monster_Trace);
-		m_AI->addState(new monster_Battle);
 		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	case CHARACTER_TYPE::GOOMBA_BATTLE:
-		m_AI->addState(new goomba_Idle);
-		m_AI->addState(new goomba_Move);
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
-		m_AI->addState(new goomba_Idle);
-		m_AI->addState(new goomba_Move);
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	case CHARACTER_TYPE::SPIKEY_BATTLE:
-		m_AI->addState(new goomba_Idle);
-		m_AI->addState(new goomba_Move);
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
 		m_AI->setState(STATE_TYPE::IDLE);
 		break;
 	}
 		
+}
+
+void CFSMController::initState(CmonsterWorld* monster, CHARACTER_TYPE type)
+{
+	m_AI = new CFSM(monster);
+
+	switch (type)
+	{
+	case CHARACTER_TYPE::GOOMBA_WORLD:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	case CHARACTER_TYPE::GOOMBA_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	case CHARACTER_TYPE::SKYTROOPA_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	case CHARACTER_TYPE::SPIKEY_BATTLE:
+		m_AI->addState(new monster_Idle);
+		m_AI->addState(new monster_Move);
+		m_AI->addState(new monster_Die);
+		m_AI->addState(new monster_Battle);
+		m_AI->addState(new monster_Trace);
+		m_AI->addState(new monster_Attack);
+		m_AI->setState(STATE_TYPE::IDLE);
+		break;
+	}
 }
 
 void CFSMController::updateState()

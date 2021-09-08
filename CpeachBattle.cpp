@@ -12,6 +12,7 @@ HRESULT CpeachBattle::init()
 
 	setX(305);
 	setY(550);
+    setNum(2);
 
     return S_OK;
 }

@@ -12,6 +12,7 @@ struct stats
 	int lv;
 	int exp;
 	int gold;
+	int num;
 	float speed;
 };
 
@@ -22,6 +23,7 @@ protected:
 	RECT m_rc;
 	float m_x, m_y;
 	bool isFight;
+	bool isDie;
 	CHARACTER_TYPE m_type;
 
 public:
@@ -47,6 +49,7 @@ public:
 	int getLv() { return m_stats.lv; }
 	int getExp() { return m_stats.exp; }
 	int getGold() { return m_stats.gold; }
+	int getNum() { return m_stats.num; }
 	float getSpeed() { return m_stats.speed; }
 	float getX() { return m_x; }
 	float getY() { return m_y; }
@@ -64,6 +67,7 @@ public:
 	void setLv(int lv) { m_stats.lv = lv; }
 	void setExp(int exp) { m_stats.exp = exp; }
 	void setGold(int gold) { m_stats.gold = gold; }
+	void setNum(int num) { m_stats.num = num; }
 	void setSpeed(float speed) { m_stats.speed = speed; }
 	void setX(float x) { m_x = x; }
 	void setY(float y) { m_y = y; }

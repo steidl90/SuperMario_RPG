@@ -2,12 +2,13 @@
 0,images/Peach_adle.bmp,피치대기,48,68,0,0,1,255,0,255
 0,images/Bowser_idle.bmp,쿠파대기,68,88,0,0,1,255,0,255
 1,images/Mario_move.bmp,마리오이동,280,590,5,8,1,255,0,255
-1,images/Mario_attack.bmp,마리오공격,245,79,7,2,1,255,0,255
+1,images/Mario_attack.bmp,마리오공격,490,158,7,2,1,255,0,255
 1,images/Goomba_move.bmp,굼바이동,150,100,3,2,1,255,0,255
 1,images/Goomba_attack.bmp,굼바공격,500,50,10,1,1,255,0,255
 1,images/Spikey_move.bmp,가시돌이이동,180,120,3,2,1,255,0,255
 1,images/Spikey_attack.bmp,가시돌이공격,300,60,5,1,1,255,0,255
 1,images/SkyTroopa_move.bmp,날개거북이이동,210,150,3,2,1,255,0,255
+1,images/SkyTroopa_attack.bmp,날개거북이공격,210,70,3,1,1,255,0,255
 1,images/BigCoin_Effect.bmp,큰코인,544,34,16,1,1,255,0,255
 1,images/SmallCoin_Effect.bmp,작은코인,544,34,16,1,1,255,0,255
 1,images/SaveBox.bmp,세이브상자,141,35,4,1,1,255,0,255
@@ -41,3 +42,12 @@
 0,images/Battle_Black_S.bmp,블랙스몰,284,88,0,0,1,255,0,255
 0,images/Battle_SelectBar.bmp,선택바,276,30,0,0,1,255,0,255
 0,images/Player_Hp_Ui.bmp,체력UI,158,35,0,0,1,255,0,255
+0,images/Battle_Attack_UI.bmp,공격UI,284,88,0,0,1,255,0,255
+0,images/Select_Arrow.bmp,선택화살표,33,33,0,0,1,255,0,255
+1,images/DeathEffect.bmp,사망이펙트,1024,128,8,1,1,255,0,255
+1,images/Number.bmp,숫자,200,20,10,1,1,255,0,255
+0,images/UI_ETC.bmp,슬래시,15,15,0,0,1,255,0,255
+0,images/SkyTroopa_text.bmp,날개거북이글자,160,24,0,0,1,255,0,255
+0,images/Spikey_text.bmp,가시돌이글자,100,24,0,0,1,255,0,255
+0,images/Goomba_text.bmp,굼바글자,110,24,0,0,1,255,0,255
+0,images/Hand_text.bmp,기본공격글자,90,24,0,0,1,255,0,255

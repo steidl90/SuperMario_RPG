@@ -10,7 +10,6 @@ CsceneBanditsWay::CsceneBanditsWay()
 
 CsceneBanditsWay::~CsceneBanditsWay()
 {
-    
 }
 
 HRESULT CsceneBanditsWay::init()
@@ -116,8 +115,8 @@ void CsceneBanditsWay::scenechange()
                 m_playerM->getMario()->getExp(),
                 m_playerM->getMario()->getGold(),
                 m_playerM->getMario()->getSpeed(),
-                (*m_viMonster)->getX() - 30,
-                (*m_viMonster)->getY() - 30,
+                (*m_viMonster)->getX() + 150,
+                (*m_viMonster)->getY() + 50,
                 m_playerM->getMario()->getSceneNum(),
                 m_playerM->getMario()->getBeforeSceneNum(),
                 m_playerM->getMario()->getisFight());

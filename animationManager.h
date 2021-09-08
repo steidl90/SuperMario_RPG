@@ -29,8 +29,11 @@ public:
 
 
 	void start(string animationKeyName);
+	void startAttack(string animationKeyName);
 	void fullstart(string animationKeyName);
 	void stop(string animationKeyName);
+	void stopAttack(string animationKeyName);
+	void initAni(string animationKeyName);
 	void pause(string animationKeyName);
 	void resume(string animationKeyName);
 

@@ -50,8 +50,11 @@ public:
 
 
 	void start();
+	void startAttack();
 	void fullstart();
 	void stop();
+	void stopAttack();
+	void initAni();
 	void pause();
 	void resume();
 

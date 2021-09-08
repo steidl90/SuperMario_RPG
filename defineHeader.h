@@ -24,7 +24,16 @@ enum class MOVE_TYPE
 	LEFTDOWN,
 	RIGHTUP,
 	RIGHTDOWN,
+	ATTACK,
 	IDEL
+};
+
+enum class ATTACK_MOTION
+{
+	READY,
+	MOVE,
+	ATTACK,
+	RETURN
 };
 
 enum class STATE_TYPE
