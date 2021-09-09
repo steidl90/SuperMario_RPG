@@ -18,7 +18,8 @@ void player_Battle_Idle::update()
 		m_FSM->changeState(STATE_TYPE::MYTURN);
 	}
 
-	if (SEQUENCE->getVecSequence().size() && SEQUENCE->getVecSequence()[0] == m_FSM->getUnit()->getNum())
+	if (SEQUENCE->getVecSequence().size() != 0 && 
+		SEQUENCE->getVecSequence()[0] == m_FSM->getUnit()->getNum())
 	{
 		m_FSM->changeState(STATE_TYPE::MYTURN);
 	}
