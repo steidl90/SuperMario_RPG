@@ -41,5 +41,8 @@ HRESULT Canimation::init()
 	ANIMATION->addAnimation("가시돌이좌상", "가시돌이이동", 3, 5, 5, false, true);
 	ANIMATION->addAnimation("가시돌이기본공격", "가시돌이공격", 0, 4, 8, false, true);
 
+	ANIMATION->addAnimation("감사엔딩", "엔딩감사", 0, 9, 8, false, true);
+	ANIMATION->addAnimation("마리오엔딩", "엔딩마리오", 0, 9, 8, false, true);
+
 	return S_OK;
 }

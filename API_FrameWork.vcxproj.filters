@@ -363,14 +363,14 @@
     <ClInclude Include="CsceneTitle.h">
       <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
     </ClInclude>
-    <ClInclude Include="CsceneEnding.h">
-      <Filter>헤더 파일</Filter>
-    </ClInclude>
     <ClInclude Include="CpeachBattleUi.h">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cpeach</Filter>
     </ClInclude>
-    <ClInclude Include="CpeachBattleState.h">
-      <Filter>헤더 파일</Filter>
+    <ClInclude Include="CsceneEnding.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
+    </ClInclude>
+    <ClInclude Include="CbowserBattleUi.h">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cbowser</Filter>
     </ClInclude>
   </ItemGroup>
   <ItemGroup>
@@ -563,14 +563,14 @@
     <ClCompile Include="CsceneTitle.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
     </ClCompile>
-    <ClCompile Include="CsceneEnding.cpp">
-      <Filter>소스 파일</Filter>
-    </ClCompile>
     <ClCompile Include="CpeachBattleUi.cpp">
       <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cpeach</Filter>
     </ClCompile>
-    <ClCompile Include="CpeachBattleState.cpp">
-      <Filter>소스 파일</Filter>
+    <ClCompile Include="CsceneEnding.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cscene</Filter>
+    </ClCompile>
+    <ClCompile Include="CbowserBattleUi.cpp">
+      <Filter>mainGame\슈퍼마리오RPG\Cunit\player\Cbowser</Filter>
     </ClCompile>
   </ItemGroup>
   <ItemGroup>

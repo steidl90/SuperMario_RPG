@@ -8,6 +8,7 @@ protected:
 	CFSM* m_FSM;
 	STATE_TYPE m_eState;
 	ATTACK_MOTION curMotion;
+	Cunit* m_unit;
 
 	int m_timer;
 

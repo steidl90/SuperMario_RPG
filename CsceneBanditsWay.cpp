@@ -198,5 +198,10 @@ void CsceneBanditsWay::scenechange()
         m_monsterM->vecClear();
         SCENE->changeScene("마을");
     }
+
+    if (m_monsterM->getVecMonster()->size() == 0)
+    {
+        SCENE->changeScene("엔딩");
+    }
 }
 

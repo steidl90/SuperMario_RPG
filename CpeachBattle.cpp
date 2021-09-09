@@ -23,7 +23,7 @@ HRESULT CpeachBattle::init()
 
 	setX(305);
 	setY(550);
-    setNum(2);
+	setNum(RND->getFromIntTo(2, 100000));
     setHp(35);
     setMaxHp(35);
 
@@ -59,17 +59,16 @@ void CpeachBattle::update()
 	case ATTACK_MOTION::MOVE:
 	{
 		if (m_monster->getX() - 90 >= getX())
-			setX(getX() + 20.0f);
+			setX(getX() + 10.0f);
 		else
 		{
 			timer = TIME->getWorldTime();
 			curMotion = ATTACK_MOTION::ATTACK;
 		}
 
-		if (m_monster->getY() + 85 <= getY())
+		if (m_monster->getY() + 70 <= getY())
 			setY(getY() - 8.0f);
-		else if (m_monster->getY() + 85 > getY())
-			setY(getY() + 1.0f);
+		
 		break;
 	}
 	case ATTACK_MOTION::ATTACK:
@@ -95,8 +94,8 @@ void CpeachBattle::update()
 
 void CpeachBattle::render()
 {
-	if(direction == MOVE_TYPE::ATTACK)
-		ZORDER->zorderRender(IMAGE->findImage("피치대기"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15);
+	if (direction == MOVE_TYPE::ATTACK)
+		ZORDER->zorderAniRender(IMAGE->findImage("피치공격"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15, m_ani);
 	else
 		ZORDER->zorderRender(IMAGE->findImage("피치대기"), ZUNIT, m_rc.bottom, m_rc.left - 10, m_rc.top - 15);
 
@@ -110,13 +109,67 @@ void CpeachBattle::animation()
 	switch (direction)
 	{
 	case MOVE_TYPE::IDEL:
-
+		break;
+	case MOVE_TYPE::ATTACK:
+		strcpy(str, "피치기본공격");
+		m_ani = ANIMATION->findAnimation(str);
+		ANIMATION->resume(str);
+		if (timer + 0.8f <= TIME->getWorldTime())
+		{
+			curMotion = ATTACK_MOTION::RETURN;
+			timer = TIME->getWorldTime();
+			ANIMATION->stopAttack(str);
+			m_monster->setHp(m_monster->getHp() - 15);
+			ANIMATION->initAni(str);
+		}
 		break;
 	}
 }
 
 void CpeachBattle::action()
 {
+	if (m_FSM->getstate() == STATE_TYPE::ITEM)
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 2, m_rc.left - 17, m_rc.top - 40, 1, 1); //X
+	else
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left - 17, m_rc.top - 40, 1, 0); //X
+
+	if (m_FSM->getstate() == STATE_TYPE::SKILL)
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left - 70, m_rc.top - 7, 0, 1); //Y
+	else
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left - 70, m_rc.top - 7, 0, 0); //Y
+
+	if (m_FSM->getstate() == STATE_TYPE::ATTACK)
+	{
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left + 35, m_rc.top - 7, 2, 1); //A
+
+		ZORDER->zorderAlphaRender(IMAGE->findImage("블랙스몰"), ZABOVEMAP, m_rc.bottom, 700, 650, 100);
+		ZORDER->zorderRender(IMAGE->findImage("공격UI"), ZABOVEMAP, m_rc.bottom + 1, 700, 650);
+		ZORDER->zorderRender(IMAGE->findImage("기본공격글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 697);
+		if (m_monster->getMonsterType() == CHARACTER_TYPE::GOOMBA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("굼바글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
+		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SKYTROOPA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("날개거북이글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
+		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SPIKEY_BATTLE) ZORDER->zorderRender(IMAGE->findImage("가시돌이글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
+	}
+	else
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left + 35, m_rc.top - 7, 2, 0); //A
+
+	if (m_FSM->getstate() == STATE_TYPE::ETC)
+	{
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 2, m_rc.left - 17, m_rc.top + 27, 3, 1); //B
+		ZORDER->zorderAlphaRender(IMAGE->findImage("블랙스몰"), ZABOVEMAP, m_rc.bottom, m_rc.left + 500, m_rc.top + 150, 100);
+
+		if (InputManager->isToggleKey(VK_UP) || InputManager->isToggleKey(VK_DOWN))
+		{
+			ZORDER->zorderRender(IMAGE->findImage("도망"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 500, m_rc.top + 150);
+			ZORDER->zorderAlphaRender(IMAGE->findImage("선택바"), ZABOVEMAP, m_rc.bottom, m_rc.left + 504, m_rc.top + 195, 200);
+		}
+		else
+		{
+			ZORDER->zorderRender(IMAGE->findImage("방어"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 500, m_rc.top + 150);
+			ZORDER->zorderAlphaRender(IMAGE->findImage("선택바"), ZABOVEMAP, m_rc.bottom, m_rc.left + 504, m_rc.top + 165, 200);
+		}
+	}
+	else
+		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left - 17, m_rc.top + 27, 3, 0); //B
 }
 
 void CpeachBattle::move()

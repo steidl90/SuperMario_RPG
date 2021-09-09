@@ -2,9 +2,7 @@
 #include "Cmonster.h"
 
 class Cmario;
-class CmarioBattle;
-class CpeachBattle;
-class CbowserBattle;
+class CplayerManager;
 class CFSMController;
 class CmonsterWorld :public Cmonster
 {
@@ -14,16 +12,14 @@ private:
 	CFSMController* m_FSM;
 	MONSTER_MOVE_TYPE m_moveType;
 	Cmario* m_player;
-	CmarioBattle* m_playerBattle;
-	CpeachBattle* m_peachBattle;
-	CbowserBattle* m_bowserBattle;
+	CplayerManager* m_playerBattle;
 
 	char str[20];
 
 public:
 	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type);
 	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, Cmario* player);
-	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, CmarioBattle* m_playerBattle);
+	CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, CplayerManager* m_playerBattle);
 	virtual ~CmonsterWorld() = default;
 
 	virtual HRESULT init();

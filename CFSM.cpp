@@ -2,7 +2,7 @@
 #include "CFSM.h"
 #include "Cstate.h"
 #include "Cmario.h"
-#include "CmarioBattle.h"
+#include "CplayerManager.h"
 
 CFSM::CFSM() :m_unit(nullptr), m_curState(nullptr), m_player(nullptr)
 {

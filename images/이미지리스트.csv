@@ -1,8 +1,8 @@
 0,images/Mario_idle.bmp,마리오대기,24,34,0,0,1,255,0,255
 0,images/Peach_adle.bmp,피치대기,48,68,0,0,1,255,0,255
 0,images/Bowser_idle.bmp,쿠파대기,68,88,0,0,1,255,0,255
-1,images/Peach_attack.bmp,피치공격,300,40,9,1,1,255,0,255
-1,images/Bowser_attack.bmp,쿠파공격,430,52,10,1,1,255,0,255
+1,images/Peach_attack.bmp,피치공격,720,80,9,1,1,255,0,255
+1,images/Bowser_attack.bmp,쿠파공격,860,104,10,1,1,255,0,255
 1,images/Mario_move.bmp,마리오이동,280,590,5,8,1,255,0,255
 1,images/Mario_attack.bmp,마리오공격,490,158,7,2,1,255,0,255
 1,images/Goomba_move.bmp,굼바이동,150,100,3,2,1,255,0,255
@@ -54,3 +54,6 @@
 0,images/Spikey_text.bmp,가시돌이글자,100,24,0,0,1,255,0,255
 0,images/Goomba_text.bmp,굼바글자,110,24,0,0,1,255,0,255
 0,images/Hand_text.bmp,기본공격글자,90,24,0,0,1,255,0,255
+0,images/Ending_bg.bmp,엔딩배경,1024,768,0,0,1,255,0,255
+1,images/Ending_ThankYou.bmp,엔딩감사,10240,1024,10,1,1,255,0,255
+1,images/Ending_mario.bmp,엔딩마리오,2240,256,10,1,1,255,0,255

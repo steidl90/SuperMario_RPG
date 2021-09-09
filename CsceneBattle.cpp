@@ -38,13 +38,15 @@ HRESULT CsceneBattle::init()
     m_playerM->getMarioBattle()->setisFight(PLAYERDATA->getisFight());
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
 
-    m_monsterM->setPlayerBattleMemory(m_playerM->getMarioBattle());
+    m_monsterM->setPlayerBattleMemory(m_playerM);
 
     setMonsterType();
 
     m_monsterM->init();
 
     m_playerM->getMarioBattle()->setMonsterManagerMemory(m_monsterM);
+    m_playerM->getPeachBattle()->setMonsterManagerMemory(m_monsterM);
+    m_playerM->getBowserBattle()->setMonsterManagerMemory(m_monsterM);
 
     return S_OK;
 }
@@ -61,7 +63,7 @@ void CsceneBattle::update()
 
     if (SEQUENCE->getVecSequence().size() == 0)
     {
-        for (int i = 0; i < m_playerM->getVecPlayer()->size() - 1; i++)
+        for (int i = 0; i < m_playerM->getVecPlayer()->size(); i++)
         {
             SEQUENCE->pushSequence((*m_playerM->getVecPlayer())[i]->getNum());
         }

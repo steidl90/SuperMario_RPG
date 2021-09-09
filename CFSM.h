@@ -2,8 +2,7 @@
 class Cstate;
 class Cunit;
 class Cmario;
-class CmarioBattle;
-class CpeachBattle;
+class CplayerManager;
 class CmonsterWorld;
 class CFSM
 {
@@ -12,8 +11,7 @@ private:
 	Cstate* m_curState;
 	Cunit* m_unit;
 	Cmario* m_player;
-	CmarioBattle* m_playerBattle;
-	CpeachBattle* m_peachBattle;
+	CplayerManager* m_playerBattle;
 	CmonsterWorld* m_monster;
 public:
 	CFSM();
@@ -27,13 +25,11 @@ public:
 	void changeState(STATE_TYPE type);
 	void setState(STATE_TYPE type);
 	void setPlayerMemory(Cmario* player) { m_player = player; }
-	void setPlayerBattleMemory(CmarioBattle* playerbattle) { m_playerBattle = playerbattle; }
-	void setPeachBattleMemory(CpeachBattle* peachbattle) { m_peachBattle = peachbattle; }
+	void setPlayerBattleMemory(CplayerManager* playerbattle) { m_playerBattle = playerbattle; }
 
 	Cstate* getState() { return m_curState; }
 	Cunit* getUnit() { return m_unit; }
 	Cmario* getPlayer() { return m_player; }
-	CmarioBattle* getPlayerBattle() { return m_playerBattle; }
-	CpeachBattle* getPeachBattle() { return m_peachBattle; }
+	CplayerManager* getPlayerBattle() { return m_playerBattle; }
 	CmonsterWorld* getMonster() { return m_monster; }
 };

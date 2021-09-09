@@ -12,7 +12,7 @@ Cmonster* CmonsterFactory::createMonster(CHARACTER_TYPE _type, float x, float y,
 	return new CmonsterWorld(x, y, rc, stats, _type, player);
 }
 
-Cmonster* CmonsterFactory::createMonster(CHARACTER_TYPE _type, float x, float y, RECT rc, stats stats, CmarioBattle* playerBattle)
+Cmonster* CmonsterFactory::createMonster(CHARACTER_TYPE _type, float x, float y, RECT rc, stats stats, CplayerManager* playerBattle)
 {
 	return new CmonsterWorld(x, y, rc, stats, _type, playerBattle);
 }

@@ -1,6 +1,7 @@
 #include "framework.h"
 #include "CmonsterWorldState.h"
 #include "CmonsterFactory.h"
+#include "CplayerManager.h"
 
 monster_Idle::monster_Idle()
 {
@@ -182,16 +183,16 @@ void monster_Attack::update()
 		break;
 	case ATTACK_MOTION::MOVE:
 	{
-		if (m_FSM->getPlayerBattle()->getX() + 90 <= m_FSM->getMonster()->getX())
+		if (m_unit->getX() + 90 <= m_FSM->getMonster()->getX())
 			m_FSM->getMonster()->setX(m_FSM->getMonster()->getX() - 20.0f);
 		else
 		{
 			m_timer = TIME->getWorldTime();
 			curMotion = ATTACK_MOTION::ATTACK;
 		}
-		if (m_FSM->getPlayerBattle()->getY() - 85 >= m_FSM->getMonster()->getY())
+		if (m_unit->getY() - 85 >= m_FSM->getMonster()->getY())
 			m_FSM->getMonster()->setY(m_FSM->getMonster()->getY() + 8.0f);
-		else if (m_FSM->getPlayerBattle()->getY() - 85 > m_FSM->getMonster()->getY())
+		else if (m_unit->getY() - 85 > m_FSM->getMonster()->getY())
 			m_FSM->getMonster()->setY(m_FSM->getMonster()->getY() - 1.0f);
 		break;
 	}
@@ -208,7 +209,7 @@ void monster_Attack::update()
 		m_FSM->getMonster()->setY(m_y);
 		curMotion = ATTACK_MOTION::READY;
 		m_FSM->changeState(STATE_TYPE::IDLE);
-		m_FSM->getPlayerBattle()->setHp(m_FSM->getPlayerBattle()->getHp() - 1);
+		m_unit->setHp(m_unit->getHp() - 1);
 		SEQUENCE->remover();
 		break;
 	}
@@ -220,6 +221,10 @@ void monster_Attack::Enter()
 	m_timer = TIME->getWorldTime();
 	m_x = m_FSM->getMonster()->getX();
 	m_y = m_FSM->getMonster()->getY();
+	num = RND->getInt(3);
+	if (num == 0)m_unit = m_FSM->getPlayerBattle()->getMarioBattle();
+	else if (num == 1)m_unit = m_FSM->getPlayerBattle()->getPeachBattle();
+	else if (num == 2)m_unit = m_FSM->getPlayerBattle()->getBowserBattle();
 }
 
 void monster_Attack::Exit()

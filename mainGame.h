@@ -6,6 +6,7 @@
 #include "CsceneMarioHouse.h"
 #include "CsceneBanditsWay.h"
 #include "CsceneBattle.h"
+#include "CsceneEnding.h"
 #include "Cmonster.h"
 #include "CmonsterFactory.h"
 class mainGame : public gameNode

@@ -168,12 +168,12 @@ void CmarioBattle::action()
 	{
 		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left + 35, m_rc.top - 7, 2, 1); //A
 
-		ZORDER->zorderAlphaRender(IMAGE->findImage("블랙스몰"), ZABOVEMAP, m_rc.bottom, m_rc.left + 500, m_rc.top + 150, 100);
-		ZORDER->zorderRender(IMAGE->findImage("공격UI"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 500, m_rc.top + 150);
-		ZORDER->zorderRender(IMAGE->findImage("기본공격글자"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 520, m_rc.top + 197);
-		if (m_monster->getMonsterType() == CHARACTER_TYPE::GOOMBA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("굼바글자"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 520, m_rc.top + 167);
-		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SKYTROOPA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("날개거북이글자"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 520, m_rc.top + 167);
-		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SPIKEY_BATTLE) ZORDER->zorderRender(IMAGE->findImage("가시돌이글자"), ZABOVEMAP, m_rc.bottom + 1, m_rc.left + 520, m_rc.top + 167);
+		ZORDER->zorderAlphaRender(IMAGE->findImage("블랙스몰"), ZABOVEMAP, m_rc.bottom, 700, 650, 100);
+		ZORDER->zorderRender(IMAGE->findImage("공격UI"), ZABOVEMAP, m_rc.bottom + 1, 700, 650);
+		ZORDER->zorderRender(IMAGE->findImage("기본공격글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 697);
+		if (m_monster->getMonsterType() == CHARACTER_TYPE::GOOMBA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("굼바글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
+		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SKYTROOPA_BATTLE) ZORDER->zorderRender(IMAGE->findImage("날개거북이글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
+		else if (m_monster->getMonsterType() == CHARACTER_TYPE::SPIKEY_BATTLE) ZORDER->zorderRender(IMAGE->findImage("가시돌이글자"), ZABOVEMAP, m_rc.bottom + 1, 720, 667);
 	}
 	else
 		ZORDER->zorderFrameRender(IMAGE->findImage("배틀버튼"), ZUNIT, m_rc.bottom + 1, m_rc.left + 35, m_rc.top - 7, 2, 0); //A

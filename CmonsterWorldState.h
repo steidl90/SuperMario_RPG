@@ -64,6 +64,8 @@ class monster_Attack :public Cstate
 {
 private:
 	float m_x, m_y;
+
+	int num;
 public:
 	monster_Attack();
 	~monster_Attack();

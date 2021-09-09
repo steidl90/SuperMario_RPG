@@ -1,11 +1,11 @@
 #pragma once
-class CpeachBattleUi
+class CbowserBattleUi
 {
 private:
 
 public:
-	CpeachBattleUi();
-	~CpeachBattleUi();
+	CbowserBattleUi();
+	~CbowserBattleUi();
 
 	HRESULT init();
 	void release();

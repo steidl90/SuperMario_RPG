@@ -18,7 +18,7 @@ m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_player(player), m_isDie(false)
 {
 }
 
-CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, CmarioBattle* m_playerBattle) :Cmonster(x, y, rc, stats),
+CmonsterWorld::CmonsterWorld(float x, float y, RECT rc, stats stats, CHARACTER_TYPE type, CplayerManager* m_playerBattle) :Cmonster(x, y, rc, stats),
 m_type(type), m_ani(), m_FSM(new CFSMController), isDirection(true), m_moveType(MONSTER_MOVE_TYPE::RIGHTDOWN),
 m_pos(40.0f), m_startX(NULL), m_startY(NULL), m_playerBattle(m_playerBattle), m_isDie(false)
 {

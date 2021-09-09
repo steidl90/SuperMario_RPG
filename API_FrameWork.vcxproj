@@ -152,6 +152,7 @@
     <ClInclude Include="CbanditsWay.h" />
     <ClInclude Include="Cbattle.h" />
     <ClInclude Include="CbattleSequence.h" />
+    <ClInclude Include="CbowserBattleUi.h" />
     <ClInclude Include="CcommandA.h" />
     <ClInclude Include="CaddImg.h" />
     <ClInclude Include="CcommandB.h" />
@@ -165,7 +166,6 @@
     <ClInclude Include="CmonsterManager.h" />
     <ClInclude Include="CmonsterWorld.h" />
     <ClInclude Include="CmonsterWorldState.h" />
-    <ClInclude Include="CpeachBattleState.h" />
     <ClInclude Include="CpeachBattleUi.h" />
     <ClInclude Include="CsceneBanditsWay.h" />
     <ClInclude Include="CsceneBattle.h" />
@@ -227,6 +227,7 @@
     <ClCompile Include="CbanditsWay.cpp" />
     <ClCompile Include="Cbattle.cpp" />
     <ClCompile Include="CbattleSequence.cpp" />
+    <ClCompile Include="CbowserBattleUi.cpp" />
     <ClCompile Include="CcommandA.cpp" />
     <ClCompile Include="CaddImg.cpp" />
     <ClCompile Include="CcommandB.cpp" />
@@ -240,7 +241,6 @@
     <ClCompile Include="CmonsterManager.cpp" />
     <ClCompile Include="CmonsterWorld.cpp" />
     <ClCompile Include="CmonsterWorldState.cpp" />
-    <ClCompile Include="CpeachBattleState.cpp" />
     <ClCompile Include="CpeachBattleUi.cpp" />
     <ClCompile Include="CsceneBanditsWay.cpp" />
     <ClCompile Include="CsceneBattle.cpp" />

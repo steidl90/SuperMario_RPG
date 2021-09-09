@@ -3,6 +3,7 @@
 class CsceneEnding : public gameNode
 {
 private:
+	int m_alpha;
 
 public:
 	CsceneEnding();
