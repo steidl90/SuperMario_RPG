@@ -14,6 +14,7 @@ public:
 	virtual~gameNode();
 
 	virtual HRESULT init();
+	virtual HRESULT initBattle(int num);
 	virtual HRESULT init(bool managerInit);
 	virtual void release();
 	virtual void update();

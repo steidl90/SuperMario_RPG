@@ -14,6 +14,8 @@ public:
 	void remover();
 	void remover(int num);
 
+	void vecSort();
+
 	vector<int> getVecSequence() { return vSequence; }
 };
 

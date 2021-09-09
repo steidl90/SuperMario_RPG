@@ -26,7 +26,7 @@ HRESULT CsceneMarioHouse::init()
     m_playerM->getMario()->setGold(PLAYERDATA->getGold());
     m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
     m_playerM->getMario()->setX(500);
-    m_playerM->getMario()->setY(500);
+    m_playerM->getMario()->setY(600);
     m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
     m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
     m_door = RectMake(WINSIZEX / 2 + 80, WINSIZEY + 30, 50, 50);

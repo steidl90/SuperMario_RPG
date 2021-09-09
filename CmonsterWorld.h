@@ -3,6 +3,8 @@
 
 class Cmario;
 class CmarioBattle;
+class CpeachBattle;
+class CbowserBattle;
 class CFSMController;
 class CmonsterWorld :public Cmonster
 {
@@ -13,6 +15,8 @@ private:
 	MONSTER_MOVE_TYPE m_moveType;
 	Cmario* m_player;
 	CmarioBattle* m_playerBattle;
+	CpeachBattle* m_peachBattle;
+	CbowserBattle* m_bowserBattle;
 
 	char str[20];
 

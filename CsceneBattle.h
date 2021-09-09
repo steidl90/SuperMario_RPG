@@ -10,9 +10,11 @@ private:
 	CplayerManager* m_playerM;
 	CmonsterManager* m_monsterM;
 	CHARACTER_TYPE m_type;
-
+	
+private:
 	float m_x, m_y;
 
+	int m_num;
 public:
 	CsceneBattle();
 	~CsceneBattle();

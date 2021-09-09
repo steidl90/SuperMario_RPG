@@ -17,11 +17,14 @@ private:
 private:
 	RECT m_door;
 
+	int m_num;
+
 public:
 	CsceneBanditsWay();
 	~CsceneBanditsWay();
 
 	HRESULT init();
+	HRESULT initBattle(int num);
 	void release();
 	void update();
 	void render();
@@ -29,6 +32,8 @@ public:
 	void initMonster();
 
 	void scenechange();
+
+	int getNum() const { return m_num; }
 
 	CmonsterManager* getMonsterManager() { return m_monsterM; }
 };

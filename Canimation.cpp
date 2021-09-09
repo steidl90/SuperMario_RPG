@@ -20,6 +20,8 @@ HRESULT Canimation::init()
 	ANIMATION->addAnimation("마리오우하", "마리오이동", 30, 32, 8, false, true);
 	ANIMATION->addAnimation("마리오우상", "마리오이동", 35, 37, 8, false, true);
 	ANIMATION->addAnimation("마리오기본공격", "마리오공격", 0, 6, 8, false, true);
+	ANIMATION->addAnimation("피치기본공격", "피치공격", 0, 8, 8, false, true);
+	ANIMATION->addAnimation("쿠파기본공격", "쿠파공격", 0, 9, 8, false, true);
 
 	ANIMATION->addAnimation("사망", "사망이펙트", 0, 7, 8, false, true);
 

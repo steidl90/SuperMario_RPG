@@ -2,8 +2,8 @@
 #include "CplayerData.h"
 
 CplayerData::CplayerData()
-	:m_atk(10), m_def(10), m_hp(30), m_maxHp(m_hp), m_mp(10), m_maxMp(m_mp), m_lv(1), m_exp(10), m_gold(0),
-	m_sceneNum(0b0010), m_beforeSceneNum(0b0010), m_speed(3.0f), m_x(WINSIZEX / 2 + 50), m_y(WINSIZEY / 2 + 400), m_isFight(false)
+	:m_atk(10), m_def(10), m_hp(40), m_maxHp(m_hp), m_mp(10), m_maxMp(m_mp), m_lv(1), m_exp(10), m_gold(0),
+	m_sceneNum(0b0010), m_beforeSceneNum(0b0010), m_speed(3.0f), m_x(WINSIZEX / 2 + 50), m_y(WINSIZEY / 2 + 600), m_isFight(false)
 {
 	
 }

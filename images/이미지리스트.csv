@@ -1,6 +1,8 @@
 0,images/Mario_idle.bmp,마리오대기,24,34,0,0,1,255,0,255
 0,images/Peach_adle.bmp,피치대기,48,68,0,0,1,255,0,255
 0,images/Bowser_idle.bmp,쿠파대기,68,88,0,0,1,255,0,255
+1,images/Peach_attack.bmp,피치공격,300,40,9,1,1,255,0,255
+1,images/Bowser_attack.bmp,쿠파공격,430,52,10,1,1,255,0,255
 1,images/Mario_move.bmp,마리오이동,280,590,5,8,1,255,0,255
 1,images/Mario_attack.bmp,마리오공격,490,158,7,2,1,255,0,255
 1,images/Goomba_move.bmp,굼바이동,150,100,3,2,1,255,0,255
@@ -36,6 +38,7 @@
 1,images/LevelUP_flower.bmp,레벨업꽃,160,40,4,1,1,255,0,255
 1,images/LevelUP_Bonus.bmp,레벨업보너스,264,72,3,1,1,255,0,255
 0,images/Title_Screen.bmp,타이틀,1024,768,0,0,1,255,0,255
+0,images/Title_alpha.bmp,알파,1024,768,0,0,1,255,0,255
 1,images/Battle_Button.bmp,배틀버튼,288,74,4,2,1,255,0,255
 0,images/Battle_ETC_Defence.bmp,방어,284,88,0,0,1,255,0,255
 0,images/Battle_ETC_Run.bmp,도망,284,88,0,0,1,255,0,255

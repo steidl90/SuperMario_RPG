@@ -4,7 +4,7 @@
 #include "Cmario.h"
 
 CsceneBattle::CsceneBattle() :m_battle(new Cbattle), m_playerM(new CplayerManager), m_monsterM(new CmonsterManager), m_type(CHARACTER_TYPE::GOOMBA_BATTLE),
-m_x(PLAYERDATA->getX()), m_y(PLAYERDATA->getY())
+m_x(PLAYERDATA->getX()), m_y(PLAYERDATA->getY()), m_num(0)
 {
 }
 
@@ -61,7 +61,7 @@ void CsceneBattle::update()
 
     if (SEQUENCE->getVecSequence().size() == 0)
     {
-        for (int i = 0; i < m_playerM->getVecPlayer()->size() - 2; i++)
+        for (int i = 0; i < m_playerM->getVecPlayer()->size() - 1; i++)
         {
             SEQUENCE->pushSequence((*m_playerM->getVecPlayer())[i]->getNum());
         }
@@ -69,6 +69,7 @@ void CsceneBattle::update()
         {
             SEQUENCE->pushSequence((*m_monsterM->getVecMonster())[i]->getNum());
         }
+        SEQUENCE->vecSort();
     }
     
     m_playerM->update();
@@ -92,6 +93,8 @@ void CsceneBattle::scenechange()
 {
     if (m_playerM->getMarioBattle()->getFSM()->getstate() == STATE_TYPE::RUN || m_monsterM->getVecMonster()->size() == 0)
     {
+        if (m_playerM->getMarioBattle()->getFSM()->getstate() == STATE_TYPE::RUN) m_num = -1;
+
         m_playerM->getMarioBattle()->setSceneNum(0b0010);
         m_playerM->getMarioBattle()->setBeforeSceneNum(0b0010);
         m_playerM->getMarioBattle()->setisFight(false);
@@ -111,7 +114,7 @@ void CsceneBattle::scenechange()
             m_playerM->getMarioBattle()->getSceneNum(),
             m_playerM->getMarioBattle()->getBeforeSceneNum(),
             m_playerM->getMarioBattle()->getisFight());
-        SCENE->changeScene("µµµÏ·Îµå");
+        SCENE->changeFieldScene("µµµÏ·Îµå", m_num);
     }
 }
 
@@ -120,8 +123,7 @@ void CsceneBattle::setMonsterType()
     CsceneBanditsWay* scene = dynamic_cast<CsceneBanditsWay*>(SCENE->Find("µµµÏ·Îµå"));
 
     m_type = scene->getMonsterManager()->getType();
-
-    scene->release();
+    m_num = scene->getNum();
 
     if (m_type == CHARACTER_TYPE::GOOMBA_WORLD)
     {
@@ -152,5 +154,4 @@ void CsceneBattle::initSequence()
     {
         SEQUENCE->remover();
     }
-
 }

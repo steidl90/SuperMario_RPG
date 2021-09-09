@@ -73,7 +73,7 @@
   <PropertyGroup Label="UserMacros" />
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Debug|Win32'">
     <LinkIncremental>true</LinkIncremental>
-    <OutDir>.</OutDir>
+    <OutDir>$(SolutionDir)$(Configuration)\</OutDir>
   </PropertyGroup>
   <PropertyGroup Condition="'$(Configuration)|$(Platform)'=='Release|Win32'">
     <LinkIncremental>false</LinkIncremental>
@@ -165,8 +165,12 @@
     <ClInclude Include="CmonsterManager.h" />
     <ClInclude Include="CmonsterWorld.h" />
     <ClInclude Include="CmonsterWorldState.h" />
+    <ClInclude Include="CpeachBattleState.h" />
+    <ClInclude Include="CpeachBattleUi.h" />
     <ClInclude Include="CsceneBanditsWay.h" />
     <ClInclude Include="CsceneBattle.h" />
+    <ClInclude Include="CsceneEnding.h" />
+    <ClInclude Include="CsceneTitle.h" />
     <ClInclude Include="Cskytroopa.h" />
     <ClInclude Include="Cinvoker.h" />
     <ClInclude Include="Ccamera.h" />
@@ -236,8 +240,12 @@
     <ClCompile Include="CmonsterManager.cpp" />
     <ClCompile Include="CmonsterWorld.cpp" />
     <ClCompile Include="CmonsterWorldState.cpp" />
+    <ClCompile Include="CpeachBattleState.cpp" />
+    <ClCompile Include="CpeachBattleUi.cpp" />
     <ClCompile Include="CsceneBanditsWay.cpp" />
     <ClCompile Include="CsceneBattle.cpp" />
+    <ClCompile Include="CsceneEnding.cpp" />
+    <ClCompile Include="CsceneTitle.cpp" />
     <ClCompile Include="Cskytroopa.cpp" />
     <ClCompile Include="Cinvoker.cpp" />
     <ClCompile Include="Ccamera.cpp" />

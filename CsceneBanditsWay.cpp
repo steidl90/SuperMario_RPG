@@ -6,6 +6,8 @@ CsceneBanditsWay::CsceneBanditsWay()
     : m_banditsWay(new CbanditsWay), m_playerM(new CplayerManager), m_door(RectMake(0, 0, 0, 0)), m_monsterM(new CmonsterManager),
     m_monsterType()
 {
+    
+    
 }
 
 CsceneBanditsWay::~CsceneBanditsWay()
@@ -37,7 +39,50 @@ HRESULT CsceneBanditsWay::init()
     m_door = RectMake(220, 80, 50, 50);
 
     m_monsterM->setPlayerMemory(m_playerM->getMario());
+
     initMonster();
+
+    return S_OK;
+}
+
+HRESULT CsceneBanditsWay::initBattle(int num)
+{
+    m_num = num;
+
+    m_playerM->init();
+    m_playerM->getMario()->setAtk(PLAYERDATA->getAtk());
+    m_playerM->getMario()->setDef(PLAYERDATA->getDef());
+    m_playerM->getMario()->setHp(PLAYERDATA->getHp());
+    m_playerM->getMario()->setMaxHp(PLAYERDATA->getMaxHp());
+    m_playerM->getMario()->setMp(PLAYERDATA->getMp());
+    m_playerM->getMario()->setMaxMp(PLAYERDATA->getMaxMp());
+    m_playerM->getMario()->setLv(PLAYERDATA->getLv());
+    m_playerM->getMario()->setExp(PLAYERDATA->getExp());
+    m_playerM->getMario()->setGold(PLAYERDATA->getGold());
+    m_playerM->getMario()->setSpeed(PLAYERDATA->getSpeed());
+    m_playerM->getMario()->setX(PLAYERDATA->getX());
+    m_playerM->getMario()->setY(PLAYERDATA->getY());
+    m_playerM->getMario()->setSceneNum(PLAYERDATA->getSceneNum());
+    m_playerM->getMario()->setisFight(PLAYERDATA->getisFight());
+
+    m_door = RectMake(220, 80, 50, 50);
+
+    m_monsterM->setPlayerMemory(m_playerM->getMario());
+
+    if (m_num != -1)
+    {
+        for (m_viMonster = m_monsterM->getVecMonster()->begin(); m_viMonster != m_monsterM->getVecMonster()->end(); ++m_viMonster)
+        {
+            if (m_num == (*m_viMonster)->getNum())
+            {
+                SAFE_DELETE((*m_viMonster));
+                m_monsterM->getVecMonster()->erase(m_viMonster);
+                break;
+            }
+        }
+    }
+
+    m_monsterM->init();
 
     return S_OK;
 }
@@ -77,6 +122,10 @@ void CsceneBanditsWay::render()
         ZORDER->zorderRectangle(m_door, ZDEBUG);
     }
     ZORDER->zorderTotalRender(getMapDC());
+
+    TCHAR str[128];
+
+    m_monsterM->getVecMonster()->size();
 }
 
 void CsceneBanditsWay::initMonster()
@@ -103,6 +152,7 @@ void CsceneBanditsWay::scenechange()
     {
         if (dynamic_cast<CmonsterWorld*>(*m_viMonster)->getMonsterFSM()->getstate() == STATE_TYPE::BATTLE)
         {
+            m_num = (*m_viMonster)->getNum();
             m_playerM->getMario()->setSceneNum(0b0000);
             m_playerM->getMario()->setBeforeSceneNum(0b0010);
             PLAYERDATA->setData(m_playerM->getMario()->getAtk(),
@@ -120,7 +170,7 @@ void CsceneBanditsWay::scenechange()
                 m_playerM->getMario()->getSceneNum(),
                 m_playerM->getMario()->getBeforeSceneNum(),
                 m_playerM->getMario()->getisFight());
-            m_monsterM->vecClear();
+            //m_monsterM->vecClear();
             SCENE->changeBattleScene("πË∆≤∏ ");
             return;
         }

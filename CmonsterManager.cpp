@@ -63,6 +63,7 @@ void CmonsterManager::update()
 			timer = TIME->getWorldTime();
 			isDie = true;
 			SEQUENCE->remover((*viMonster)->getNum());
+			SAFE_DELETE((*viMonster));
 			vMonster.erase(viMonster);
 			return;
 		}

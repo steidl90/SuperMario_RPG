@@ -145,7 +145,7 @@ void CmarioBattle::animation()
 			curMotion = ATTACK_MOTION::RETURN;
 			timer = TIME->getWorldTime();
 			ANIMATION->stopAttack(str);
-			m_monster->setHp(0);
+			m_monster->setHp(m_monster->getHp() - 15);
 			ANIMATION->initAni(str);
 		}
 		break;

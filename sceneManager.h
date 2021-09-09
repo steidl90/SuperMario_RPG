@@ -26,6 +26,7 @@ public:
 
 	gameNode* addScene(string sceneName, gameNode* scene);
 	HRESULT changeScene(string sceneName);
+	HRESULT changeFieldScene(string sceneName, int num);
 	HRESULT changeBattleScene(string sceneName);
 
 	gameNode* Find(string findDate);

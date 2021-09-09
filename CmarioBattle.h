@@ -3,7 +3,6 @@
 #include "CmarioBattleUi.h"
 #include "CFSMController.h"
 #include "CmarioBattleState.h"
-#include "CmonsterWorld.h"
 
 class CmonsterManager;
 class CmarioBattle :public Cunit

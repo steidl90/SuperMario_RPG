@@ -30,6 +30,14 @@ HRESULT gameNode::init()
 	return S_OK;
 }
 
+HRESULT gameNode::initBattle(int num)
+{
+	_hdc = GetDC(m_hWnd);
+	_managerInit = false;
+
+	return S_OK;
+}
+
 HRESULT gameNode::init(bool managerInit)
 {
 	_hdc = GetDC(m_hWnd);

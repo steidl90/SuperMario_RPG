@@ -20,7 +20,7 @@ Cmario::~Cmario()
 HRESULT Cmario::init()
 {
 	m_x = WINSIZEX / 2 + 50;
-	m_y = WINSIZEY / 2 + 400;
+	m_y = WINSIZEY / 2 + 500;
 	m_stats.lv = 1;
 	m_stats.atk = 10;
 	m_stats.def = 10;

@@ -1,6 +1,7 @@
 #pragma once
 #include "gameNode.h"
 #include "Cmario.h"
+#include "CsceneTitle.h"
 #include "CsceneTown.h"
 #include "CsceneMarioHouse.h"
 #include "CsceneBanditsWay.h"

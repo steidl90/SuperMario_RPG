@@ -13,6 +13,7 @@ HRESULT CbattleSequence::init()
 void CbattleSequence::pushSequence(int num)
 {
 	vSequence.push_back(num);
+	
 }
 
 void CbattleSequence::remover()
@@ -29,4 +30,9 @@ void CbattleSequence::remover(int num)
 			break;
 		}
 	}
+}
+
+void CbattleSequence::vecSort()
+{
+	sort(vSequence.begin(), vSequence.end());
 }

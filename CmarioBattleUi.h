@@ -1,6 +1,5 @@
 #pragma once
-#include "gameNode.h"
-class CmarioBattleUi :public gameNode
+class CmarioBattleUi
 {
 private:
 

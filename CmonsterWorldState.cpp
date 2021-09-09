@@ -28,7 +28,7 @@ void monster_Idle::update()
 	}
 	else
 	{
-		if (SEQUENCE->getVecSequence()[0] == m_FSM->getMonster()->getNum())
+		if (SEQUENCE->getVecSequence().size() != 0 && SEQUENCE->getVecSequence()[0] == m_FSM->getMonster()->getNum())
 		{
 			m_FSM->changeState(STATE_TYPE::ATTACK);
 		}
